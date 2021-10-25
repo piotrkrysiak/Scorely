@@ -1,9 +1,10 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
+import TestComponent from './components/TestComponent';
 
 const App = () => (
   <View>
-    <Text>Initial commit</Text>
+    <TestComponent />
   </View>
 );
 
