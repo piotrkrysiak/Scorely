@@ -1,11 +1,12 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Provider } from 'react-redux';
 import TestComponent from './components/TestComponent';
+import store from './store';
 
 const App = () => (
-  <View>
+  <Provider store={store}>
     <TestComponent />
-  </View>
+  </Provider>
 );
 
 export default App;
