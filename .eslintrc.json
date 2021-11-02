@@ -28,6 +28,7 @@
     "no-use-before-define": [0],
     "no-unused-vars": [1],
     "@typescript-eslint/no-use-before-define": [0],
+    "react/require-default-props": [0],
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -46,7 +47,7 @@
     "import/no-unresolved": [
       "error",
       {
-        "ignore": ["@env"]
+        "ignore": ["@env", "@types"]
       }
     ]
   },

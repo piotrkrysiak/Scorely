@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import TestComponent from './components/TestComponent';
+import TestComponent from 'src/components/TestComponent';
 import store from './store';
 
 const App = () => (
