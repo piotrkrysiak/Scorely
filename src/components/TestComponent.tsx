@@ -1,21 +1,51 @@
 import React from 'react';
-import { SafeAreaView, View } from 'react-native';
+import { SafeAreaView, ScrollView, View } from 'react-native';
+import { H1, H3, HELP, SMALLER_BODY, SMALLER_BODY_SEMI } from 'src/constants';
 import { useGetAllQuery, useGetByIdQuery } from 'src/services/post';
-import Text from './common/Text';
+import { Text, HeadlineText, BodyText } from './common';
 
 const TestComponent = () => {
   const { data: posts } = useGetAllQuery();
   const { data: post } = useGetByIdQuery('1');
   return (
     <SafeAreaView>
-      {!!post && <Text>{post.id}</Text>}
-      {posts?.map(item => (
-        <View key={item.id}>
-          <Text>{item.id}</Text>
-          <Text>{item.title}</Text>
-          <Text>{item.body}</Text>
-        </View>
-      ))}
+      <ScrollView>
+        <HeadlineText type={H1}>Headline 1</HeadlineText>
+        <HeadlineText>Headline 2</HeadlineText>
+        <HeadlineText type={H3}>Headline 3</HeadlineText>
+        <BodyText>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, impedit
+          iusto! Pariatur, nostrum alias hic neque earum, porro labore est
+          doloribus facilis placeat dolor architecto maxime similique
+          reprehenderit consectetur minus.
+        </BodyText>
+        <BodyText type={SMALLER_BODY}>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae commodi
+          similique ut rem voluptas iste atque quia, cumque rerum sit dolores
+          magni, soluta eius officia dignissimos delectus optio amet ad.
+        </BodyText>
+        <BodyText type={SMALLER_BODY_SEMI} color="purple">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex voluptate
+          cumque cupiditate nihil tempora ut cum, totam eius, consequatur harum
+          odio, atque nulla hic deleniti fugiat necessitatibus ipsa dicta
+          deserunt.
+        </BodyText>
+        <BodyText type={HELP}>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur
+          eius a voluptatibus voluptate nihil perspiciatis culpa veniam eos
+          autem eaque. Eaque unde, odio soluta nostrum sunt nesciunt saepe rerum
+          ab.
+        </BodyText>
+        <Text>Text</Text>
+        {!!post && <Text>{post.id}</Text>}
+        {posts?.map(item => (
+          <View key={item.id}>
+            <HeadlineText>{item.id}</HeadlineText>
+            <HeadlineText type={H1}>{item.title}</HeadlineText>
+            <HeadlineText type={H3}>{item.body}</HeadlineText>
+          </View>
+        ))}
+      </ScrollView>
     </SafeAreaView>
   );
 };
