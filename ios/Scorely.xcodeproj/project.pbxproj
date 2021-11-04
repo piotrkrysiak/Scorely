@@ -12,11 +12,11 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		1C13A40A8E0B44568C7A0785 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3428A5C2EF1240D7A7BE3FDB /* Poppins-Regular.ttf */; };
+		3554271D1EC724FD0CD98F45 /* libPods-Scorely.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB488E39A4537AB4BCBDDED9 /* libPods-Scorely.a */; };
 		3C4A475A2C794E848186A663 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E90C7FBBCCF4A88822F0546 /* Poppins-Medium.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		8FCF549D8EDE35020ACC76E4 /* libPods-Scorely-ScorelyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C29F746C5D1D0423FAA22D7E /* libPods-Scorely-ScorelyTests.a */; };
 		9F57ECC89842456B9D661374 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0FCA1DBBD47499491D995B2 /* Poppins-SemiBold.ttf */; };
-		A6B6D17D916E5E2ADD14B614 /* libPods-Scorely-ScorelyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2F3BB6315B8DB707CE6FAFB /* libPods-Scorely-ScorelyTests.a */; };
-		B22728C549D8F16916231691 /* libPods-Scorely.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FAA15CFDEAAA943FDF3F4E9 /* libPods-Scorely.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,23 +33,23 @@
 		00E356EE1AD99517003FC87E /* ScorelyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScorelyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* ScorelyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScorelyTests.m; sourceTree = "<group>"; };
+		03912D77B014CD4D009F619E /* Pods-Scorely.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scorely.release.xcconfig"; path = "Target Support Files/Pods-Scorely/Pods-Scorely.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Scorely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scorely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Scorely/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Scorely/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Scorely/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Scorely/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Scorely/main.m; sourceTree = "<group>"; };
+		263D0F880CAD17648E2ABC67 /* Pods-Scorely.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scorely.debug.xcconfig"; path = "Target Support Files/Pods-Scorely/Pods-Scorely.debug.xcconfig"; sourceTree = "<group>"; };
 		3428A5C2EF1240D7A7BE3FDB /* Poppins-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Regular.ttf"; path = "../src/assets/fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		6E90C7FBBCCF4A88822F0546 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Medium.ttf"; path = "../src/assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; };
-		6FAA15CFDEAAA943FDF3F4E9 /* libPods-Scorely.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Scorely.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7EF1A9E5BFA0ADC262AE9F75 /* Pods-Scorely.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scorely.debug.xcconfig"; path = "Target Support Files/Pods-Scorely/Pods-Scorely.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Scorely/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		9CD0A66E27494111AD23A5EE /* Pods-Scorely-ScorelyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scorely-ScorelyTests.debug.xcconfig"; path = "Target Support Files/Pods-Scorely-ScorelyTests/Pods-Scorely-ScorelyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		958B99D7A522D8742B4F11A7 /* Pods-Scorely-ScorelyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scorely-ScorelyTests.debug.xcconfig"; path = "Target Support Files/Pods-Scorely-ScorelyTests/Pods-Scorely-ScorelyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A0FCA1DBBD47499491D995B2 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-SemiBold.ttf"; path = "../src/assets/fonts/Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
-		D1AE89796C42E785EBDE74A0 /* Pods-Scorely-ScorelyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scorely-ScorelyTests.release.xcconfig"; path = "Target Support Files/Pods-Scorely-ScorelyTests/Pods-Scorely-ScorelyTests.release.xcconfig"; sourceTree = "<group>"; };
-		D2F3BB6315B8DB707CE6FAFB /* libPods-Scorely-ScorelyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Scorely-ScorelyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D8D3A5D61E2B51FF55828B59 /* Pods-Scorely.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scorely.release.xcconfig"; path = "Target Support Files/Pods-Scorely/Pods-Scorely.release.xcconfig"; sourceTree = "<group>"; };
+		AB488E39A4537AB4BCBDDED9 /* libPods-Scorely.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Scorely.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C29F746C5D1D0423FAA22D7E /* libPods-Scorely-ScorelyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Scorely-ScorelyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F9786A57038A29B5DD8369A8 /* Pods-Scorely-ScorelyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scorely-ScorelyTests.release.xcconfig"; path = "Target Support Files/Pods-Scorely-ScorelyTests/Pods-Scorely-ScorelyTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6B6D17D916E5E2ADD14B614 /* libPods-Scorely-ScorelyTests.a in Frameworks */,
+				8FCF549D8EDE35020ACC76E4 /* libPods-Scorely-ScorelyTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B22728C549D8F16916231691 /* libPods-Scorely.a in Frameworks */,
+				3554271D1EC724FD0CD98F45 /* libPods-Scorely.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,24 +102,12 @@
 			name = Scorely;
 			sourceTree = "<group>";
 		};
-		2A2D735FC9E86C337D33BFBB /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				7EF1A9E5BFA0ADC262AE9F75 /* Pods-Scorely.debug.xcconfig */,
-				D8D3A5D61E2B51FF55828B59 /* Pods-Scorely.release.xcconfig */,
-				9CD0A66E27494111AD23A5EE /* Pods-Scorely-ScorelyTests.debug.xcconfig */,
-				D1AE89796C42E785EBDE74A0 /* Pods-Scorely-ScorelyTests.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				6FAA15CFDEAAA943FDF3F4E9 /* libPods-Scorely.a */,
-				D2F3BB6315B8DB707CE6FAFB /* libPods-Scorely-ScorelyTests.a */,
+				AB488E39A4537AB4BCBDDED9 /* libPods-Scorely.a */,
+				C29F746C5D1D0423FAA22D7E /* libPods-Scorely-ScorelyTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -140,7 +128,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				F6E5369DC9844863A2424DCF /* Resources */,
-				2A2D735FC9E86C337D33BFBB /* Pods */,
+				A437D8891746BC235FBD201E /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -154,6 +142,18 @@
 				00E356EE1AD99517003FC87E /* ScorelyTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A437D8891746BC235FBD201E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				263D0F880CAD17648E2ABC67 /* Pods-Scorely.debug.xcconfig */,
+				03912D77B014CD4D009F619E /* Pods-Scorely.release.xcconfig */,
+				958B99D7A522D8742B4F11A7 /* Pods-Scorely-ScorelyTests.debug.xcconfig */,
+				F9786A57038A29B5DD8369A8 /* Pods-Scorely-ScorelyTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		F6E5369DC9844863A2424DCF /* Resources */ = {
@@ -174,12 +174,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ScorelyTests" */;
 			buildPhases = (
-				58BFE37D333D200457498236 /* [CP] Check Pods Manifest.lock */,
+				53FCC15DDAE0B8DD2595148A /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				2BD363EF76BFD643C565315D /* [CP] Embed Pods Frameworks */,
-				B773BC920CC37DC3ADFB8618 /* [CP] Copy Pods Resources */,
+				308EBEB33812FBC9A21F452E /* [CP] Embed Pods Frameworks */,
+				4D8EF612B4C61971D3A6AE0E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -195,14 +195,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Scorely" */;
 			buildPhases = (
-				01AEB70A5E49478B48470384 /* [CP] Check Pods Manifest.lock */,
+				D4974963D6951DEE9881FE99 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				EFA7842A1FC30B1014FDBAC4 /* [CP] Embed Pods Frameworks */,
-				C48B0AAD259B858CF16385B1 /* [CP] Copy Pods Resources */,
+				1A37E9F75681D84BD29E94D7 /* [CP] Embed Pods Frameworks */,
+				0225A51E3A778936DF526E32 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -286,29 +286,41 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		01AEB70A5E49478B48470384 /* [CP] Check Pods Manifest.lock */ = {
+		0225A51E3A778936DF526E32 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Scorely/Pods-Scorely-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Scorely-checkManifestLockResult.txt",
+				"${PODS_ROOT}/Target Support Files/Pods-Scorely/Pods-Scorely-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Scorely/Pods-Scorely-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2BD363EF76BFD643C565315D /* [CP] Embed Pods Frameworks */ = {
+		1A37E9F75681D84BD29E94D7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Scorely/Pods-Scorely-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Scorely/Pods-Scorely-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Scorely/Pods-Scorely-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		308EBEB33812FBC9A21F452E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -325,7 +337,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Scorely-ScorelyTests/Pods-Scorely-ScorelyTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		58BFE37D333D200457498236 /* [CP] Check Pods Manifest.lock */ = {
+		4D8EF612B4C61971D3A6AE0E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Scorely-ScorelyTests/Pods-Scorely-ScorelyTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Scorely-ScorelyTests/Pods-Scorely-ScorelyTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Scorely-ScorelyTests/Pods-Scorely-ScorelyTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		53FCC15DDAE0B8DD2595148A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -347,55 +376,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B773BC920CC37DC3ADFB8618 /* [CP] Copy Pods Resources */ = {
+		D4974963D6951DEE9881FE99 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Scorely-ScorelyTests/Pods-Scorely-ScorelyTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Scorely-ScorelyTests/Pods-Scorely-ScorelyTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Scorely-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Scorely-ScorelyTests/Pods-Scorely-ScorelyTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C48B0AAD259B858CF16385B1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Scorely/Pods-Scorely-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Scorely/Pods-Scorely-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Scorely/Pods-Scorely-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EFA7842A1FC30B1014FDBAC4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Scorely/Pods-Scorely-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Scorely/Pods-Scorely-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Scorely/Pods-Scorely-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -450,7 +450,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9CD0A66E27494111AD23A5EE /* Pods-Scorely-ScorelyTests.debug.xcconfig */;
+			baseConfigurationReference = 958B99D7A522D8742B4F11A7 /* Pods-Scorely-ScorelyTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -477,7 +477,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D1AE89796C42E785EBDE74A0 /* Pods-Scorely-ScorelyTests.release.xcconfig */;
+			baseConfigurationReference = F9786A57038A29B5DD8369A8 /* Pods-Scorely-ScorelyTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -501,7 +501,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7EF1A9E5BFA0ADC262AE9F75 /* Pods-Scorely.debug.xcconfig */;
+			baseConfigurationReference = 263D0F880CAD17648E2ABC67 /* Pods-Scorely.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -527,7 +527,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D8D3A5D61E2B51FF55828B59 /* Pods-Scorely.release.xcconfig */;
+			baseConfigurationReference = 03912D77B014CD4D009F619E /* Pods-Scorely.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

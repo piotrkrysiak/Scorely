@@ -1,5 +1,6 @@
 import React from 'react';
 import { SafeAreaView, ScrollView, View } from 'react-native';
+import Animated, { FlipInXDown } from 'react-native-reanimated';
 import lightPalette from 'src/assets/styles/palette';
 import { H1, H3, HELP, SMALLER_BODY, SMALLER_BODY_SEMI } from 'src/constants';
 import { useGetAllQuery, useGetByIdQuery } from 'src/services/post';
@@ -11,7 +12,9 @@ const TestComponent = () => {
   return (
     <SafeAreaView>
       <ScrollView>
-        <HeadlineText type={H1}>Headline 1</HeadlineText>
+        <Animated.View entering={FlipInXDown.springify()}>
+          <HeadlineText type={H1}>Headline 1</HeadlineText>
+        </Animated.View>
         <Button title="Lorem" onPress={() => console.log('Test')} disabled />
         <HeadlineText>Headline 2</HeadlineText>
         <Button title="Lorem" onPress={() => console.log('Test')} icon="ss" />
