@@ -5915,6 +5915,11 @@ react-native-dotenv@^3.2.0:
   dependencies:
     dotenv "^10.0.0"
 
+react-native-input-outline@^1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/react-native-input-outline/-/react-native-input-outline-1.5.2.tgz#5874e0c19ae3d2e4724d703873abdc667c887103"
+  integrity sha512-WgcZZxgGCfFbQ2qEdktv6zirz3OG1t++aVwmZDJlS9FQEXJRQUQnCk8VgUaXB40o22RJdQUMCEb8UXFtGOSNLw==
+
 react-native-reanimated@^2.3.0-beta.2:
   version "2.3.0-beta.2"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-2.3.0-beta.2.tgz#6c62422fe25d76336464b990ea2e648f2241494c"

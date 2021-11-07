@@ -1,10 +1,11 @@
 import React from 'react';
 import { SafeAreaView, ScrollView, View } from 'react-native';
+import { InputOutline } from 'react-native-input-outline';
 import Animated, { FlipInXDown } from 'react-native-reanimated';
 import lightPalette from 'src/assets/styles/palette';
 import { H1, H3, HELP, SMALLER_BODY, SMALLER_BODY_SEMI } from 'src/constants';
 import { useGetAllQuery, useGetByIdQuery } from 'src/services/post';
-import { Text, HeadlineText, BodyText, Button } from './common';
+import { Text, HeadlineText, BodyText, Button, Input } from './common';
 
 const TestComponent = () => {
   const { data: posts } = useGetAllQuery();
@@ -15,6 +16,10 @@ const TestComponent = () => {
         <Animated.View entering={FlipInXDown.springify()}>
           <HeadlineText type={H1}>Headline 1</HeadlineText>
         </Animated.View>
+        <Input style={{ marginTop: 20 }} />
+        <View style={{ marginTop: 20 }}>
+          <Input style={{ margin: 20 }} error="special char is required" />
+        </View>
         <Button title="Lorem" onPress={() => console.log('Test')} disabled />
         <HeadlineText>Headline 2</HeadlineText>
         <Button title="Lorem" onPress={() => console.log('Test')} icon="ss" />

@@ -178,7 +178,6 @@
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				308EBEB33812FBC9A21F452E /* [CP] Embed Pods Frameworks */,
 				4D8EF612B4C61971D3A6AE0E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -201,7 +200,6 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				1A37E9F75681D84BD29E94D7 /* [CP] Embed Pods Frameworks */,
 				0225A51E3A778936DF526E32 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -301,40 +299,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Scorely/Pods-Scorely-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1A37E9F75681D84BD29E94D7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Scorely/Pods-Scorely-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Scorely/Pods-Scorely-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Scorely/Pods-Scorely-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		308EBEB33812FBC9A21F452E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Scorely-ScorelyTests/Pods-Scorely-ScorelyTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Scorely-ScorelyTests/Pods-Scorely-ScorelyTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Scorely-ScorelyTests/Pods-Scorely-ScorelyTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4D8EF612B4C61971D3A6AE0E /* [CP] Copy Pods Resources */ = {
