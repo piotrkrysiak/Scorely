@@ -5,10 +5,10 @@ const globalStyles = StyleSheet.create({
     padding: 20,
   },
   margined: {
-    margin: 20,
+    margin: 25,
   },
   marginedTop: {
-    marginTop: 20,
+    marginTop: 25,
   },
 });
 
