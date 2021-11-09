@@ -1,11 +1,11 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import TestComponent from 'src/components/TestComponent';
+import LoginScreen from './screens/LoginScreen';
 import store from './store';
 
 const App = () => (
   <Provider store={store}>
-    <TestComponent />
+    <LoginScreen />
   </Provider>
 );
 

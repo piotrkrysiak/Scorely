@@ -18,7 +18,7 @@ const Input: FC<InputOutlineProps> = ({
 }) => {
   let paddingVertical;
   if (Platform.OS === 'ios') {
-    paddingVertical = 21;
+    paddingVertical = 17;
   }
   return (
     <InputOutline
@@ -41,7 +41,7 @@ const Input: FC<InputOutlineProps> = ({
       paddingVertical={paddingVertical}
       testID={testID}
       style={[
-        Platform.OS === 'ios' && { height: 66 },
+        Platform.OS === 'ios' && { height: 60 },
         {
           width: '91%',
           alignSelf: 'center',
