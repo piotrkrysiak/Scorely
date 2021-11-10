@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import Animated, { FlipInXDown } from 'react-native-reanimated';
+import Icon from 'react-native-vector-icons/Ionicons';
 import lightPalette from 'src/assets/styles/palette';
 import { H1, H3, HELP, SMALLER_BODY, SMALLER_BODY_SEMI } from 'src/constants';
 import { useGetAllQuery, useGetByIdQuery } from 'src/services/post';
@@ -16,6 +17,7 @@ const TestComponent = () => {
         <HeadlineText type={H1}>Headline 1</HeadlineText>
       </Animated.View>
       <Input style={{ marginTop: 20 }} />
+      <Icon name="settings" size={30} color="#900" />
       <View style={{ marginTop: 20 }}>
         <Input style={{ margin: 20 }} error="special char is required" />
       </View>

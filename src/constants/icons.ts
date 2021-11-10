@@ -1,0 +1,3 @@
+export const MATERIAL = 'MATERIAL';
+export const MATERIAL_COMMUNITY = 'MATERIAL_COMMUNITY';
+export const IONICONS = 'IONICONS';

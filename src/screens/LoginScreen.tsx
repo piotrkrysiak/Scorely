@@ -13,9 +13,16 @@ import {
 } from 'src/components/common';
 import { Wrapper, RowWrapper } from 'src/components/containers';
 import Container from 'src/components/containers/Container';
+import Icon from 'src/components/common/Icon';
 
 const LoginScreen = () => {
   const [disabled, setDisabled] = useState<boolean>(true);
+  const [secureTextEntry, setSecureTextEntry] = useState<boolean>(true);
+
+  const handleSecureTextEntry = () => {
+    setSecureTextEntry(prev => !prev);
+  };
+
   interface LoginForm {
     email: string;
     password: string;
@@ -68,6 +75,7 @@ const LoginScreen = () => {
           </Wrapper>
         </View>
         <Input
+          value={values.email}
           onChangeText={handleChange('email')}
           placeholder="Phone or email"
           style={globalStyles.marginedTop}
@@ -75,12 +83,27 @@ const LoginScreen = () => {
           error={errors.email}
         />
         <Input
+          value={values.password}
           onChangeText={handleChange('password')}
           placeholder="Password"
-          secureTextEntry
+          secureTextEntry={secureTextEntry}
           style={globalStyles.margined}
           autoCapitalize="none"
           error={errors.password}
+          trailingIcon={() => (
+            <Pressable
+              style={({ pressed }) => ({
+                opacity: pressed ? 0.5 : 1,
+              })}
+              onPress={handleSecureTextEntry}
+            >
+              <Icon
+                name={secureTextEntry ? 'eye' : 'eye-off'}
+                size={24}
+                color={lightPalette.primary}
+              />
+            </Pressable>
+          )}
         />
         <BodyText
           style={styles.password}
