@@ -5,7 +5,7 @@ import Ionicon from 'react-native-vector-icons/Ionicons';
 import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 import { IONICONS, MATERIAL, MATERIAL_COMMUNITY } from 'src/constants/icons';
 
-type IconTypes = 'MATERIAL' | 'MATERIAL_COMMUNITY' | 'IONICONS';
+export type IconTypes = 'MATERIAL' | 'MATERIAL_COMMUNITY' | 'IONICONS';
 
 const getIconFont = (type: IconTypes) => {
   switch (type) {

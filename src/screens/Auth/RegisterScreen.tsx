@@ -1,9 +1,9 @@
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
-import { globalStyles } from 'src/assets/styles';
-import lightPalette from 'src/assets/styles/palette';
+import { useNavigation } from '@react-navigation/native';
 import * as Yup from 'yup';
+import { globalStyles, lightPalette } from 'src/assets/styles';
 import {
   BodyText,
   Button,
@@ -13,11 +13,15 @@ import {
 } from 'src/components/common';
 import { Wrapper, RowWrapper } from 'src/components/containers';
 import Container from 'src/components/containers/Container';
-import Icon from 'src/components/common/Icon';
+import Icon, { IconTypes } from 'src/components/common/Icon';
+import HeaderBar from 'src/components/common/HeaderBar';
+import { IONICONS } from 'src/constants';
 
-const LoginScreen = () => {
+const RegisterScreen = () => {
   const [disabled, setDisabled] = useState<boolean>(true);
   const [secureTextEntry, setSecureTextEntry] = useState<boolean>(true);
+
+  const { goBack } = useNavigation();
 
   const handleSecureTextEntry = () => {
     setSecureTextEntry(prev => !prev);
@@ -58,19 +62,25 @@ const LoginScreen = () => {
       setDisabled(false);
     }
   }
+  const leftIcon = {
+    type: IONICONS as IconTypes,
+    name: 'ios-arrow-back',
+    onPressFunction: goBack,
+  };
 
   return (
     <Container keyboard scroll style={styles.container}>
       <View>
+        <HeaderBar leftIcon={leftIcon} />
         <View style={styles.wrapper}>
           <Wrapper>
-            <HeadlineText type="H1">Let s sign you in. 👋</HeadlineText>
+            <HeadlineText type="H1">Let s sign you up. 👋</HeadlineText>
             <Text
               fontWeight="Regular"
               color={lightPalette.dark60}
               fontSize={24}
             >
-              Welcome back, to your football society ⚽️
+              Create account and dive in to the football society ⚽️
             </Text>
           </Wrapper>
         </View>
@@ -105,13 +115,6 @@ const LoginScreen = () => {
             </Pressable>
           )}
         />
-        <BodyText
-          style={styles.password}
-          type="SmallerBodySemi"
-          color={lightPalette.primary}
-        >
-          Forgot your password?
-        </BodyText>
       </View>
       <View style={styles.bottom}>
         <RowWrapper style={styles.register}>
@@ -123,13 +126,13 @@ const LoginScreen = () => {
             </BodyText>
           </Pressable>
         </RowWrapper>
-        <Button title="Sign in" onPress={handleSubmit} disabled={disabled} />
+        <Button title="Sign up" onPress={handleSubmit} disabled={disabled} />
       </View>
     </Container>
   );
 };
 
-export default LoginScreen;
+export default RegisterScreen;
 
 const styles = StyleSheet.create({
   container: {
