@@ -8,10 +8,7 @@ const AuthNavigator = () => {
   const AuthStack = createStackNavigator<RootStackParamList>();
 
   return (
-    <AuthStack.Navigator
-      initialRouteName={Route.LOGIN}
-      screenOptions={SCREEN_OPTIONS}
-    >
+    <AuthStack.Navigator screenOptions={SCREEN_OPTIONS}>
       <AuthStack.Screen name={Route.LOGIN} component={LoginScreen} />
       <AuthStack.Screen name={Route.REGISTER} component={RegisterScreen} />
     </AuthStack.Navigator>

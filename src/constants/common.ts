@@ -9,3 +9,4 @@ export const SCREEN_OPTIONS = {
   gestureEnabled: true,
   gestureResponseDistance: 150,
 };
+export const BOTTOM_TABS_HEIGHT = 80;
