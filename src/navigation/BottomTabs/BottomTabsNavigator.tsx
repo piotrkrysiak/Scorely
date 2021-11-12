@@ -30,7 +30,7 @@ const BottomTabsNavigator = () => {
           tabBarButton: ({ onPress, accessibilityState }) => (
             <TabIcon
               onPress={onPress}
-              accessibilityState={accessibilityState}
+              focused={accessibilityState?.selected}
               name="home"
               label={Route.HOME}
             />
@@ -44,7 +44,7 @@ const BottomTabsNavigator = () => {
           tabBarButton: ({ onPress, accessibilityState }) => (
             <TabIcon
               onPress={onPress}
-              accessibilityState={accessibilityState}
+              focused={accessibilityState?.selected}
               name="list"
               label={Route.RESULT}
             />
@@ -59,7 +59,7 @@ const BottomTabsNavigator = () => {
           tabBarButton: ({ onPress, accessibilityState }) => (
             <TabIcon
               onPress={onPress}
-              accessibilityState={accessibilityState}
+              focused={accessibilityState?.selected}
               name="stats-chart"
               label={Route.TABLES}
             />
@@ -74,7 +74,7 @@ const BottomTabsNavigator = () => {
           tabBarButton: ({ onPress, accessibilityState }) => (
             <TabIcon
               onPress={onPress}
-              accessibilityState={accessibilityState}
+              focused={accessibilityState?.selected}
               name="person"
               label={Route.PROFILE}
             />

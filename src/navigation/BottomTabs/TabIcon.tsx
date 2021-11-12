@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import {
-  AccessibilityState,
   GestureResponderEvent,
   StyleSheet,
   TouchableOpacity,
@@ -24,7 +23,7 @@ interface Props {
           | GestureResponderEvent,
       ) => void)
     | undefined;
-  accessibilityState: AccessibilityState | undefined;
+  focused: boolean | undefined;
   name: string;
   label: string;
   type?: IconTypes;
@@ -33,21 +32,16 @@ interface Props {
 
 const TabIcon: FC<Props> = ({
   onPress,
-  accessibilityState,
+  focused,
   name,
   label,
   type = IONICONS,
   size = 24,
 }) => {
   const rotation = useSharedValue(0);
-  let focused = false;
-
-  if (accessibilityState?.selected) {
-    focused = accessibilityState.selected;
-  }
 
   const animatedStyle = useAnimatedStyle(() => ({
-    transform: [{ rotateZ: `${rotation.value}deg` }, { scale: 1.2 }],
+    transform: [{ rotateZ: `${rotation.value}deg` }, { scale: 1.1 }],
   }));
 
   const outline = `${name}-outline`;
