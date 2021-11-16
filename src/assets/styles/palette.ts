@@ -1,5 +1,6 @@
 const lightPalette = {
   primary: '#554AF0',
+  secondary: '#02DEC4',
   extraWhite: '#F8F8FA',
   dark: '#04021D',
   dark60: '#686777',
