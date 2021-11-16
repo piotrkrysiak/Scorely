@@ -10,6 +10,10 @@ const globalStyles = StyleSheet.create({
   marginedTop: {
     marginTop: 25,
   },
+  centered: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 
 export default globalStyles;

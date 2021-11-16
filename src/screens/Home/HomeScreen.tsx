@@ -7,6 +7,7 @@ import NewsBanner from 'src/components/home/NewsBanner';
 import Container from 'src/components/containers/Container';
 import PlayerCard from 'src/components/home/PlayerCard';
 import { FlatList } from 'react-native-gesture-handler';
+import MatchCard from 'src/components/home/MatchCard';
 
 const HomeScreen = () => {
   const { navigate } = useNavigation<HomeScreenProp>();
@@ -43,6 +44,19 @@ const HomeScreen = () => {
     },
   ];
 
+  const host = {
+    name: 'Liverpool',
+    photo:
+      'https://logodownload.org/wp-content/uploads/2017/02/liverpool-fc-logo-escudo-2.png',
+    score: 2,
+  };
+  const guest = {
+    name: 'Brighton',
+    photo:
+      'https://static.wikia.nocookie.net/kibice/images/c/c2/800px-Brighton_%26_Hove_Albion_logo.svg.png/revision/latest?cb=20190822210220&path-prefix=pl',
+    score: 2,
+  };
+
   return (
     <Container scroll>
       <SectionHeader title="News" onPress={() => navigate(Route.AUTH)} />
@@ -72,6 +86,9 @@ const HomeScreen = () => {
           />
         )}
       />
+      <SectionHeader title="Matches" onPress={() => navigate(Route.AUTH)} />
+      <MatchCard guest={guest} host={host} status="FT" />
+      <MatchCard guest={guest} host={host} status="68'" />
     </Container>
   );
 };
