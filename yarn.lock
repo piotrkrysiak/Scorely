@@ -1476,7 +1476,10 @@
   resolved "https://registry.npmjs.org/@types/react-native/-/react-native-0.65.13.tgz"
   integrity sha512-yJ5QyXZFgDD7Cjwi7Bd32VACVqOJgRzb6KiZJPi4GJpwxmycMaw+EvPk3PQ/3dwQmiHM4iSRWcxtuE/xvcsMXg==
   dependencies:
+    "@types/hoist-non-react-statics" "^3.3.0"
     "@types/react" "*"
+    hoist-non-react-statics "^3.3.0"
+    redux "^4.0.0"
 
 "@types/react-redux@^7.1.20":
   version "7.1.20"

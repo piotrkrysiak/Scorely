@@ -12,8 +12,8 @@ interface Props {
   club: string;
   matches: number;
   goals: number;
-  assists: number;
-  xGoals: number;
+  assists: number | null;
+  rating: number;
 }
 
 const PlayerCard: FC<Props> = ({
@@ -23,7 +23,7 @@ const PlayerCard: FC<Props> = ({
   matches,
   goals,
   assists,
-  xGoals,
+  rating,
 }) => (
   <View style={styles.wrapper}>
     <RowWrapper style={styles.row}>
@@ -40,8 +40,8 @@ const PlayerCard: FC<Props> = ({
     <RowWrapper style={styles.statsBox}>
       <StatsBox number={matches} title="Matches" />
       <StatsBox number={goals} title="Goals" />
-      <StatsBox number={assists} title="Assists" />
-      <StatsBox number={xGoals} title="xGoals" />
+      <StatsBox number={assists || 0} title="Assists" />
+      <StatsBox number={Math.round(rating * 100) / 100} title="rating" />
     </RowWrapper>
   </View>
 );

@@ -1,48 +1,26 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { ImageSourcePropType } from 'react-native';
+import { FlatList, ImageSourcePropType } from 'react-native';
 import { HomeScreenProp, Route } from 'src/constants';
 import SectionHeader from 'src/components/home/SectionHeader';
 import NewsBanner from 'src/components/home/NewsBanner';
 import Container from 'src/components/containers/Container';
 import PlayerCard from 'src/components/home/PlayerCard';
-import { FlatList } from 'react-native-gesture-handler';
 import MatchCard from 'src/components/home/MatchCard';
+import { useGetAllQuery } from 'src/services/player';
 
 const HomeScreen = () => {
   const { navigate } = useNavigation<HomeScreenProp>();
 
   // TODO: It's a mock data, need to be replaced with real data from firebase
   const icon: ImageSourcePropType = {
-    uri: 'https://lh3.googleusercontent.com/proxy/CSe4rAgVTcn8BhAwso3-eC6_4z6J9TQaWvHPSO5g2U0mDo0p_zeiwPCEm7raHjzkQya19QTcVI_X70P274fWWiSCZgowGPM95t-dp_pgL6tFi2ypWggwVd-UziiLHeNx76pxTLCulI9FgSier5VXymEp',
+    uri: 'https://lh3.googleusercontent.com/proxy/jQZSrZpeo6guHKMY0b5nCtmpf7fQbVrMzgY6_3XmVRFSYEkxSEdTztHcyY_4qzRi2puIcndVQtmHjTfIp1jJJpxLiiyANGfny1d05DgM41Ijmu2LCWow20tdIKNMOAInHtHj1Zv3-c7b7fz4qGPaKrFv',
   };
   const bannerImage: ImageSourcePropType = {
     uri: 'https://i.postimg.cc/gj8g3LSN/riyad-mahrez-1.png',
   };
 
   // TODO: It's a mock data, need to be replaced with real data from Football API
-  const players = [
-    {
-      id: 1,
-      photo: 'https://pliki.meczyki.pl/big700/336/5ee9dca932de3.jpg',
-      name: 'Mohamed Salah',
-      club: 'Liverpool',
-      matches: 11,
-      goals: 11,
-      assists: 5,
-      xGoals: 9,
-    },
-    {
-      id: 2,
-      photo: 'https://i.imgur.com/Kab1Zzo.jpg',
-      name: 'Romelu Lukaku',
-      club: 'Chelsea',
-      matches: 5,
-      goals: 3,
-      assists: 4,
-      xGoals: 8,
-    },
-  ];
 
   const host = {
     name: 'Liverpool',
@@ -57,6 +35,12 @@ const HomeScreen = () => {
     score: 2,
   };
 
+  const { data: players, isLoading, isError } = useGetAllQuery();
+
+  if (isLoading || isError) {
+    return <></>;
+  }
+
   return (
     <Container scroll>
       <SectionHeader title="News" onPress={() => navigate(Route.AUTH)} />
@@ -69,20 +53,25 @@ const HomeScreen = () => {
       <SectionHeader title="Players" onPress={() => navigate(Route.AUTH)} />
       <FlatList
         data={players}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.id.toString()}
         horizontal
         showsHorizontalScrollIndicator={false}
         renderItem={({
-          item: { name, photo, club, matches, goals, assists, xGoals },
+          item: {
+            name,
+            photo,
+            team,
+            statistics: { goals, assists, gamesPlayed, rating },
+          },
         }) => (
           <PlayerCard
             name={name}
             photo={photo}
-            club={club}
-            matches={matches}
+            club={team}
+            matches={gamesPlayed}
             goals={goals}
             assists={assists}
-            xGoals={xGoals}
+            rating={Number(rating)}
           />
         )}
       />
