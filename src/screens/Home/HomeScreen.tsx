@@ -8,6 +8,9 @@ import Container from 'src/components/containers/Container';
 import PlayerCard from 'src/components/home/PlayerCard';
 import MatchCard from 'src/components/home/MatchCard';
 import { useGetAllQuery } from 'src/services/player';
+import LoadingPlaceholder from 'src/components/home/LoadingPlaceholder';
+import ErrorContainer from 'src/components/containers/ErrorContainer';
+import { errorConverter } from 'src/helpers/errorConverter';
 
 const HomeScreen = () => {
   const { navigate } = useNavigation<HomeScreenProp>();
@@ -35,10 +38,20 @@ const HomeScreen = () => {
     score: 2,
   };
 
-  const { data: players, isLoading, isError } = useGetAllQuery();
+  const {
+    data: players,
+    isLoading,
+    isError,
+    refetch,
+    error,
+  } = useGetAllQuery();
 
-  if (isLoading || isError) {
-    return <></>;
+  if (isLoading) {
+    return <LoadingPlaceholder />;
+  }
+
+  if (isError && error) {
+    return <ErrorContainer error={errorConverter(error)} refresh={refetch} />;
   }
 
   return (
