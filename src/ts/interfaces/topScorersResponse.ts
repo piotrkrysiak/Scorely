@@ -1,20 +1,20 @@
-export interface Parameters {
+interface Parameters {
   league: string;
   season: string;
 }
 
-export interface Paging {
+interface Paging {
   current: number;
   total: number;
 }
 
-export interface Birth {
+interface Birth {
   date: string;
   place: string;
   country: string;
 }
 
-export interface Player {
+interface Player {
   id: number;
   name: string;
   firstname: string;
@@ -28,13 +28,13 @@ export interface Player {
   photo: string;
 }
 
-export interface Team {
+interface Team {
   id: number;
   name: string;
   logo: string;
 }
 
-export interface League {
+interface League {
   id: number;
   name: string;
   country: string;
@@ -43,7 +43,7 @@ export interface League {
   season: number;
 }
 
-export interface Games {
+interface Games {
   appearences: number;
   lineups: number;
   minutes: number;
@@ -53,59 +53,59 @@ export interface Games {
   captain: boolean;
 }
 
-export interface Substitutes {
+interface Substitutes {
   in: number;
   out: number;
   bench: number;
 }
 
-export interface Shots {
+interface Shots {
   total: number;
   on: number;
 }
 
-export interface Goals {
+interface Goals {
   total: number;
   conceded?: any;
   assists: number;
   saves: number;
 }
 
-export interface Passes {
+interface Passes {
   total: number;
   key: number;
   accuracy: number;
 }
 
-export interface Tackles {
+interface Tackles {
   total: number;
   blocks: number;
   interceptions: number;
 }
 
-export interface Duels {
+interface Duels {
   total: number;
   won: number;
 }
 
-export interface Dribbles {
+interface Dribbles {
   attempts: number;
   success: number;
   past?: any;
 }
 
-export interface Fouls {
+interface Fouls {
   drawn: number;
   committed: number;
 }
 
-export interface Cards {
+interface Cards {
   yellow: number;
   yellowred: number;
   red: number;
 }
 
-export interface Penalty {
+interface Penalty {
   won: number;
   commited?: any;
   scored: number;
@@ -113,7 +113,7 @@ export interface Penalty {
   saved?: any;
 }
 
-export interface Statistic {
+interface Statistic {
   team: Team;
   league: League;
   games: Games;
@@ -129,16 +129,16 @@ export interface Statistic {
   penalty: Penalty;
 }
 
-export interface Response {
+export interface ResponseTopScorers {
   player: Player;
   statistics: Statistic[];
 }
 
-export interface RootObject {
+export interface RootObjectTopScorers {
   get: string;
   parameters: Parameters;
   errors: any[];
   results: number;
   paging: Paging;
-  response: Response[];
+  response: ResponseTopScorers[];
 }

@@ -1,16 +1,16 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { FlatList, ImageSourcePropType } from 'react-native';
-import { HomeScreenProp, Route } from 'src/constants';
+import { DATA_NOT_FOUND, HomeScreenProp, Route } from 'src/constants';
+import { errorConverter } from 'src/helpers/errorConverter';
 import SectionHeader from 'src/components/home/SectionHeader';
 import NewsBanner from 'src/components/home/NewsBanner';
 import Container from 'src/components/containers/Container';
 import PlayerCard from 'src/components/home/PlayerCard';
 import MatchCard from 'src/components/home/MatchCard';
-import { useGetAllQuery } from 'src/services/player';
 import LoadingPlaceholder from 'src/components/home/LoadingPlaceholder';
 import ErrorContainer from 'src/components/containers/ErrorContainer';
-import { errorConverter } from 'src/helpers/errorConverter';
+import useHomeData from 'src/hooks/useHomeData';
 
 const HomeScreen = () => {
   const { navigate } = useNavigation<HomeScreenProp>();
@@ -23,35 +23,19 @@ const HomeScreen = () => {
     uri: 'https://i.postimg.cc/gj8g3LSN/riyad-mahrez-1.png',
   };
 
-  // TODO: It's a mock data, need to be replaced with real data from Football API
-
-  const host = {
-    name: 'Liverpool',
-    photo:
-      'https://logodownload.org/wp-content/uploads/2017/02/liverpool-fc-logo-escudo-2.png',
-    score: 2,
-  };
-  const guest = {
-    name: 'Brighton',
-    photo:
-      'https://static.wikia.nocookie.net/kibice/images/c/c2/800px-Brighton_%26_Hove_Albion_logo.svg.png/revision/latest?cb=20190822210220&path-prefix=pl',
-    score: 2,
-  };
-
-  const {
-    data: players,
-    isLoading,
-    isError,
-    refetch,
-    error,
-  } = useGetAllQuery();
+  const { players, matches, isLoading, isError, error, refetch } =
+    useHomeData();
 
   if (isLoading) {
     return <LoadingPlaceholder />;
   }
 
-  if (isError && error) {
+  if (isError) {
     return <ErrorContainer error={errorConverter(error)} refresh={refetch} />;
+  }
+
+  if (!players || !matches) {
+    return <ErrorContainer error={DATA_NOT_FOUND} refresh={refetch} />;
   }
 
   return (
@@ -89,8 +73,9 @@ const HomeScreen = () => {
         )}
       />
       <SectionHeader title="Matches" onPress={() => navigate(Route.AUTH)} />
-      <MatchCard guest={guest} host={host} status="FT" />
-      <MatchCard guest={guest} host={host} status="68'" />
+      {matches.map(({ id, home, away, status }) => (
+        <MatchCard key={id} host={home} guest={away} status={status} />
+      ))}
     </Container>
   );
 };

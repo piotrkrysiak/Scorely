@@ -10,3 +10,5 @@ export const SCREEN_OPTIONS = {
   gestureResponseDistance: 150,
 };
 export const BOTTOM_TABS_HEIGHT = 80;
+
+export const DATA_NOT_FOUND = 'Data not found';

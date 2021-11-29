@@ -8,13 +8,13 @@ import { RowWrapper } from 'src/components/containers';
 interface Props {
   host: {
     name: string;
-    photo: string;
-    score: number;
+    logo: string;
+    goals: number | undefined;
   };
   guest: {
     name: string;
-    photo: string;
-    score: number;
+    logo: string;
+    goals: number | undefined;
   };
   status: string;
 }
@@ -26,7 +26,7 @@ const MatchCard: FC<Props> = ({ host, guest, status }) => (
         <View style={[styles.circle, styles.moveCircle]}>
           <Image
             source={{
-              uri: host.photo,
+              uri: host.logo,
             }}
             resizeMode="contain"
             style={styles.image}
@@ -35,7 +35,7 @@ const MatchCard: FC<Props> = ({ host, guest, status }) => (
         <View style={styles.circle}>
           <Image
             source={{
-              uri: guest.photo,
+              uri: guest.logo,
             }}
             resizeMode="contain"
             style={styles.image}
@@ -47,7 +47,7 @@ const MatchCard: FC<Props> = ({ host, guest, status }) => (
           {host.name} - {guest.name}
         </BodyText>
         <BodyText type={SMALLER_BODY_SEMI}>
-          {host.score} - {guest.score}
+          {host.goals} - {guest.goals}
         </BodyText>
       </View>
       <View style={[styles.status, status === 'FT' && styles.ended]}>

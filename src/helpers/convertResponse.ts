@@ -1,9 +1,12 @@
-import { Response } from 'src/ts/interfaces/topPlayerResponse';
-import { Player } from 'src/ts/interfaces/player';
+import {
+  Match,
+  Player,
+  ResponseGameweek,
+  ResponseTopScorers,
+} from 'src/ts/interfaces';
 
-// eslint-disable-next-line import/prefer-default-export
-export const convertToPlayers = (response: Response[]): Player[] =>
-  response.map(({ player, statistics }: Response) => ({
+export const convertToPlayers = (response: ResponseTopScorers[]): Player[] =>
+  response.map(({ player, statistics }: ResponseTopScorers) => ({
     id: player.id,
     name: player.name,
     photo: player.photo,
@@ -16,5 +19,25 @@ export const convertToPlayers = (response: Response[]): Player[] =>
       rating: statistics[0].games.rating,
       shots: statistics[0].shots.total,
       shotsOn: statistics[0].shots.on,
+    },
+  }));
+
+export const convertToMatches = (response: ResponseGameweek[]): Match[] =>
+  response.map(({ fixture, teams, goals }: ResponseGameweek) => ({
+    id: fixture.id,
+    date: fixture.date,
+    status: fixture.status.short,
+    minutes: fixture.status.elapsed,
+    home: {
+      id: teams.home.id,
+      name: teams.home.name,
+      logo: teams.home.logo,
+      goals: goals.home,
+    },
+    away: {
+      id: teams.away.id,
+      name: teams.away.name,
+      logo: teams.away.logo,
+      goals: goals.away,
     },
   }));
