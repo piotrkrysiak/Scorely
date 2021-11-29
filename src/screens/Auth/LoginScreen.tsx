@@ -1,5 +1,5 @@
-import { useFormik } from 'formik';
 import React, { useState } from 'react';
+import { useFormik } from 'formik';
 import { Pressable, StyleSheet, View } from 'react-native';
 import * as Yup from 'yup';
 import { globalStyles, lightPalette } from 'src/assets/styles';
@@ -31,6 +31,7 @@ const LoginScreen = () => {
     password: string;
   }
   const onSubmit = () => {
+    // TODO: login user implementation
     console.log(values);
   };
 

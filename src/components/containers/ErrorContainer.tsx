@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { globalStyles, lightPalette } from 'src/assets/styles';
-import { BodyText, Button, HeadlineText } from '../common';
-import ErrorSvg from '../svg/Error';
+import ErrorSvg from 'src/components/svg/Error';
+import { BodyText, Button, HeadlineText } from 'src/components/common';
 
 interface Props {
   error: string;

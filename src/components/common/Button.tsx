@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import lightPalette from 'src/assets/styles/palette';
 import { H3 } from 'src/constants';
-import Text from './Text';
 import HeadlineText from './HeadlineText';
+import Icon from './Icon';
 
 interface Props {
   title: string;
@@ -75,12 +75,17 @@ const Button: FC<Props> = ({
         {loading ? (
           <ActivityIndicator color={getTextColor()} />
         ) : (
-          <HeadlineText type={H3} color={getTextColor()}>
+          <HeadlineText
+            type={H3}
+            color={getTextColor()}
+            style={styles.margined}
+          >
             {title}
           </HeadlineText>
         )}
-        {/* TODO: Add Icon component! */}
-        {!!icon && <Text>🤔</Text>}
+        {!!icon && !loading && (
+          <Icon name={icon} size={22} color={getTextColor()} />
+        )}
       </View>
     </Pressable>
   );
@@ -100,5 +105,8 @@ const styles = StyleSheet.create({
   icon: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  margined: {
+    marginRight: 8,
   },
 });

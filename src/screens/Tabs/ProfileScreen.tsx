@@ -1,9 +1,9 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { View } from 'react-native';
 import { HeadlineText } from 'src/components/common';
 import SectionHeader from 'src/components/home/SectionHeader';
 import { HomeScreenProp, Route } from 'src/constants';
-import { useNavigation } from '@react-navigation/native';
 
 const ProfileScreen = () => {
   const { navigate } = useNavigation<HomeScreenProp>();

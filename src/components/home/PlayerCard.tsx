@@ -2,9 +2,9 @@ import React, { FC } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { lightPalette } from 'src/assets/styles';
 import { HELP, SMALLER_BODY_SEMI } from 'src/constants';
-import { Avatar, BodyText } from '../common';
-import { RowWrapper } from '../containers';
-import StatsBox from './StatsBox';
+import { Avatar, BodyText } from 'src/components/common';
+import { RowWrapper } from 'src/components/containers';
+import StatsBox from 'src/components/home/StatsBox';
 
 interface Props {
   name: string;

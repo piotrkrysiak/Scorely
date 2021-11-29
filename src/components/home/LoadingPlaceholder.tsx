@@ -18,6 +18,7 @@ const LoadingPlaceholder = () => (
     <View style={styles.header} />
     <View style={styles.playerCard} />
     <View style={styles.playerCard} />
+    <View style={styles.playerCard} />
   </SkeletonPlaceholder>
 );
 
@@ -29,6 +30,7 @@ const styles = StyleSheet.create({
     height: 25,
     marginVertical: 15,
     alignSelf: 'center',
+    borderRadius: 8,
   },
   bannerCard: {
     alignSelf: 'center',

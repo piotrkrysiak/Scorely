@@ -39,9 +39,10 @@ const TabIcon: FC<Props> = ({
   size = 24,
 }) => {
   const rotation = useSharedValue(0);
+  const scale = useSharedValue(1.1);
 
   const animatedStyle = useAnimatedStyle(() => ({
-    transform: [{ rotateZ: `${rotation.value}deg` }, { scale: 1.1 }],
+    transform: [{ rotateZ: `${rotation.value}deg` }, { scale: scale.value }],
   }));
 
   const outline = `${name}-outline`;
@@ -50,9 +51,14 @@ const TabIcon: FC<Props> = ({
       onPress(e);
     }
     rotation.value = withSequence(
-      withTiming(-50, { duration: 200 }),
-      withTiming(50, { duration: 300 }),
+      withTiming(-20, { duration: 200 }),
+      withTiming(20, { duration: 300 }),
       withTiming(0, { duration: 400 }),
+    );
+    scale.value = withSequence(
+      withTiming(1.25, { duration: 300 }),
+      withTiming(0.9, { duration: 300 }),
+      withTiming(1.1, { duration: 400 }),
     );
   };
 

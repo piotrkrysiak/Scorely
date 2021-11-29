@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { lightPalette } from 'src/assets/styles';
 import { HELP } from 'src/constants';
-import { BodyText } from '../common';
+import { BodyText } from 'src/components/common';
 
 interface Props {
   number: number;
