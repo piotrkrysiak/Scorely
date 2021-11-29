@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, Pressable, StyleSheet, View } from 'react-native';
 import { globalStyles, lightPalette } from 'src/assets/styles';
 import { SMALLER_BODY_SEMI } from 'src/constants';
 import { BodyText } from 'src/components/common';
@@ -17,49 +17,57 @@ interface Props {
     goals: number | undefined;
   };
   status: string;
+  onPress: () => void;
 }
 
-const MatchCard: FC<Props> = ({ host, guest, status }) => (
-  <View style={styles.wrapper}>
-    <RowWrapper style={styles.row}>
-      <RowWrapper style={globalStyles.centered}>
-        <View style={[styles.circle, styles.moveCircle]}>
-          <Image
-            source={{
-              uri: host.logo,
-            }}
-            resizeMode="contain"
-            style={styles.image}
-          />
+const MatchCard: FC<Props> = ({ host, guest, status, onPress }) => (
+  <Pressable
+    onPress={onPress}
+    style={({ pressed }) => ({
+      opacity: pressed ? 0.5 : 1,
+    })}
+  >
+    <View style={styles.wrapper}>
+      <RowWrapper style={styles.row}>
+        <RowWrapper style={globalStyles.centered}>
+          <View style={[styles.circle, styles.moveCircle]}>
+            <Image
+              source={{
+                uri: host.logo,
+              }}
+              resizeMode="contain"
+              style={styles.image}
+            />
+          </View>
+          <View style={styles.circle}>
+            <Image
+              source={{
+                uri: guest.logo,
+              }}
+              resizeMode="contain"
+              style={styles.image}
+            />
+          </View>
+        </RowWrapper>
+        <View style={globalStyles.centered}>
+          <BodyText type={SMALLER_BODY_SEMI}>
+            {host.name} - {guest.name}
+          </BodyText>
+          <BodyText type={SMALLER_BODY_SEMI}>
+            {host.goals} - {guest.goals}
+          </BodyText>
         </View>
-        <View style={styles.circle}>
-          <Image
-            source={{
-              uri: guest.logo,
-            }}
-            resizeMode="contain"
-            style={styles.image}
-          />
+        <View style={[styles.status, status === 'FT' && styles.ended]}>
+          <BodyText
+            type={SMALLER_BODY_SEMI}
+            color={status === 'FT' ? lightPalette.white : undefined}
+          >
+            {status}
+          </BodyText>
         </View>
       </RowWrapper>
-      <View style={globalStyles.centered}>
-        <BodyText type={SMALLER_BODY_SEMI}>
-          {host.name} - {guest.name}
-        </BodyText>
-        <BodyText type={SMALLER_BODY_SEMI}>
-          {host.goals} - {guest.goals}
-        </BodyText>
-      </View>
-      <View style={[styles.status, status === 'FT' && styles.ended]}>
-        <BodyText
-          type={SMALLER_BODY_SEMI}
-          color={status === 'FT' ? lightPalette.white : undefined}
-        >
-          {status}
-        </BodyText>
-      </View>
-    </RowWrapper>
-  </View>
+    </View>
+  </Pressable>
 );
 
 export default MatchCard;

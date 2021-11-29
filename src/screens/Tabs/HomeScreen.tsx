@@ -40,14 +40,15 @@ const HomeScreen = () => {
 
   return (
     <Container scroll>
-      <SectionHeader title="News" onPress={() => navigate(Route.AUTH)} />
+      <SectionHeader title="News" onPress={() => navigate(Route.NEWS)} />
       <NewsBanner
         title="Champions sparkle as Canaries Threshed"
         data="Yesterday, 6:30 PM"
         icon={icon}
         image={bannerImage}
+        onPress={() => navigate(Route.POST, { id: 1 })}
       />
-      <SectionHeader title="Players" onPress={() => navigate(Route.AUTH)} />
+      <SectionHeader title="Players" onPress={() => navigate(Route.PLAYERS)} />
       <FlatList
         data={players}
         keyExtractor={item => item.id.toString()}
@@ -55,6 +56,7 @@ const HomeScreen = () => {
         showsHorizontalScrollIndicator={false}
         renderItem={({
           item: {
+            id,
             name,
             photo,
             team,
@@ -69,12 +71,19 @@ const HomeScreen = () => {
             goals={goals}
             assists={assists}
             rating={Number(rating)}
+            onPress={() => navigate(Route.PLAYER, { id })}
           />
         )}
       />
-      <SectionHeader title="Matches" onPress={() => navigate(Route.AUTH)} />
+      <SectionHeader title="Matches" onPress={() => navigate(Route.MATCHES)} />
       {matches.map(({ id, home, away, status }) => (
-        <MatchCard key={id} host={home} guest={away} status={status} />
+        <MatchCard
+          key={id}
+          host={home}
+          guest={away}
+          status={status}
+          onPress={() => navigate(Route.PLAYER, { id })}
+        />
       ))}
     </Container>
   );

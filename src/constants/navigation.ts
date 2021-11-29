@@ -9,7 +9,25 @@ export enum Route {
   PROFILE = 'Profile',
   HOME_TAB = 'HomeTab',
   AUTH = 'Auth',
+  PLAYERS = 'Players',
+  PLAYER = 'Player',
+  MATCH = 'Match',
+  MATCHES = 'Matches',
+  NEWS = 'News',
+  POST = 'Post',
 }
+
+type PlayerScreenProps = {
+  id: number;
+};
+
+type MatchScreenProps = {
+  id: number;
+};
+type PostScreenProps = {
+  id: number;
+};
+
 export type RootStackParamList = {
   Login: undefined;
   Register: undefined;
@@ -19,6 +37,12 @@ export type RootStackParamList = {
   Profile: undefined;
   HomeTab: undefined;
   Auth: undefined;
+  Players: undefined;
+  Matches: undefined;
+  News: undefined;
+  Player: PlayerScreenProps;
+  Match: MatchScreenProps;
+  Post: PostScreenProps;
 };
 
 export type AuthScreenProp = StackNavigationProp<

@@ -1,9 +1,15 @@
 import LoginScreen from './Auth/LoginScreen';
 import RegisterScreen from './Auth/RegisterScreen';
-import HomeScreen from './Home/HomeScreen';
-import ResultsScreen from './Home/ResultsScreen';
-import TablesScreen from './Home/TablesScreen';
-import ProfileScreen from './Home/ProfileScreen';
+import HomeScreen from './Tabs/HomeScreen';
+import ResultsScreen from './Tabs/ResultsScreen';
+import TablesScreen from './Tabs/TablesScreen';
+import ProfileScreen from './Tabs/ProfileScreen';
+import MatchesScreen from './Home/MatchesScreen';
+import PlayersScreen from './Home/PlayersScreen';
+import PlayerScreen from './Home/PlayerScreen';
+import MatchScreen from './Home/MatchScreen';
+import PostScreen from './Home/PostScreen';
+import NewsScreen from './Home/NewsScreen';
 
 export {
   LoginScreen,
@@ -12,4 +18,10 @@ export {
   ResultsScreen,
   TablesScreen,
   ProfileScreen,
+  PlayersScreen,
+  PlayerScreen,
+  MatchesScreen,
+  MatchScreen,
+  NewsScreen,
+  PostScreen,
 };

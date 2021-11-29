@@ -1,5 +1,11 @@
 import React, { FC } from 'react';
-import { Image, ImageSourcePropType, StyleSheet, View } from 'react-native';
+import {
+  Image,
+  ImageSourcePropType,
+  Pressable,
+  StyleSheet,
+  View,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { lightPalette } from 'src/assets/styles';
 import { H3 } from 'src/constants';
@@ -11,33 +17,41 @@ interface Props {
   data: string;
   image: ImageSourcePropType;
   icon: ImageSourcePropType;
+  onPress: () => void;
 }
 
-const NewsBanner: FC<Props> = ({ title, data, image, icon }) => (
-  <RowWrapper style={styles.wrapper}>
-    <LinearGradient
-      colors={[lightPalette.primary, lightPalette.secondary]}
-      style={styles.linearGradient}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 1 }}
-    />
-    <View style={styles.leftSection}>
-      <View style={styles.textWrapper}>
-        <HeadlineText type={H3} style={styles.text}>
-          {title}
-        </HeadlineText>
-      </View>
-      <View>
-        <View style={styles.label}>
-          <Image source={icon} style={styles.icon} />
+const NewsBanner: FC<Props> = ({ title, data, image, icon, onPress }) => (
+  <Pressable
+    onPress={onPress}
+    style={({ pressed }) => ({
+      opacity: pressed ? 0.5 : 1,
+    })}
+  >
+    <RowWrapper style={styles.wrapper}>
+      <LinearGradient
+        colors={[lightPalette.primary, lightPalette.secondary]}
+        style={styles.linearGradient}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+      />
+      <View style={styles.leftSection}>
+        <View style={styles.textWrapper}>
+          <HeadlineText type={H3} style={styles.text}>
+            {title}
+          </HeadlineText>
         </View>
-        <BodyText type="Help" style={styles.text}>
-          {data}
-        </BodyText>
+        <View>
+          <View style={styles.label}>
+            <Image source={icon} style={styles.icon} />
+          </View>
+          <BodyText type="Help" style={styles.text}>
+            {data}
+          </BodyText>
+        </View>
       </View>
-    </View>
-    <Image source={image} style={styles.image} />
-  </RowWrapper>
+      <Image source={image} style={styles.image} />
+    </RowWrapper>
+  </Pressable>
 );
 
 export default NewsBanner;
