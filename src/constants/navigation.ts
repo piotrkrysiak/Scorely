@@ -15,6 +15,10 @@ export enum Route {
   MATCHES = 'Matches',
   NEWS = 'News',
   POST = 'Post',
+  TOP_TABS = 'TopTabs',
+  PLATER_DETAIL = 'PlayerDetail',
+  PLAYER_STATS = 'PlayerStats',
+  PLAYER_FIXTURE = 'PlayerFixture',
 }
 
 type PlayerScreenProps = {
@@ -40,6 +44,10 @@ export type RootStackParamList = {
   Players: undefined;
   Matches: undefined;
   News: undefined;
+  TopTabs: undefined;
+  PlayerDetails: undefined;
+  PlayerStats: undefined;
+  PlayerFixtures: undefined;
   Player: PlayerScreenProps;
   Match: MatchScreenProps;
   Post: PostScreenProps;

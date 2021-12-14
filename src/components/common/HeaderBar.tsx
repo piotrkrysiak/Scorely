@@ -16,15 +16,16 @@ interface Props {
     onPressFunction: () => void;
   };
   title?: string;
+  color?: string;
 }
 
-const HeaderBar: React.FC<Props> = ({ leftIcon, rightIcon, title }) => (
+const HeaderBar: React.FC<Props> = ({ leftIcon, rightIcon, title, color }) => (
   <View style={styles.wrapper}>
     <TouchableOpacity onPress={leftIcon.onPressFunction}>
       <View style={styles.icon}>
         <Icon
           type={leftIcon.type}
-          color={lightPalette.primary}
+          color={color || lightPalette.primary}
           name={leftIcon.name}
           size={28}
         />
@@ -40,7 +41,7 @@ const HeaderBar: React.FC<Props> = ({ leftIcon, rightIcon, title }) => (
         <View style={styles.icon}>
           <Icon
             type={rightIcon.type}
-            color={lightPalette.white}
+            color={color || lightPalette.primary}
             name={rightIcon.name}
             size={28}
           />

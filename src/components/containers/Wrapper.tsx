@@ -4,14 +4,14 @@ import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 interface Props {
   style?: StyleProp<ViewStyle>;
   centered?: boolean;
-  disablePaging?: boolean;
+  disablePadding?: boolean;
 }
 
-const Wrapper: FC<Props> = ({ children, style, centered, disablePaging }) => (
+const Wrapper: FC<Props> = ({ children, style, centered, disablePadding }) => (
   <View
     style={[
       style,
-      !disablePaging && styles.wrapper,
+      !disablePadding && styles.wrapper,
       centered && styles.centered,
     ]}
   >

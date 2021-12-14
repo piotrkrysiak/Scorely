@@ -11,6 +11,7 @@ import {
 import PostScreen from 'src/screens/Home/PostScreen';
 import AuthNavigator from './AuthNavigator';
 import BottomTabsNavigator from './BottomTabs/BottomTabsNavigator';
+import TopTabs from './TopTabs';
 
 const HomeNavigator = () => {
   const HomeStack = createStackNavigator();
@@ -24,6 +25,7 @@ const HomeNavigator = () => {
       <HomeStack.Screen name={Route.AUTH} component={AuthNavigator} />
       <HomeStack.Screen name={Route.NEWS} component={NewsScreen} />
       <HomeStack.Screen name={Route.POST} component={PostScreen} />
+      <HomeStack.Screen name={Route.TOP_TABS} component={TopTabs} />
     </HomeStack.Navigator>
   );
 };
