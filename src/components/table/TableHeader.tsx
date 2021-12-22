@@ -34,13 +34,14 @@ export default TableHeader;
 
 const styles = StyleSheet.create({
   title: {
-    paddingVertical: 12,
+    paddingVertical: 10,
   },
   header: {
     justifyContent: 'space-between',
     padding: 10,
     borderRadius: 8,
     backgroundColor: lightPalette.primary,
+    marginBottom: 4,
   },
   padded: {
     paddingLeft: 20,

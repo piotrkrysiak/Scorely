@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Image, StyleSheet, View } from 'react-native';
-import { lightPalette } from 'src/assets/styles';
+import { lightPalette, tableColors } from 'src/assets/styles';
 import { SMALLER_BODY, SMALLER_BODY_MEDIUM } from 'src/constants';
 import { BodyText } from '../common';
 import { RowWrapper } from '../containers';
@@ -14,6 +14,13 @@ interface Props {
   played: number;
 }
 
+const addSpace = (id: number) => {
+  if (id < 10) {
+    return ` ${id}`;
+  }
+  return id;
+};
+
 const TableRow: FC<Props> = ({
   rank,
   name,
@@ -22,10 +29,18 @@ const TableRow: FC<Props> = ({
   goalsDiff,
   played,
 }) => (
-  <RowWrapper style={styles.content}>
-    <RowWrapper>
-      <BodyText type={SMALLER_BODY_MEDIUM}>{rank}</BodyText>
+  <RowWrapper
+    style={[
+      styles.content,
+      rank > 17 && { backgroundColor: tableColors.relegation },
+      rank < 5 && { backgroundColor: tableColors.championsLeague },
+    ]}
+  >
+    <RowWrapper style={styles.rank}>
+      <BodyText type={SMALLER_BODY_MEDIUM}>{addSpace(rank)}</BodyText>
       <View style={styles.dot} />
+    </RowWrapper>
+    <RowWrapper style={styles.club}>
       <Image
         source={{
           uri: logo,
@@ -37,12 +52,12 @@ const TableRow: FC<Props> = ({
         {name}
       </BodyText>
     </RowWrapper>
-    <RowWrapper>
+    <RowWrapper style={styles.stats}>
       <BodyText type={SMALLER_BODY} style={styles.padded}>
         {played}
       </BodyText>
       <BodyText type={SMALLER_BODY} style={styles.padded}>
-        +{goalsDiff}
+        {goalsDiff}
       </BodyText>
       <BodyText type={SMALLER_BODY_MEDIUM} style={styles.padded}>
         {points}
@@ -54,30 +69,33 @@ const TableRow: FC<Props> = ({
 export default TableRow;
 
 const styles = StyleSheet.create({
-  title: {
-    paddingVertical: 12,
-  },
-  header: {
-    justifyContent: 'space-between',
-    padding: 10,
-    borderRadius: 8,
-    backgroundColor: lightPalette.dark30,
-  },
   content: {
-    justifyContent: 'space-between',
     padding: 10,
     borderRadius: 8,
-    borderBottomColor: lightPalette.dark30,
+    borderBottomColor: lightPalette.dark60,
     borderBottomWidth: 0.5,
   },
+  club: {
+    flex: 3,
+  },
+  stats: {
+    flex: 1,
+    justifyContent: 'space-between',
+  },
+  rank: {
+    flex: 0.4,
+    justifyContent: 'space-between',
+  },
   padded: {
-    paddingLeft: 12,
+    paddingLeft: 10,
   },
   paddedHeader: {
     paddingLeft: 18,
   },
   image: {
-    width: 14,
+    width: 20,
+    height: 'auto',
+    marginLeft: 10,
   },
   dot: {
     width: 6,
@@ -85,7 +103,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 10,
     borderWidth: 1,
-    marginHorizontal: 20,
     backgroundColor: lightPalette.dark30,
     borderColor: lightPalette.dark30,
   },

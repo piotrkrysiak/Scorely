@@ -1,4 +1,4 @@
 import globalStyles from './globalStyles';
-import lightPalette from './palette';
+import lightPalette, { tableColors } from './palette';
 
-export { globalStyles, lightPalette };
+export { globalStyles, lightPalette, tableColors };

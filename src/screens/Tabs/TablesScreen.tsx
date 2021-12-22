@@ -1,35 +1,37 @@
 import React from 'react';
+import { HeadlineText } from 'src/components/common';
 import { Wrapper } from 'src/components/containers';
-import ErrorContainer from 'src/components/containers/ErrorContainer';
+import Container from 'src/components/containers/Container';
 import TableHeader from 'src/components/table/TableHeader';
 import TableRow from 'src/components/table/TableRow';
-import { errorConverter } from 'src/helpers/errorConverter';
-import { useGetLeagueTableQuery } from 'src/services/football';
+import useHomeData from 'src/hooks/useHomeData';
 
 const TablesScreen = () => {
-  const { data, error, refetch } = useGetLeagueTableQuery();
+  const { table } = useHomeData();
 
-  if (!data) {
-    return <ErrorContainer error={errorConverter(error)} refresh={refetch} />;
+  if (!table) {
+    <HeadlineText>There is not table data</HeadlineText>;
   }
 
   return (
-    <Wrapper>
-      <TableHeader />
-      {data.map(
-        ({ team: { id, name, logo }, rank, points, goalsDiff, played }) => (
-          <TableRow
-            rank={rank}
-            key={id}
-            name={name}
-            logo={logo}
-            points={points}
-            goalsDiff={goalsDiff}
-            played={played}
-          />
-        ),
-      )}
-    </Wrapper>
+    <Container scroll>
+      <Wrapper>
+        <TableHeader />
+        {table?.map(
+          ({ team: { id, name, logo }, rank, points, goalsDiff, played }) => (
+            <TableRow
+              rank={rank}
+              key={id}
+              name={name}
+              logo={logo}
+              points={points}
+              goalsDiff={goalsDiff}
+              played={played}
+            />
+          ),
+        )}
+      </Wrapper>
+    </Container>
   );
 };
 export default TablesScreen;
