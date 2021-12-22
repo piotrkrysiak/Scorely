@@ -4,6 +4,7 @@ import {
   ResponseGameweek,
   ResponseTopScorers,
 } from 'src/ts/interfaces';
+import { ResponseStanding } from 'src/ts/interfaces/standingsResponse';
 
 export const convertToPlayers = (response: ResponseTopScorers[]): Player[] =>
   response.map(({ player, statistics }: ResponseTopScorers) => ({
@@ -40,4 +41,21 @@ export const convertToMatches = (response: ResponseGameweek[]): Match[] =>
       logo: teams.away.logo,
       goals: goals.away,
     },
+  }));
+
+export const convertToTable = (response: ResponseStanding[]): any[] =>
+  response.map(({ league: { standings } }: ResponseStanding) => ({
+    standings: standings[0].map(
+      ({ team, rank, points, goalsDiff, all: { played } }) => ({
+        team: {
+          id: team.id,
+          name: team.name,
+          logo: team.logo,
+        },
+        rank,
+        points,
+        goalsDiff,
+        played,
+      }),
+    ),
   }));

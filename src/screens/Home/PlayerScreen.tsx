@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import PlayerHeader from 'src/components/Player/PlayerHeader';
+import PlayerHeader from 'src/components/player/PlayerHeader';
 import TopTabs from 'src/navigation/TopTabs';
 
 // TODO: mocked data
