@@ -8,11 +8,17 @@ import {
   REGULAR,
   SEMI_BOLD,
   SMALLER_BODY,
+  SMALLER_BODY_MEDIUM,
   SMALLER_BODY_SEMI,
 } from 'src/constants';
 import Text from './Text';
 
-type Body = 'Body' | 'SmallerBody' | 'SmallerBodySemi' | 'Help';
+type Body =
+  | 'Body'
+  | 'SmallerBody'
+  | 'SmallerBodySemi'
+  | 'Help'
+  | 'SmallerBodyMedium';
 
 interface Props {
   type?: Body; // Body is set by default;
@@ -27,7 +33,11 @@ const BodyText: FC<Props> = ({
   style,
 }) => {
   const getFont = () => {
-    if (type === SMALLER_BODY || type === SMALLER_BODY_SEMI) {
+    if (
+      type === SMALLER_BODY ||
+      type === SMALLER_BODY_SEMI ||
+      type === SMALLER_BODY_MEDIUM
+    ) {
       return 14;
     }
     if (type === HELP) {
@@ -39,7 +49,7 @@ const BodyText: FC<Props> = ({
     if (type === SMALLER_BODY_SEMI) {
       return SEMI_BOLD;
     }
-    if (type === HELP) {
+    if (type === HELP || type === SMALLER_BODY_MEDIUM) {
       return MEDIUM;
     }
     return REGULAR;

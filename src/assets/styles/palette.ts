@@ -11,4 +11,9 @@ const lightPalette = {
   danger: '#FF0000',
 };
 
+export const tableColors = {
+  championsLeague: '#02dec43e',
+  relegation: '#ff00003e',
+};
+
 export default lightPalette;
