@@ -1,9 +1,9 @@
 import React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import PlayerDetails from 'src/components/Player/PlayerDetails';
-import PlayerStats from 'src/components/Player/PlayerStats';
+import PlayerDetails from 'src/components/player/PlayerDetails';
+import PlayerStats from 'src/components/player/PlayerStats';
 import { lightPalette } from 'src/assets/styles';
-import PlayerFixture from 'src/components/Player/PlayerFixture';
+import PlayerFixture from 'src/components/player/PlayerFixture';
 import { Route } from 'src/constants';
 
 const Tab = createMaterialTopTabNavigator();
