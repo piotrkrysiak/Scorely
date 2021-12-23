@@ -4,38 +4,43 @@ import { Pressable, StyleSheet, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import * as Yup from 'yup';
 import { globalStyles, lightPalette } from 'src/assets/styles';
-import {
-  BodyText,
-  Button,
-  HeadlineText,
-  Input,
-  Text,
-} from 'src/components/common';
-import { Wrapper, RowWrapper } from 'src/components/containers';
+import { Button, HeadlineText, Input, Text } from 'src/components/common';
+import { Wrapper } from 'src/components/containers';
 import Container from 'src/components/containers/Container';
 import Icon, { IconTypes } from 'src/components/common/Icon';
 import HeaderBar from 'src/components/common/HeaderBar';
 import { IONICONS } from 'src/constants';
+import { useDispatch } from 'react-redux';
+import { createUserWithEmailAndPassword } from 'src/redux/user/userActions';
+import { RegisterUser } from 'src/ts/interfaces/user';
+import useOnAuthStateChange from 'src/hooks/useOnAuthStateChanged';
 
 const RegisterScreen = () => {
   const [disabled, setDisabled] = useState<boolean>(true);
   const [secureTextEntry, setSecureTextEntry] = useState<boolean>(true);
-
+  const dispatch = useDispatch();
   const { goBack } = useNavigation();
+
+  const onSubmit = () => {
+    dispatch(
+      createUserWithEmailAndPassword({
+        displayName: values.username,
+        email: values.email,
+        password: values.password,
+      }),
+    );
+  };
+
+  useOnAuthStateChange();
 
   const handleSecureTextEntry = () => {
     setSecureTextEntry(prev => !prev);
   };
 
-  interface LoginForm {
-    email: string;
-    password: string;
-  }
-  const onSubmit = () => {
-    console.log(values);
-  };
-
   const validationSchema = Yup.object().shape({
+    username: Yup.string()
+      .min(3, 'Must be at least 3 characters')
+      .required('Required!'),
     email: Yup.string().email('Invalid email').required('Required!'),
     password: Yup.string()
       .min(6, 'Must be at least 6 characters')
@@ -46,16 +51,18 @@ const RegisterScreen = () => {
       .required('Required!'),
   });
 
-  const { handleChange, handleSubmit, values, errors } = useFormik<LoginForm>({
-    initialValues: {
-      email: '',
-      password: '',
-    },
-    validationSchema,
-    validateOnChange: false,
-    validateOnBlur: false,
-    onSubmit,
-  });
+  const { handleChange, handleSubmit, values, errors } =
+    useFormik<RegisterUser>({
+      initialValues: {
+        username: '',
+        email: '',
+        password: '',
+      },
+      validationSchema,
+      validateOnChange: false,
+      validateOnBlur: false,
+      onSubmit,
+    });
 
   if (values.email && values.password) {
     if (disabled) {
@@ -74,7 +81,7 @@ const RegisterScreen = () => {
         <HeaderBar leftIcon={leftIcon} />
         <View style={styles.wrapper}>
           <Wrapper>
-            <HeadlineText type="H1">Let s sign you up. 👋</HeadlineText>
+            <HeadlineText type="H1">Let&apos;s sign you up. 👋</HeadlineText>
             <Text
               fontWeight="Regular"
               color={lightPalette.dark60}
@@ -85,9 +92,17 @@ const RegisterScreen = () => {
           </Wrapper>
         </View>
         <Input
+          value={values.username}
+          onChangeText={handleChange('username')}
+          placeholder="Username"
+          style={globalStyles.marginedTop}
+          autoCapitalize="none"
+          error={errors.username}
+        />
+        <Input
           value={values.email}
           onChangeText={handleChange('email')}
-          placeholder="Phone or email"
+          placeholder="Email"
           style={globalStyles.marginedTop}
           autoCapitalize="none"
           error={errors.email}
@@ -117,15 +132,6 @@ const RegisterScreen = () => {
         />
       </View>
       <View style={styles.bottom}>
-        <RowWrapper style={styles.register}>
-          <BodyText type="SmallerBody">Don t have an account?</BodyText>
-          <View style={styles.space} />
-          <Pressable>
-            <BodyText type="SmallerBodySemi" color={lightPalette.primary}>
-              Register
-            </BodyText>
-          </Pressable>
-        </RowWrapper>
         <Button title="Sign up" onPress={handleSubmit} disabled={disabled} />
       </View>
     </Container>

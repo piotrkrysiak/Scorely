@@ -30,6 +30,10 @@
     "@typescript-eslint/no-use-before-define": [0],
     "react/require-default-props": [0],
     "no-shadow": "off",
+    "no-param-reassign": [
+      "error",
+      { "props": true, "ignorePropertyModificationsFor": ["state"] }
+    ],
     "@typescript-eslint/no-shadow": [
       "error",
       { "ignoreTypeValueShadow": true }
