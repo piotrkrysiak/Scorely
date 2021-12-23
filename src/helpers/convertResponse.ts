@@ -62,5 +62,8 @@ export const convertToTable = (response: ResponseStanding[]): TableTeam[] => {
       ),
     }),
   );
-  return tableArray[0].standings;
+  if (tableArray.length > 0) {
+    return tableArray[0].standings;
+  }
+  return [];
 };
