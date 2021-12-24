@@ -5,5 +5,6 @@ import Button from './Button';
 import Input from './Input';
 import Icon from './Icon';
 import Avatar from './Avatar';
+import HeaderBar from './HeaderBar';
 
-export { BodyText, HeadlineText, Text, Button, Input, Icon, Avatar };
+export { BodyText, HeadlineText, Text, Button, Input, Icon, Avatar, HeaderBar };

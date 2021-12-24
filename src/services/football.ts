@@ -12,11 +12,14 @@ import {
   convertToPlayers,
   convertToTable,
 } from 'src/helpers/convertResponse';
-import { Match, RootObjectGameweek } from 'src/ts/interfaces';
-import { Player } from 'src/ts/interfaces/player';
-import { RootObjectStanding } from 'src/ts/interfaces/standingsResponse';
-import { TableTeam } from 'src/ts/interfaces/table';
-import { RootObjectTopScorers } from 'src/ts/interfaces/topScorersResponse';
+import {
+  Player,
+  TableTeam,
+  Match,
+  RootObjectGameweek,
+  RootObjectStanding,
+  RootObjectTopScorers,
+} from 'src/ts/interfaces';
 
 export const footballApi = createApi({
   reducerPath: 'footballApi',

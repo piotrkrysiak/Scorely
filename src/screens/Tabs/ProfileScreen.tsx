@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
+import auth from '@react-native-firebase/auth';
 import { useNavigation } from '@react-navigation/native';
 import { View } from 'react-native';
 import { Button } from 'src/components/common';
 import SectionHeader from 'src/components/home/SectionHeader';
-import auth from '@react-native-firebase/auth';
 import { HomeScreenProp, Route } from 'src/constants';
 import { setActiveUser, userSelector } from 'src/redux/user/userSlice';
 import { useDispatch, useSelector } from 'react-redux';

@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { UserState } from 'src/ts/interfaces';
 import {
   createUserWithEmailAndPassword,
   logOutUser,
   signInWithEmailAndPassword,
 } from './userActions';
-import { UserState } from '../../ts/interfaces/user';
 
 const initialState: UserState = {
   loading: false,

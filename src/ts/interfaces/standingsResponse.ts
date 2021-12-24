@@ -1,14 +1,12 @@
-export interface Parameters {
+interface Parameters {
   league: string;
   season: string;
 }
-
-export interface Paging {
+interface Paging {
   current: number;
   total: number;
 }
-
-export interface League {
+interface League {
   id: number;
   name: string;
   country: string;
@@ -17,11 +15,9 @@ export interface League {
   season: number;
   standings: Standings[][];
 }
-
 export interface ResponseStanding {
   league: League;
 }
-
 export interface RootObjectStanding {
   get: string;
   parameters: Parameters;
@@ -30,53 +26,45 @@ export interface RootObjectStanding {
   paging: Paging;
   response: ResponseStanding[];
 }
-
-export interface Team {
+interface Team {
   id: number;
   name: string;
   logo: string;
 }
-
-export interface Goals {
+interface Goals {
   for: number;
   against: number;
 }
-
-export interface All {
+interface All {
   played: number;
   win: number;
   draw: number;
   lose: number;
   goals: Goals;
 }
-
-export interface Goals2 {
+interface Goals2 {
   for: number;
   against: number;
 }
-
-export interface Home {
+interface Home {
   played: number;
   win: number;
   draw: number;
   lose: number;
   goals: Goals2;
 }
-
-export interface Goals3 {
+interface Goals3 {
   for: number;
   against: number;
 }
-
-export interface Away {
+interface Away {
   played: number;
   win: number;
   draw: number;
   lose: number;
   goals: Goals3;
 }
-
-export interface Standings {
+interface Standings {
   rank: number;
   team: Team;
   points: number;

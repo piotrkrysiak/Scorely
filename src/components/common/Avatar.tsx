@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { Image, Pressable, StyleSheet, TouchableOpacity } from 'react-native';
 import { lightPalette } from 'src/assets/styles';
 import { MATERIAL } from 'src/constants';
 import Icon from './Icon';
@@ -12,7 +12,14 @@ interface Props {
 }
 
 const Avatar: React.FC<Props> = ({ isSmall, editable, source, onPress }) => (
-  <TouchableOpacity onPress={onPress}>
+  <Pressable
+    onPress={onPress}
+    style={({ pressed }) =>
+      onPress && {
+        opacity: pressed ? 0.5 : 1,
+      }
+    }
+  >
     <Image
       source={{
         uri: source,
@@ -24,7 +31,7 @@ const Avatar: React.FC<Props> = ({ isSmall, editable, source, onPress }) => (
         <Icon type={MATERIAL} name="edit" size={20} color={lightPalette.dark} />
       </TouchableOpacity>
     )}
-  </TouchableOpacity>
+  </Pressable>
 );
 
 const styles = StyleSheet.create({

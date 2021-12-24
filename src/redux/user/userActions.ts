@@ -1,7 +1,7 @@
 import auth from '@react-native-firebase/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { DEFAULT_AVATAR } from 'src/constants';
-import { FirebaseUser, LoginUser, User } from '../../ts/interfaces/user';
+import { FirebaseUser, LoginUser, User } from 'src/ts/interfaces';
 
 export const signInWithEmailAndPassword = createAsyncThunk<User, LoginUser>(
   'auth/signIn',
@@ -42,13 +42,12 @@ export const createUserWithEmailAndPassword = createAsyncThunk<
       displayName,
       photoURL: DEFAULT_AVATAR,
     });
-    console.log('auth/register');
 
     const displayNameFirebase = auth().currentUser?.displayName;
     const photoURLFirebase = auth().currentUser?.photoURL;
     const { uid } = user;
 
-    if (!email || !displayNameFirebase || !photoURLFirebase) {
+    if (!displayNameFirebase || !photoURLFirebase) {
       return rejectWithValue(
         'Something went wrong while connecting to Firebase',
       );

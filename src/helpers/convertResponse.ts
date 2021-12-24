@@ -2,9 +2,9 @@ import {
   Match,
   Player,
   ResponseGameweek,
+  ResponseStanding,
   ResponseTopScorers,
 } from 'src/ts/interfaces';
-import { ResponseStanding } from 'src/ts/interfaces/standingsResponse';
 import { TableTeam } from 'src/ts/interfaces/table';
 
 export const convertToPlayers = (response: ResponseTopScorers[]): Player[] =>
