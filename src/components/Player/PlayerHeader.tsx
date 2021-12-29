@@ -5,9 +5,8 @@ import { globalStyles, lightPalette } from 'src/assets/styles';
 import { IONICONS, SEMI_BOLD, SMALLER_BODY_SEMI } from 'src/constants';
 import image from 'src/assets/images/playerBackground.jpg';
 import LinearGradient from 'react-native-linear-gradient';
-import { Avatar, BodyText, Text } from '../common';
-import HeaderBar from '../common/HeaderBar';
-import { IconTypes } from '../common/Icon';
+import { IconTypes } from 'src/components/common/Icon';
+import { Avatar, BodyText, Text, HeaderBar } from '../common';
 import { RowWrapper } from '../containers';
 
 interface Props {

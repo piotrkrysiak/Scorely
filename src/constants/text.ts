@@ -7,4 +7,5 @@ export const H3 = 'H3';
 export const BODY = 'Body';
 export const SMALLER_BODY = 'SmallerBody';
 export const SMALLER_BODY_SEMI = 'SmallerBodySemi';
+export const SMALLER_BODY_MEDIUM = 'SmallerBodyMedium';
 export const HELP = 'Help';

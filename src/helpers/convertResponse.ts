@@ -3,8 +3,10 @@ import {
   Player,
   PlayerDetails,
   ResponseGameweek,
+  ResponseStanding,
   ResponseTopScorers,
 } from 'src/ts/interfaces';
+import { TableTeam } from 'src/ts/interfaces/table';
 
 export const convertToPlayers = (response: ResponseTopScorers[]): Player[] =>
   response.map(({ player, statistics }: ResponseTopScorers) => ({
@@ -92,4 +94,28 @@ export const convertToPlayersDetails = (
     }),
   );
   return playerDetails[0];
+};
+
+export const convertToTable = (response: ResponseStanding[]): TableTeam[] => {
+  const tableArray = response.map(
+    ({ league: { standings } }: ResponseStanding) => ({
+      standings: standings[0].map(
+        ({ team, rank, points, goalsDiff, all: { played } }) => ({
+          team: {
+            id: team.id,
+            name: team.name,
+            logo: team.logo,
+          },
+          rank,
+          points,
+          goalsDiff,
+          played,
+        }),
+      ),
+    }),
+  );
+  if (tableArray.length > 0) {
+    return tableArray[0].standings;
+  }
+  return [];
 };

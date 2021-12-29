@@ -15,24 +15,31 @@ import Container from 'src/components/containers/Container';
 import Icon from 'src/components/common/Icon';
 import { useNavigation } from '@react-navigation/native';
 import { AuthScreenProp, Route } from 'src/constants';
+import { LoginUser } from 'src/ts/interfaces/user';
+import { useDispatch } from 'react-redux';
+import { signInWithEmailAndPassword } from 'src/redux/user/userActions';
+import useOnAuthStateChange from 'src/hooks/useOnAuthStateChanged';
 
 const LoginScreen = () => {
   const [disabled, setDisabled] = useState<boolean>(true);
   const [secureTextEntry, setSecureTextEntry] = useState<boolean>(true);
-
   const { navigate } = useNavigation<AuthScreenProp>();
 
   const handleSecureTextEntry = () => {
     setSecureTextEntry(prev => !prev);
   };
 
-  interface LoginForm {
-    email: string;
-    password: string;
-  }
+  useOnAuthStateChange();
+
+  const dispatch = useDispatch();
+
   const onSubmit = () => {
-    // TODO: login user implementation
-    console.log(values);
+    dispatch(
+      signInWithEmailAndPassword({
+        email: values.email,
+        password: values.password,
+      }),
+    );
   };
 
   const validationSchema = Yup.object().shape({
@@ -46,7 +53,7 @@ const LoginScreen = () => {
       .required('Required!'),
   });
 
-  const { handleChange, handleSubmit, values, errors } = useFormik<LoginForm>({
+  const { handleChange, handleSubmit, values, errors } = useFormik<LoginUser>({
     initialValues: {
       email: '',
       password: '',
@@ -68,7 +75,7 @@ const LoginScreen = () => {
       <View>
         <View style={styles.wrapper}>
           <Wrapper>
-            <HeadlineText type="H1">Let s sign you in. 👋</HeadlineText>
+            <HeadlineText type="H1">Let&apos;s sign you in. 👋</HeadlineText>
             <Text
               fontWeight="Regular"
               color={lightPalette.dark60}
@@ -81,7 +88,7 @@ const LoginScreen = () => {
         <Input
           value={values.email}
           onChangeText={handleChange('email')}
-          placeholder="Phone or email"
+          placeholder="Email"
           style={globalStyles.marginedTop}
           autoCapitalize="none"
           error={errors.email}
@@ -119,7 +126,7 @@ const LoginScreen = () => {
       </View>
       <View style={styles.bottom}>
         <RowWrapper style={styles.register}>
-          <BodyText type="SmallerBody">Don t have an account?</BodyText>
+          <BodyText type="SmallerBody">Don&apos;t have an account?</BodyText>
           <View style={styles.space} />
           <Pressable onPress={() => navigate(Route.REGISTER)}>
             <BodyText type="SmallerBodySemi" color={lightPalette.primary}>

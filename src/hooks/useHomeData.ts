@@ -1,6 +1,7 @@
 import { REGULAR_SEASON_1 } from 'src/constants';
 import {
   useGetGameweekQuery,
+  useGetLeagueTableQuery,
   useGetRoundQuery,
   useGetTopScorersQuery,
 } from 'src/services/football';
@@ -30,20 +31,32 @@ export default function useHomeData() {
     error: matchesError,
   } = useGetGameweekQuery(round || REGULAR_SEASON_1);
 
-  const isLoading = isPlayersLoading || isRoundLoading || isMatchesLoading;
-  const isError = isPlayersError || isRoundError || isMatchesError;
-  const error = playersError || roundError || matchesError;
+  const {
+    data: table,
+    isLoading: isTableLoading,
+    isError: isTableError,
+    refetch: refetchTable,
+    error: tableError,
+  } = useGetLeagueTableQuery();
+
+  const isLoading =
+    isPlayersLoading || isRoundLoading || isMatchesLoading || isTableLoading;
+  const isError =
+    isPlayersError || isRoundError || isMatchesError || isTableError;
+  const error = playersError || roundError || matchesError || tableError;
 
   const refetch = () => {
     refetchPlayers();
     refetchRound();
     refetchMatches();
+    refetchTable();
   };
 
   return {
     players,
     round,
     matches,
+    table,
     isLoading,
     isError,
     error,

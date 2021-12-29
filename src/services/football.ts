@@ -4,6 +4,7 @@ import {
   CURRENT_ROUND_URL,
   GAMEWEEK_URL,
   PLAYER_URL,
+  STANDINGS_URL,
   TOP_SCORERS_URL,
   X_RAPIDAPI_KEY,
 } from 'src/constants';
@@ -11,17 +12,24 @@ import {
   convertToMatches,
   convertToPlayers,
   convertToPlayersDetails,
+  convertToTable,
 } from 'src/helpers/convertResponse';
-import { Match, RootObjectGameweek } from 'src/ts/interfaces';
-import { Player, PlayerDetails } from 'src/ts/interfaces/player';
-import { RootObjectTopScorers } from 'src/ts/interfaces/topScorersResponse';
+import {
+  Player,
+  TableTeam,
+  Match,
+  RootObjectGameweek,
+  RootObjectStanding,
+  RootObjectTopScorers,
+  PlayerDetails,
+} from 'src/ts/interfaces';
 
 export const footballApi = createApi({
   reducerPath: 'footballApi',
   baseQuery: fetchBaseQuery({
     baseUrl: API_URL,
   }),
-  tagTypes: ['TopScorers', 'Matches', 'Round', 'Player'],
+  tagTypes: ['TopScorers', 'Matches', 'Round', 'Standings', 'Player'],
   endpoints: builder => ({
     getTopScorers: builder.query<Player[], void>({
       query: () => ({
@@ -40,6 +48,15 @@ export const footballApi = createApi({
       transformResponse: ({ response }: RootObjectTopScorers) =>
         convertToPlayersDetails(response),
       providesTags: [{ type: 'Player', id: 'ID' }],
+    }),
+    getLeagueTable: builder.query<TableTeam[], void>({
+      query: () => ({
+        url: STANDINGS_URL,
+        headers: X_RAPIDAPI_KEY,
+      }),
+      transformResponse: ({ response }: RootObjectStanding) =>
+        convertToTable(response),
+      providesTags: [{ type: 'Standings', id: 'LIST' }],
     }),
     getRound: builder.query<string, void>({
       query: () => ({
@@ -66,4 +83,5 @@ export const {
   useGetRoundQuery,
   useGetGameweekQuery,
   useGetPlayerQuery,
+  useGetLeagueTableQuery,
 } = footballApi;

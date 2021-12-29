@@ -1,15 +1,15 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { Provider } from 'react-redux';
-import store from './store';
 import HomeNavigator from './navigation/HomeNavigator';
+import useInitialUserCheck from './hooks/useInitialUserCheck';
 
-const App = () => (
-  <Provider store={store}>
+const App = () => {
+  useInitialUserCheck();
+  return (
     <NavigationContainer>
       <HomeNavigator />
     </NavigationContainer>
-  </Provider>
-);
+  );
+};
 
 export default App;

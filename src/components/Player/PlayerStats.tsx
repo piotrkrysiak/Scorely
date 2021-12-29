@@ -38,7 +38,7 @@ const PlayerStats = memo(({ id }: Props) => {
     {
       id: 4,
       name: 'Rating',
-      value: statistics.rating,
+      value: Math.round(parseFloat(statistics.rating) * 100) / 100,
     },
   ];
 
