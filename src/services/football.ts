@@ -13,7 +13,7 @@ import {
   convertToPlayersDetails,
 } from 'src/helpers/convertResponse';
 import { Match, RootObjectGameweek } from 'src/ts/interfaces';
-import { Player } from 'src/ts/interfaces/player';
+import { Player, PlayerDetails } from 'src/ts/interfaces/player';
 import { RootObjectTopScorers } from 'src/ts/interfaces/topScorersResponse';
 
 export const footballApi = createApi({
@@ -32,7 +32,7 @@ export const footballApi = createApi({
         convertToPlayers(response),
       providesTags: [{ type: 'TopScorers', id: 'LIST' }],
     }),
-    getPlayer: builder.query<Player[], number>({
+    getPlayer: builder.query<PlayerDetails, number>({
       query: id => ({
         url: `${PLAYER_URL}${id}`,
         headers: X_RAPIDAPI_KEY,

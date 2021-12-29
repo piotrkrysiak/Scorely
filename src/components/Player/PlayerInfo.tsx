@@ -10,7 +10,7 @@ interface Props {
   content: {
     id: number;
     name: string;
-    value: string;
+    value: string | number;
   }[];
 }
 

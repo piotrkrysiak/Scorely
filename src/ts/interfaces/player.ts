@@ -38,17 +38,20 @@ interface Tackles {
 }
 interface DetailsStatistics extends Statistics {
   dribbles: Dribbles;
-  faults: Fouls;
+  fouls: Fouls;
   tackles: Tackles;
   passes: Passes;
 }
 
 export interface PlayerDetails extends Player {
+  firstName: string;
+  lastName: string;
   nationality: string;
   age: number;
   height: string;
   weight: string;
   date: string;
   city: string;
+  teamLogo: string;
   statistics: DetailsStatistics;
 }
