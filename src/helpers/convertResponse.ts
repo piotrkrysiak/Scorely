@@ -1,6 +1,7 @@
 import {
   Match,
   Player,
+  PlayerDetails,
   ResponseGameweek,
   ResponseTopScorers,
 } from 'src/ts/interfaces';
@@ -39,5 +40,49 @@ export const convertToMatches = (response: ResponseGameweek[]): Match[] =>
       name: teams.away.name,
       logo: teams.away.logo,
       goals: goals.away,
+    },
+  }));
+
+export const convertToPlayersDetails = (
+  response: ResponseTopScorers[],
+): PlayerDetails[] =>
+  response.map(({ player, statistics }: ResponseTopScorers) => ({
+    id: player.id,
+    name: player.name,
+    photo: player.photo,
+    nationality: player.birth.country,
+    age: player.age,
+    date: player.birth.date,
+    height: player.height,
+    weight: player.weight,
+    city: player.birth.place,
+    position: statistics[0].games.position,
+    team: statistics[0].team.name,
+    statistics: {
+      goals: statistics[0].goals.total,
+      assists: statistics[0].goals.assists,
+      gamesPlayed: statistics[0].games.appearences,
+      rating: statistics[0].games.rating,
+      shots: statistics[0].shots.total,
+      shotsOn: statistics[0].shots.on,
+      dribbles: {
+        attempts: statistics[0].dribbles.attempts,
+        success: statistics[0].dribbles.success,
+        past: statistics[0].dribbles.past,
+      },
+      faults: {
+        drawn: statistics[0].fouls.drawn,
+        committed: statistics[0].fouls.committed,
+      },
+      tackles: {
+        total: statistics[0].tackles.total,
+        blocks: statistics[0].tackles.blocks,
+        interceptions: statistics[0].tackles.interceptions,
+      },
+      passes: {
+        total: statistics[0].passes.total,
+        key: statistics[0].passes.key,
+        accuracy: statistics[0].passes.accuracy,
+      },
     },
   }));

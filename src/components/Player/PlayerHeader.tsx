@@ -34,16 +34,7 @@ const PlayerHeader: FC<Props> = ({ name, surname, photo, club, clubLogo }) => {
 
   return (
     <View style={styles.wrapper}>
-      <Image
-        source={image}
-        style={{
-          position: 'absolute',
-          width: '100%',
-          height: '100%',
-          borderRadius: 12,
-        }}
-        resizeMode="cover"
-      />
+      <Image source={image} style={styles.background} resizeMode="cover" />
       <LinearGradient
         colors={['#564afa1c', '#564afaea', lightPalette.primary]}
         style={styles.linearGradient}
@@ -107,5 +98,11 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     position: 'absolute',
+  },
+  background: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    borderRadius: 12,
   },
 });

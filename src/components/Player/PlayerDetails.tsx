@@ -1,10 +1,24 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import PlayerInfo from 'src/components/player/PlayerInfo';
+
+const content = [
+  {
+    id: 1,
+    name: 'Name',
+    value: 'John Doe',
+  },
+  {
+    id: 2,
+    name: 'Age',
+    value: '23',
+  },
+];
 
 const PlayerDetails = () => (
-  <View>
-    <Text>Player Details</Text>
-  </View>
+  <>
+    <PlayerInfo title="GeneralInfo" content={content} />
+    <PlayerInfo title="GeneralInfo" content={content} />
+  </>
 );
 
 export default PlayerDetails;
