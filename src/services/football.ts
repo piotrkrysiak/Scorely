@@ -3,6 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {
   CURRENT_ROUND_URL,
   GAMEWEEK_URL,
+  PLAYER_URL,
   STANDINGS_URL,
   TOP_SCORERS_URL,
   X_RAPIDAPI_KEY,
@@ -10,6 +11,7 @@ import {
 import {
   convertToMatches,
   convertToPlayers,
+  convertToPlayersDetails,
   convertToTable,
 } from 'src/helpers/convertResponse';
 import {
@@ -19,6 +21,7 @@ import {
   RootObjectGameweek,
   RootObjectStanding,
   RootObjectTopScorers,
+  PlayerDetails,
 } from 'src/ts/interfaces';
 
 export const footballApi = createApi({
@@ -26,7 +29,7 @@ export const footballApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: API_URL,
   }),
-  tagTypes: ['TopScorers', 'Matches', 'Round', 'Standings'],
+  tagTypes: ['TopScorers', 'Matches', 'Round', 'Standings', 'Player'],
   endpoints: builder => ({
     getTopScorers: builder.query<Player[], void>({
       query: () => ({
@@ -36,6 +39,15 @@ export const footballApi = createApi({
       transformResponse: ({ response }: RootObjectTopScorers) =>
         convertToPlayers(response),
       providesTags: [{ type: 'TopScorers', id: 'LIST' }],
+    }),
+    getPlayer: builder.query<PlayerDetails, number>({
+      query: id => ({
+        url: `${PLAYER_URL}${id}`,
+        headers: X_RAPIDAPI_KEY,
+      }),
+      transformResponse: ({ response }: RootObjectTopScorers) =>
+        convertToPlayersDetails(response),
+      providesTags: [{ type: 'Player', id: 'ID' }],
     }),
     getLeagueTable: builder.query<TableTeam[], void>({
       query: () => ({
@@ -70,5 +82,6 @@ export const {
   useGetTopScorersQuery,
   useGetRoundQuery,
   useGetGameweekQuery,
+  useGetPlayerQuery,
   useGetLeagueTableQuery,
 } = footballApi;

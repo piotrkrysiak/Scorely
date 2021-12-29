@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { lightPalette } from 'src/assets/styles';
 import { Route } from 'src/constants';
@@ -8,7 +8,11 @@ import PlayerFixture from 'src/components/player/PlayerFixture';
 
 const Tab = createMaterialTopTabNavigator();
 
-const TopTabs = () => (
+interface Props {
+  id: number;
+}
+
+const TopTabs: FC<Props> = ({ id }) => (
   <Tab.Navigator
     screenOptions={{
       tabBarActiveTintColor: lightPalette.dark,
@@ -28,7 +32,7 @@ const TopTabs = () => (
       tabBarStyle: {
         alignSelf: 'center',
         width: '90%',
-        marginVertical: 12,
+        marginTop: 12,
         backgroundColor: 'transparent',
       },
     }}
@@ -38,22 +42,26 @@ const TopTabs = () => (
         title: 'Details',
       }}
       name={Route.PLATER_DETAIL}
-      component={PlayerDetails}
-    />
+    >
+      {() => <PlayerDetails id={id} />}
+    </Tab.Screen>
     <Tab.Screen
       options={{
         title: 'Stats',
       }}
       name={Route.PLAYER_STATS}
-      component={PlayerStats}
-    />
+    >
+      {() => <PlayerStats id={id} />}
+    </Tab.Screen>
+
     <Tab.Screen
       options={{
         title: 'Fixture',
       }}
       name={Route.PLAYER_FIXTURE}
-      component={PlayerFixture}
-    />
+    >
+      {() => <PlayerFixture />}
+    </Tab.Screen>
   </Tab.Navigator>
 );
 

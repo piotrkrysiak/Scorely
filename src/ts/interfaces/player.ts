@@ -15,3 +15,43 @@ interface Statistics {
   shots: number;
   shotsOn: number;
 }
+interface Dribbles {
+  attempts: number;
+  success: number;
+  past?: number;
+}
+interface Fouls {
+  drawn: number;
+  committed: number;
+}
+
+interface Passes {
+  total: number;
+  key: number;
+  accuracy: number;
+}
+
+interface Tackles {
+  total: number;
+  blocks?: any;
+  interceptions: number;
+}
+interface DetailsStatistics extends Statistics {
+  dribbles: Dribbles;
+  fouls: Fouls;
+  tackles: Tackles;
+  passes: Passes;
+}
+
+export interface PlayerDetails extends Player {
+  firstName: string;
+  lastName: string;
+  nationality: string;
+  age: number;
+  height: string;
+  weight: string;
+  date: string;
+  city: string;
+  teamLogo: string;
+  statistics: DetailsStatistics;
+}
