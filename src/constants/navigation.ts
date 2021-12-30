@@ -5,7 +5,7 @@ export enum Route {
   REGISTER = 'Register',
   HOME = 'Home',
   TABLES = 'Tables',
-  RESULT = 'Result',
+  RESULTS = 'Results',
   PROFILE = 'Profile',
   HOME_TAB = 'HomeTab',
   AUTH = 'Auth',

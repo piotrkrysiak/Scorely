@@ -21,7 +21,7 @@ interface Props {
 
 const HeaderBar: React.FC<Props> = ({ leftIcon, rightIcon, title, color }) => (
   <View style={styles.wrapper}>
-    <TouchableOpacity onPress={leftIcon.onPressFunction}>
+    <TouchableOpacity onPress={leftIcon.onPressFunction} style={styles.zIndex}>
       <View style={styles.icon}>
         <Icon
           type={leftIcon.type}
@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    zIndex: 2,
   },
   icon: {
     height: 50,
@@ -69,6 +70,9 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     position: 'absolute',
+  },
+  zIndex: {
+    zIndex: 2,
   },
 });
 export default HeaderBar;

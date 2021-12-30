@@ -38,7 +38,7 @@ const BottomTabsNavigator = () => {
         }}
       />
       <Tab.Screen
-        name={Route.RESULT}
+        name={Route.RESULTS}
         component={ResultsScreen}
         options={{
           tabBarButton: ({ onPress, accessibilityState }) => (
@@ -46,7 +46,7 @@ const BottomTabsNavigator = () => {
               onPress={onPress}
               focused={accessibilityState?.selected}
               name="list"
-              label={Route.RESULT}
+              label={Route.RESULTS}
             />
           ),
           tabBarShowLabel: false,
