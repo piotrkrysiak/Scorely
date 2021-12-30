@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { View } from 'react-native';
 import { AppleStyle } from 'react-native-scrollable-navigation-bar';
 import { lightPalette } from 'src/assets/styles';
 import HeaderBackground from './HeaderBackground';
@@ -25,9 +24,6 @@ const Header: FC<Props> = ({ children, name, photo, background }) => (
     navigationBarBorderColor="transparent"
   >
     {children}
-    <View style={{ height: 200, margin: 50, backgroundColor: 'grey' }} />
-    <View style={{ height: 200, margin: 50, backgroundColor: 'grey' }} />
-    <View style={{ height: 200, margin: 50, backgroundColor: 'grey' }} />
   </AppleStyle>
 );
 

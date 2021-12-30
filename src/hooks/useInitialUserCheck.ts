@@ -18,6 +18,7 @@ export default function useInitialUserCheck() {
             setActiveUser({
               email: userFirebase.email,
               userName: userFirebase.displayName,
+              photoURL: userFirebase.photoURL,
             }),
           );
         }

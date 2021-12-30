@@ -45,6 +45,7 @@ export const createUserWithEmailAndPassword = createAsyncThunk<
 
     const displayNameFirebase = auth().currentUser?.displayName;
     const photoURLFirebase = auth().currentUser?.photoURL;
+
     const { uid } = user;
 
     if (!displayNameFirebase || !photoURLFirebase) {

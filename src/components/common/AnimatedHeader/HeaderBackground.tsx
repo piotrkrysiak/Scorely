@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Image, SafeAreaView, StyleSheet } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import { globalStyles, lightPalette } from 'src/assets/styles';
 import { RowWrapper } from 'src/components/containers';
 import { SEMI_BOLD } from 'src/constants';
@@ -31,6 +32,12 @@ const HeaderBackground: FC<Props> = ({ name, photo, background }) => (
       }}
       style={styles.background}
     />
+    <LinearGradient
+      colors={['#6e6e6e13', '#1b181848', lightPalette.dark]}
+      style={styles.linearGradient}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 0, y: 1 }}
+    />
   </SafeAreaView>
 );
 
@@ -47,6 +54,13 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 250,
     borderRadius: 12,
+    zIndex: -1,
+  },
+  linearGradient: {
+    borderRadius: 12,
+    width: '100%',
+    height: 250,
+    position: 'absolute',
     zIndex: -1,
   },
 });

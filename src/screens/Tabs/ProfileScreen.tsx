@@ -1,52 +1,40 @@
-import React, { useEffect } from 'react';
-import auth from '@react-native-firebase/auth';
+import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, View } from 'react-native';
 import { Button } from 'src/components/common';
 import SectionHeader from 'src/components/home/SectionHeader';
-import { HomeScreenProp, Route } from 'src/constants';
-import { setActiveUser, userSelector } from 'src/redux/user/userSlice';
+import { DEFAULT_AVATAR, HomeScreenProp, Route } from 'src/constants';
+import { userSelector } from 'src/redux/user/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { logOutUser } from 'src/redux/user/userActions';
 import Header from 'src/components/common/AnimatedHeader/Header';
+import useInitialUserCheck from 'src/hooks/useInitialUserCheck';
 
 const ProfileScreen = () => {
   const { navigate } = useNavigation<HomeScreenProp>();
 
   const dispatch = useDispatch();
   const {
-    user: { email, userName },
+    user: { userName, photoURL },
   } = useSelector(userSelector);
 
   const handleLogout = () => {
     dispatch(logOutUser());
   };
 
-  useEffect(() => {
-    if (!email) {
-      const subscriber = auth().onAuthStateChanged(userFirebase => {
-        if (userFirebase) {
-          dispatch(
-            setActiveUser({
-              email: userFirebase.email,
-              userName: userFirebase.displayName,
-            }),
-          );
-        }
-      });
-      return subscriber;
-    }
-    return () => {};
-  }, [email, dispatch]);
+  useInitialUserCheck();
 
-  // mocked avatar and background just for now
-  const avatar = 'https://i.pravatar.cc/300';
-  const background = 'https://i.pravatar.cc/400';
+  // mocked and background just for now
+  const background =
+    'https://www.chelseafcbrasil.com/wp-content/uploads/2018/08/premier-league-trophy.jpg';
 
   return (
     <View style={styles.container}>
-      {/* for testing propose only */}
-      <Header name={userName} photo={avatar} background={background}>
+      <Header
+        name={userName}
+        photo={photoURL ?? DEFAULT_AVATAR}
+        background={background}
+      >
         <Button onPress={handleLogout} title="Logout" />
         <SectionHeader title="Auth" onPress={() => navigate(Route.AUTH)} />
       </Header>
