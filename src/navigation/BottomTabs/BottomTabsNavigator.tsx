@@ -80,6 +80,7 @@ const BottomTabsNavigator = () => {
             />
           ),
           tabBarShowLabel: false,
+          headerShown: false,
         }}
       />
     </Tab.Navigator>
