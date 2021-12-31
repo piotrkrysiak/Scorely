@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native';
 import React, { FC } from 'react';
 import { Image, SafeAreaView, StyleSheet, View } from 'react-native';
 import { globalStyles, lightPalette } from 'src/assets/styles';
@@ -6,6 +5,7 @@ import { IONICONS, SEMI_BOLD, SMALLER_BODY_SEMI } from 'src/constants';
 import image from 'src/assets/images/playerBackground.jpg';
 import LinearGradient from 'react-native-linear-gradient';
 import { IconTypes } from 'src/components/common/Icon';
+import useBackIcon from 'src/hooks/useBackIcon';
 import { Avatar, BodyText, Text, HeaderBar } from '../common';
 import { RowWrapper } from '../containers';
 
@@ -18,17 +18,12 @@ interface Props {
 }
 
 const PlayerHeader: FC<Props> = ({ name, surname, photo, club, clubLogo }) => {
-  const { goBack } = useNavigation();
+  const backIcon = useBackIcon();
 
-  const leftIcon = {
-    type: IONICONS as IconTypes,
-    name: 'ios-arrow-back',
-    onPressFunction: goBack,
-  };
   const rightIcon = {
     type: IONICONS as IconTypes,
     name: 'heart-outline',
-    onPressFunction: goBack,
+    onPressFunction: () => {},
   };
 
   return (
@@ -42,7 +37,7 @@ const PlayerHeader: FC<Props> = ({ name, surname, photo, club, clubLogo }) => {
       />
       <SafeAreaView>
         <HeaderBar
-          leftIcon={leftIcon}
+          leftIcon={backIcon}
           rightIcon={rightIcon}
           color={lightPalette.white}
         />

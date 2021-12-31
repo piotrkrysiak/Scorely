@@ -1,25 +1,24 @@
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import * as Yup from 'yup';
 import { globalStyles, lightPalette } from 'src/assets/styles';
 import { Button, HeadlineText, Input, Text } from 'src/components/common';
 import { Wrapper } from 'src/components/containers';
 import Container from 'src/components/containers/Container';
-import Icon, { IconTypes } from 'src/components/common/Icon';
+import Icon from 'src/components/common/Icon';
 import HeaderBar from 'src/components/common/HeaderBar';
-import { IONICONS } from 'src/constants';
 import { useDispatch } from 'react-redux';
 import { createUserWithEmailAndPassword } from 'src/redux/user/userActions';
 import { RegisterUser } from 'src/ts/interfaces/user';
 import useOnAuthStateChange from 'src/hooks/useOnAuthStateChanged';
+import useBackIcon from 'src/hooks/useBackIcon';
 
 const RegisterScreen = () => {
   const [disabled, setDisabled] = useState<boolean>(true);
   const [secureTextEntry, setSecureTextEntry] = useState<boolean>(true);
   const dispatch = useDispatch();
-  const { goBack } = useNavigation();
+  const backIcon = useBackIcon();
 
   const onSubmit = () => {
     dispatch(
@@ -69,16 +68,11 @@ const RegisterScreen = () => {
       setDisabled(false);
     }
   }
-  const leftIcon = {
-    type: IONICONS as IconTypes,
-    name: 'ios-arrow-back',
-    onPressFunction: goBack,
-  };
 
   return (
     <Container keyboard scroll style={styles.container}>
       <View>
-        <HeaderBar leftIcon={leftIcon} />
+        <HeaderBar leftIcon={backIcon} />
         <View style={styles.wrapper}>
           <Wrapper>
             <HeadlineText type="H1">Let&apos;s sign you up. 👋</HeadlineText>

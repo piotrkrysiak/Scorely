@@ -10,6 +10,7 @@ import PlayerScreen from './Home/PlayerScreen';
 import MatchScreen from './Home/MatchScreen';
 import PostScreen from './Home/PostScreen';
 import NewsScreen from './Home/NewsScreen';
+import CreatePost from './Social/CreatePost';
 
 export {
   LoginScreen,
@@ -24,4 +25,5 @@ export {
   MatchScreen,
   NewsScreen,
   PostScreen,
+  CreatePost,
 };

@@ -2,13 +2,14 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { Route, SCREEN_OPTIONS } from 'src/constants';
 import {
+  CreatePost,
   MatchesScreen,
   MatchScreen,
   NewsScreen,
   PlayerScreen,
   PlayersScreen,
+  PostScreen,
 } from 'src/screens';
-import PostScreen from 'src/screens/Home/PostScreen';
 import AuthNavigator from './AuthNavigator';
 import BottomTabsNavigator from './BottomTabs/BottomTabsNavigator';
 import TopTabs from './TopTabs';
@@ -26,6 +27,7 @@ const HomeNavigator = () => {
       <HomeStack.Screen name={Route.NEWS} component={NewsScreen} />
       <HomeStack.Screen name={Route.POST} component={PostScreen} />
       <HomeStack.Screen name={Route.TOP_TABS} component={TopTabs} />
+      <HomeStack.Screen name={Route.CREATE_POST} component={CreatePost} />
     </HomeStack.Navigator>
   );
 };

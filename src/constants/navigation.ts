@@ -19,6 +19,7 @@ export enum Route {
   PLATER_DETAIL = 'PlayerDetail',
   PLAYER_STATS = 'PlayerStats',
   PLAYER_FIXTURE = 'PlayerFixture',
+  CREATE_POST = 'CreatePost',
 }
 
 type PlayerScreenProps = {
@@ -51,6 +52,7 @@ export type RootStackParamList = {
   Player: PlayerScreenProps;
   Match: MatchScreenProps;
   Post: PostScreenProps;
+  CreatePost: undefined;
 };
 
 export type AuthScreenProp = StackNavigationProp<
