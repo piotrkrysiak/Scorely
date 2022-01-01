@@ -12,9 +12,20 @@ import SvgPost from 'src/components/svg/Post';
 import { HELP } from 'src/constants';
 import Container from 'src/components/containers/Container';
 import useBackIcon from 'src/hooks/useBackIcon';
+import { setData } from 'src/helpers/setData';
 
 const CreatePost = () => {
   const backIcon = useBackIcon();
+
+  const handelSetPost = () => {
+    const post = {
+      title: '',
+      description: '',
+      createdAt: new Date(),
+    };
+    setData(post, 'posts');
+  };
+
   return (
     <Container scroll>
       <HeaderBar title="Post" leftIcon={backIcon} color={lightPalette.dark} />
@@ -36,7 +47,7 @@ const CreatePost = () => {
         />
       </View>
 
-      <Button title="Add Post" onPress={() => {}} />
+      <Button title="Add Post" onPress={handelSetPost} />
       <BodyText type={HELP} style={{ alignSelf: 'center' }}>
         Adding a post you are accepting the regulation
       </BodyText>
