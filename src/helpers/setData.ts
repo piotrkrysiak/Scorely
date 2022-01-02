@@ -24,9 +24,6 @@ export const setData = async (post: Post, name: string) => {
 
   const doc = await docRef.get();
 
-  if (doc.exists) {
-    docRef.delete();
-  }
   if (!doc.exists) {
     docRef.set({
       title,
