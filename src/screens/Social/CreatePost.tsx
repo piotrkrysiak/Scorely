@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     fontFamily: 'Poppins-Medium',
     fontSize: 16,
-    fontColor: lightPalette.dark60,
+    color: lightPalette.dark60,
     margin: 20,
   },
 });

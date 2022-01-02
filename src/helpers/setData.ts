@@ -1,5 +1,6 @@
 /* eslint-disable consistent-return */
 /* eslint-disable import/prefer-default-export */
+import 'react-native-get-random-values';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 import { v4 as uuid } from 'uuid';
