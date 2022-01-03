@@ -1,6 +1,6 @@
 import { API_KEY } from '@env';
 
-export const X_RAPIDAPI_KEY = { 'x-rapidapi-key': 'API_KEY' };
+export const X_RAPIDAPI_KEY = { 'x-rapidapi-key': API_KEY };
 export const TOP_SCORERS_URL = '/players/topscorers?league=39&season=2021';
 export const PLAYER_URL = 'players?season=2021&id=';
 export const STANDINGS_URL = '/standings?league=39&season=2021';

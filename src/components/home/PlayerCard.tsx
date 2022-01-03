@@ -13,6 +13,7 @@ interface Props {
   matches: number;
   goals: number;
   assists: number | null;
+  isSearched?: boolean;
   rating: number;
   onPress: () => void;
 }
@@ -25,6 +26,7 @@ const PlayerCard: FC<Props> = ({
   goals,
   assists,
   rating,
+  isSearched,
   onPress,
 }) => (
   <Pressable
@@ -33,7 +35,7 @@ const PlayerCard: FC<Props> = ({
       opacity: pressed ? 0.5 : 1,
     })}
   >
-    <View style={styles.wrapper}>
+    <View style={[styles.wrapper, isSearched ? styles.searched : null]}>
       <RowWrapper style={styles.row}>
         <Avatar source={photo} isSmall />
         <View>
@@ -65,14 +67,25 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     borderColor: lightPalette.white,
     borderWidth: 1,
+    justifyContent: 'space-between',
+  },
+  searched: {
+    marginVertical: 10,
+    width: '100%',
+    height: 155,
+    marginHorizontal: 0,
   },
   row: {
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderColor: lightPalette.white,
     borderBottomWidth: 1,
+    alignItems: 'center',
+    flex: 1,
   },
   statsBox: {
     justifyContent: 'space-between',
+    flex: 1,
+    alignItems: 'center',
   },
 });

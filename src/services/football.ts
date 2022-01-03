@@ -12,6 +12,7 @@ import {
   convertToMatches,
   convertToPlayers,
   convertToPlayersDetails,
+  convertToPlayersSearch,
   convertToTable,
 } from 'src/helpers/convertResponse';
 import {
@@ -49,6 +50,15 @@ export const footballApi = createApi({
         convertToPlayersDetails(response),
       providesTags: [{ type: 'Player', id: 'ID' }],
     }),
+    getPlayerSearch: builder.query<Player[], string>({
+      query: query => ({
+        url: `players?season=2021&league=39&search=${query}`,
+        headers: X_RAPIDAPI_KEY,
+      }),
+      transformResponse: ({ response }: RootObjectTopScorers) =>
+        convertToPlayersSearch(response),
+      providesTags: [{ type: 'Player', id: 'ID' }],
+    }),
     getLeagueTable: builder.query<TableTeam[], void>({
       query: () => ({
         url: STANDINGS_URL,
@@ -84,4 +94,5 @@ export const {
   useGetGameweekQuery,
   useGetPlayerQuery,
   useGetLeagueTableQuery,
+  useGetPlayerSearchQuery,
 } = footballApi;

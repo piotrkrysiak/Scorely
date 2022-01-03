@@ -54,15 +54,6 @@ const CreatePost = () => {
     onSubmit,
   });
 
-  const handelSetPost = () => {
-    const post = {
-      title: '',
-      description: '',
-      createdAt: new Date(),
-    };
-    setData(post, 'posts');
-  };
-
   return (
     <Container scroll>
       <HeaderBar title="Post" leftIcon={backIcon} color={lightPalette.dark} />
@@ -101,7 +92,7 @@ const CreatePost = () => {
       )}
       <Button
         title="Add Post"
-        onPress={handelSetPost}
+        onPress={handleSubmit}
         style={{ marginTop: 10 }}
       />
       <BodyText type={HELP} style={{ alignSelf: 'center', marginTop: 10 }}>

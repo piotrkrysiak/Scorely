@@ -119,3 +119,22 @@ export const convertToTable = (response: ResponseStanding[]): TableTeam[] => {
   }
   return [];
 };
+
+export const convertToPlayersSearch = (
+  response: ResponseTopScorers[],
+): Player[] =>
+  response.map(({ player, statistics }: ResponseTopScorers) => ({
+    id: player.id,
+    name: player.name,
+    photo: player.photo,
+    position: statistics[0].games.position,
+    team: statistics[0].team.name,
+    statistics: {
+      goals: statistics[0].goals.total,
+      assists: statistics[0].goals.assists,
+      gamesPlayed: statistics[0].games.appearences,
+      rating: statistics[0].games.rating,
+      shots: statistics[0].shots.total,
+      shotsOn: statistics[0].shots.on,
+    },
+  }));

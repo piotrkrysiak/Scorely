@@ -94,7 +94,13 @@ const MatchCard: FC<Props> = ({ host, guest, status, onPress }) => (
             {host.goals} - {guest.goals}
           </BodyText>
         </View>
-        <View style={[styles.status, status === 'FT' && styles.ended]}>
+        <View
+          style={[
+            styles.status,
+            status === 'FT' && styles.ended,
+            status === 'PST' && styles.pst,
+          ]}
+        >
           <BodyText
             type={SMALLER_BODY_SEMI}
             color={status === 'FT' ? lightPalette.white : undefined}
@@ -153,5 +159,8 @@ const styles = StyleSheet.create({
   },
   ended: {
     backgroundColor: lightPalette.primary,
+  },
+  pst: {
+    backgroundColor: lightPalette.dark30,
   },
 });
