@@ -33,7 +33,7 @@ const userSlice = createSlice({
       .addCase(signInWithEmailAndPassword.rejected, (state, action) => {
         state.loading = false;
         if (action.error.message) {
-          const [, errorMessage] = action.error.message.split(']');
+          const [, errorMessage] = action.error.message.split('] ');
           state.error = errorMessage;
         }
       })
@@ -49,7 +49,7 @@ const userSlice = createSlice({
       .addCase(logOutUser.rejected, (state, action) => {
         state.loading = false;
         if (action.error.message) {
-          const [, errorMessage] = action.error.message.split(']');
+          const [, errorMessage] = action.error.message.split('] ');
           state.error = errorMessage;
         }
       })

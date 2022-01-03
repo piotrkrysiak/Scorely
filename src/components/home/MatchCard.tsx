@@ -49,10 +49,47 @@ const MatchCard: FC<Props> = ({ host, guest, status, onPress }) => (
             />
           </View>
         </RowWrapper>
-        <View style={globalStyles.centered}>
-          <BodyText type={SMALLER_BODY_SEMI}>
-            {host.name} - {guest.name}
-          </BodyText>
+        <View style={[globalStyles.centered, { flex: 1 }]}>
+          <RowWrapper
+            style={{
+              width: '100%',
+              alignItems: 'flex-start',
+              justifyContent: 'center',
+            }}
+          >
+            <View
+              style={{
+                width: '45%',
+                justifyContent: 'center',
+              }}
+            >
+              <BodyText
+                style={{ textAlign: 'center', alignSelf: 'flex-end' }}
+                type={SMALLER_BODY_SEMI}
+              >
+                {host.name}
+              </BodyText>
+            </View>
+            <BodyText
+              type={SMALLER_BODY_SEMI}
+              style={{ marginHorizontal: 4, textAlign: 'center' }}
+            >
+              -
+            </BodyText>
+            <View
+              style={{
+                width: '45%',
+                justifyContent: 'center',
+              }}
+            >
+              <BodyText
+                style={{ textAlign: 'center', alignSelf: 'flex-start' }}
+                type={SMALLER_BODY_SEMI}
+              >
+                {guest.name}
+              </BodyText>
+            </View>
+          </RowWrapper>
           <BodyText type={SMALLER_BODY_SEMI}>
             {host.goals} - {guest.goals}
           </BodyText>
@@ -89,7 +126,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     height: 80,
-    width: '20%',
+    width: '18%',
     backgroundColor: lightPalette.secondary,
     borderTopEndRadius: 16,
     borderBottomEndRadius: 16,
@@ -99,8 +136,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   circle: {
-    width: 45,
-    height: 45,
+    width: 42,
+    height: 42,
     borderRadius: 30,
     backgroundColor: lightPalette.dark30,
     borderWidth: 1,

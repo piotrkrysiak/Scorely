@@ -81,7 +81,7 @@ const RegisterScreen = () => {
               color={lightPalette.dark60}
               fontSize={24}
             >
-              Create account and dive in to the football society ⚽️
+              Create account and dive into the football society ⚽️
             </Text>
           </Wrapper>
         </View>
