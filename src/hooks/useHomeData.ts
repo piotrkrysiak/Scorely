@@ -1,9 +1,9 @@
-import { REGULAR_SEASON_1 } from 'src/constants';
+import { REGULAR_SEASON_1, TOP_SCORERS } from 'src/constants';
 import {
   useGetGameweekQuery,
   useGetLeagueTableQuery,
   useGetRoundQuery,
-  useGetTopScorersQuery,
+  useGetTopPlayersQuery,
 } from 'src/services/football';
 
 export default function useHomeData() {
@@ -13,7 +13,7 @@ export default function useHomeData() {
     isError: isPlayersError,
     refetch: refetchPlayers,
     error: playersError,
-  } = useGetTopScorersQuery();
+  } = useGetTopPlayersQuery(TOP_SCORERS);
 
   const {
     data: round,

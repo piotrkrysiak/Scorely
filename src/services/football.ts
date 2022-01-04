@@ -3,9 +3,9 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {
   CURRENT_ROUND_URL,
   GAMEWEEK_URL,
+  LEAGUE,
   PLAYER_URL,
   STANDINGS_URL,
-  TOP_SCORERS_URL,
   X_RAPIDAPI_KEY,
 } from 'src/constants';
 import {
@@ -25,6 +25,8 @@ import {
   PlayerDetails,
 } from 'src/ts/interfaces';
 
+type filter = 'topscorers' | 'topassists' | 'topyellowcards' | 'topredcards';
+
 export const footballApi = createApi({
   reducerPath: 'footballApi',
   baseQuery: fetchBaseQuery({
@@ -32,9 +34,9 @@ export const footballApi = createApi({
   }),
   tagTypes: ['TopScorers', 'Matches', 'Round', 'Standings', 'Player'],
   endpoints: builder => ({
-    getTopScorers: builder.query<Player[], void>({
-      query: () => ({
-        url: TOP_SCORERS_URL,
+    getTopPlayers: builder.query<Player[], filter>({
+      query: filter => ({
+        url: `players/${filter}${LEAGUE}`,
         headers: X_RAPIDAPI_KEY,
       }),
       transformResponse: ({ response }: RootObjectTopScorers) =>
@@ -89,7 +91,7 @@ export const footballApi = createApi({
 });
 
 export const {
-  useGetTopScorersQuery,
+  useGetTopPlayersQuery,
   useGetRoundQuery,
   useGetGameweekQuery,
   useGetPlayerQuery,

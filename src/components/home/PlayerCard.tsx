@@ -51,7 +51,7 @@ const PlayerCard: FC<Props> = ({
         <StatsBox number={matches} title="Matches" />
         <StatsBox number={goals} title="Goals" />
         <StatsBox number={assists || 0} title="Assists" />
-        <StatsBox number={Math.round(rating * 100) / 100} title="rating" />
+        <StatsBox number={Math.round(rating * 100) / 100} title="Rating" />
       </RowWrapper>
     </View>
   </Pressable>
