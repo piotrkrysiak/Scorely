@@ -2,6 +2,7 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 import Button from 'src/components/common/Button';
 import lightPalette from 'src/assets/styles/palette';
+import { BORDER } from 'src/constants';
 
 describe('Button', () => {
   it('calls onPress when clicked', () => {
@@ -32,7 +33,7 @@ describe('Button', () => {
     );
     const button = getByTestId('testID');
     const buttonText = getByText(/button/i);
-    expect(button).toHaveStyle({ backgroundColor: lightPalette.extraWhite });
+    expect(button).toHaveStyle({ backgroundColor: BORDER });
     expect(buttonText).toHaveStyle({ color: lightPalette.primary });
   });
 
@@ -54,7 +55,7 @@ describe('Button', () => {
     );
     const button = getByTestId('testID');
     const buttonText = getByText(/button/i);
-    expect(button).toHaveStyle({ backgroundColor: lightPalette.extraWhite });
+    expect(button).toHaveStyle({ backgroundColor: BORDER });
     expect(buttonText).toHaveStyle({ color: lightPalette.dark30 });
     fireEvent.press(button);
     expect(onPress).toHaveBeenCalledTimes(0);

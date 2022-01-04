@@ -1,8 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react-native';
 import HeadlineText from 'src/components/common/HeadlineText';
-import { H1, H3 } from 'src/constants';
-import lightPalette from 'src/assets/styles/palette';
+import { H1, H3, TEXT } from 'src/constants';
 
 describe('Headline', () => {
   it('renders correctly with default props', () => {
@@ -10,7 +9,7 @@ describe('Headline', () => {
     const text = getByText(/Headline/i);
     expect(text).toHaveStyle({
       fontSize: 18,
-      color: lightPalette.dark,
+      color: TEXT,
       fontFamily: 'Poppins-SemiBold',
     });
   });
@@ -22,7 +21,7 @@ describe('Headline', () => {
     const text = getByText(/Headline/i);
     expect(text).toHaveStyle({
       fontSize: 24,
-      color: lightPalette.dark,
+      color: TEXT,
       fontFamily: 'Poppins-SemiBold',
     });
   });

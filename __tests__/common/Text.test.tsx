@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react-native';
 import Text from 'src/components/common/Text';
-import lightPalette from 'src/assets/styles/palette';
+import { TEXT } from 'src/constants';
 
 describe('Text', () => {
   it('renders correctly with default props', () => {
@@ -9,7 +9,7 @@ describe('Text', () => {
     const text = getByText(/Text/i);
     expect(text).toHaveStyle({
       fontSize: 14,
-      color: lightPalette.dark,
+      color: TEXT,
       fontFamily: 'Poppins-Regular',
     });
   });

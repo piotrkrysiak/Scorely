@@ -1,8 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react-native';
 import { BodyText } from 'src/components/common';
-import { HELP, SMALLER_BODY, SMALLER_BODY_SEMI } from 'src/constants';
-import lightPalette from 'src/assets/styles/palette';
+import { HELP, SMALLER_BODY, SMALLER_BODY_SEMI, TEXT } from 'src/constants';
 
 describe('BodyText', () => {
   it('renders correctly with default props', () => {
@@ -10,7 +9,7 @@ describe('BodyText', () => {
     const text = getByText(/Body/i);
     expect(text).toHaveStyle({
       fontSize: 16,
-      color: lightPalette.dark,
+      color: TEXT,
       fontFamily: 'Poppins-Regular',
     });
   });
@@ -22,7 +21,7 @@ describe('BodyText', () => {
     const text = getByText(/Body/i);
     expect(text).toHaveStyle({
       fontSize: 16,
-      color: lightPalette.dark,
+      color: TEXT,
       fontFamily: 'Poppins-Regular',
       margin: 20,
     });
@@ -33,7 +32,7 @@ describe('BodyText', () => {
     const text = getByText(/Body/i);
     expect(text).toHaveStyle({
       fontSize: 14,
-      color: lightPalette.dark,
+      color: TEXT,
       fontFamily: 'Poppins-Regular',
     });
   });
