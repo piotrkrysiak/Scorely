@@ -3,21 +3,31 @@ import React, { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import * as Yup from 'yup';
 import { globalStyles, lightPalette } from 'src/assets/styles';
-import { Button, HeadlineText, Input, Text } from 'src/components/common';
+import {
+  Button,
+  HeadlineText,
+  Input,
+  Message,
+  Text,
+} from 'src/components/common';
 import { Wrapper } from 'src/components/containers';
 import Container from 'src/components/containers/Container';
 import Icon from 'src/components/common/Icon';
 import HeaderBar from 'src/components/common/HeaderBar';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { createUserWithEmailAndPassword } from 'src/redux/user/userActions';
 import { RegisterUser } from 'src/ts/interfaces/user';
 import useOnAuthStateChange from 'src/hooks/useOnAuthStateChanged';
 import useBackIcon from 'src/hooks/useBackIcon';
+import { setErrorNull, userSelector } from 'src/redux/user/userSlice';
 
 const RegisterScreen = () => {
-  const [disabled, setDisabled] = useState<boolean>(true);
-  const [secureTextEntry, setSecureTextEntry] = useState<boolean>(true);
+  const [disabled, setDisabled] = useState(true);
+  const [secureTextEntry, setSecureTextEntry] = useState(true);
+
+  const { error } = useSelector(userSelector);
   const dispatch = useDispatch();
+
   const backIcon = useBackIcon();
 
   const onSubmit = () => {
@@ -128,6 +138,13 @@ const RegisterScreen = () => {
       <View style={styles.bottom}>
         <Button title="Sign up" onPress={handleSubmit} disabled={disabled} />
       </View>
+      {!!error && (
+        <Message
+          onDismiss={() => dispatch(setErrorNull())}
+          message={error}
+          variant="danger"
+        />
+      )}
     </Container>
   );
 };

@@ -8,6 +8,7 @@ import {
   Button,
   HeadlineText,
   Input,
+  Message,
   Text,
 } from 'src/components/common';
 import { Wrapper, RowWrapper } from 'src/components/containers';
@@ -16,9 +17,10 @@ import Icon from 'src/components/common/Icon';
 import { useNavigation } from '@react-navigation/native';
 import { AuthScreenProp, Route } from 'src/constants';
 import { LoginUser } from 'src/ts/interfaces/user';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { signInWithEmailAndPassword } from 'src/redux/user/userActions';
 import useOnAuthStateChange from 'src/hooks/useOnAuthStateChanged';
+import { userSelector, setErrorNull } from 'src/redux/user/userSlice';
 
 const LoginScreen = () => {
   const [disabled, setDisabled] = useState<boolean>(true);
@@ -30,6 +32,7 @@ const LoginScreen = () => {
   };
 
   useOnAuthStateChange();
+  const { error } = useSelector(userSelector);
 
   const dispatch = useDispatch();
 
@@ -136,6 +139,13 @@ const LoginScreen = () => {
         </RowWrapper>
         <Button title="Sign in" onPress={handleSubmit} disabled={disabled} />
       </View>
+      {!!error && (
+        <Message
+          onDismiss={() => dispatch(setErrorNull())}
+          message={error}
+          variant="danger"
+        />
+      )}
     </Container>
   );
 };

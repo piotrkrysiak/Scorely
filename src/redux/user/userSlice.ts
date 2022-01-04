@@ -19,6 +19,9 @@ const userSlice = createSlice({
     setActiveUser: (state, action) => {
       state.user = action.payload;
     },
+    setErrorNull: state => {
+      state.error = '';
+    },
   },
   extraReducers: builder => {
     builder
@@ -70,7 +73,7 @@ const userSlice = createSlice({
       });
   },
 });
-export const { setActiveUser } = userSlice.actions;
+export const { setActiveUser, setErrorNull } = userSlice.actions;
 
 export const userSelector = (state: { user: UserState }) => state.user;
 
