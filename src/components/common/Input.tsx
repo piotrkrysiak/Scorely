@@ -1,5 +1,6 @@
+import { useTheme } from '@react-navigation/native';
 import React, { FC } from 'react';
-import { Platform } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { InputOutline, InputOutlineProps } from 'react-native-input-outline';
 import lightPalette from 'src/assets/styles/palette';
 
@@ -20,6 +21,7 @@ const Input: FC<InputOutlineProps> = ({
   if (Platform.OS === 'ios') {
     paddingVertical = 17;
   }
+  const { colors } = useTheme();
   return (
     <InputOutline
       value={value}
@@ -40,15 +42,19 @@ const Input: FC<InputOutlineProps> = ({
       fontColor={lightPalette.dark60}
       paddingVertical={paddingVertical}
       testID={testID}
-      style={[
-        Platform.OS === 'ios' && { height: 60 },
-        {
-          width: '91%',
-          alignSelf: 'center',
-        },
-        style,
-      ]}
+      backgroundColor={colors.border}
+      style={[Platform.OS === 'ios' && styles.ios, styles.input, style]}
     />
   );
 };
 export default Input;
+
+const styles = StyleSheet.create({
+  ios: {
+    height: 60,
+  },
+  input: {
+    width: '91%',
+    alignSelf: 'center',
+  },
+});

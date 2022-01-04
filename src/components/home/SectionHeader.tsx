@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
-import { lightPalette } from 'src/assets/styles';
 import { RowWrapper } from 'src/components/containers';
 import { HeadlineText, Icon } from 'src/components/common';
 
@@ -18,7 +17,7 @@ const SectionHeader: FC<Props> = ({ title, onPress }) => (
   >
     <RowWrapper style={styles.wrapper}>
       <HeadlineText>{title}</HeadlineText>
-      <Icon name="chevron-forward" size={22} color={lightPalette.dark} />
+      <Icon name="chevron-forward" size={22} />
     </RowWrapper>
   </Pressable>
 );

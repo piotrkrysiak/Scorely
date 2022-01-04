@@ -1,3 +1,4 @@
+import { useTheme } from '@react-navigation/native';
 import React, { FC } from 'react';
 import {
   StyleProp,
@@ -5,7 +6,6 @@ import {
   TextStyle,
   ViewStyle,
 } from 'react-native';
-import lightPalette from 'src/assets/styles/palette';
 import { REGULAR } from 'src/constants';
 
 type FontWeight = 'Regular' | 'Medium' | 'SemiBold';
@@ -21,12 +21,13 @@ const Text: FC<Props> = ({
   children,
   fontWeight = REGULAR,
   fontSize = 14,
-  color = lightPalette.dark,
+  color,
   style,
 }) => {
+  const { colors } = useTheme();
   const textStyle: StyleProp<TextStyle> = {
     fontSize,
-    color,
+    color: color ?? colors.text,
     fontFamily: `Poppins-${fontWeight}`,
   };
 

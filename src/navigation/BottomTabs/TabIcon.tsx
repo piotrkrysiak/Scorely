@@ -77,9 +77,7 @@ const TabIcon: FC<Props> = ({
             style={styles.margined}
           />
         </Animated.View>
-        <BodyText type="Help" color={lightPalette.dark}>
-          {label}
-        </BodyText>
+        <BodyText type="Help">{label}</BodyText>
       </TouchableOpacity>
     );
   }

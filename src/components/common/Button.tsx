@@ -1,3 +1,4 @@
+import { useTheme } from '@react-navigation/native';
 import React, { FC } from 'react';
 import {
   ActivityIndicator,
@@ -35,6 +36,8 @@ const Button: FC<Props> = ({
   width,
   testID,
 }) => {
+  const { colors } = useTheme();
+
   const getTextColor = () => {
     if (disabled) {
       return lightPalette.dark30;
@@ -49,7 +52,7 @@ const Button: FC<Props> = ({
     if (!disabled && !secondary) {
       return lightPalette.primary;
     }
-    return lightPalette.extraWhite;
+    return colors.border;
   };
 
   const getActiveColor = () => {

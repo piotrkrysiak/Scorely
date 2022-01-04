@@ -1,6 +1,6 @@
+import { useTheme } from '@react-navigation/native';
 import React, { FC } from 'react';
 import { StyleProp, TextStyle, ViewStyle } from 'react-native';
-import lightPalette from 'src/assets/styles/palette';
 import {
   BODY,
   HELP,
@@ -26,12 +26,7 @@ interface Props {
   style?: StyleProp<ViewStyle | TextStyle>;
 }
 
-const BodyText: FC<Props> = ({
-  children,
-  type = BODY,
-  color = lightPalette.dark,
-  style,
-}) => {
+const BodyText: FC<Props> = ({ children, type = BODY, color, style }) => {
   const getFont = () => {
     if (
       type === SMALLER_BODY ||
@@ -55,11 +50,13 @@ const BodyText: FC<Props> = ({
     return REGULAR;
   };
 
+  const { colors } = useTheme();
+
   return (
     <Text
       fontSize={getFont()}
       fontWeight={getWeight()}
-      color={color}
+      color={color ?? colors.text}
       style={style}
     >
       {children}

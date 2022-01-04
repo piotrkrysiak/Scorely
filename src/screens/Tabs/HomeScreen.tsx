@@ -75,14 +75,14 @@ const HomeScreen = () => {
           />
         )}
       />
-      <SectionHeader title="Matches" onPress={() => navigate(Route.MATCHES)} />
+      <SectionHeader title="Matches" onPress={() => navigate(Route.RESULTS)} />
       {matches.map(({ id, home, away, status }) => (
         <MatchCard
           key={id}
           host={home}
           guest={away}
           status={status}
-          onPress={() => navigate(Route.PLAYER, { id })}
+          onPress={() => navigate(Route.MATCH, { id })}
         />
       ))}
     </Container>

@@ -1,6 +1,6 @@
+import { useTheme } from '@react-navigation/native';
 import React, { FC } from 'react';
 import { StyleProp, TextStyle, ViewStyle } from 'react-native';
-import lightPalette from 'src/assets/styles/palette';
 import { H1, H2, H3, MEDIUM, SEMI_BOLD } from 'src/constants';
 import Text from './Text';
 
@@ -12,12 +12,7 @@ interface Props {
   style?: StyleProp<ViewStyle | TextStyle>;
 }
 
-const HeadlineText: FC<Props> = ({
-  children,
-  type = H2,
-  color = lightPalette.dark,
-  style,
-}) => {
+const HeadlineText: FC<Props> = ({ children, type = H2, color, style }) => {
   const getFont = () => {
     if (type === H1) {
       return 24;
@@ -33,12 +28,12 @@ const HeadlineText: FC<Props> = ({
     }
     return SEMI_BOLD;
   };
-
+  const { colors } = useTheme();
   return (
     <Text
       fontSize={getFont()}
       fontWeight={getWeight()}
-      color={color}
+      color={color ?? colors.text}
       style={style}
     >
       {children}

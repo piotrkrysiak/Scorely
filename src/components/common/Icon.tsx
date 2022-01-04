@@ -4,6 +4,7 @@ import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIc
 import Ionicon from 'react-native-vector-icons/Ionicons';
 import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 import { IONICONS, MATERIAL, MATERIAL_COMMUNITY } from 'src/constants/icons';
+import { useTheme } from '@react-navigation/native';
 
 export type IconTypes = 'MATERIAL' | 'MATERIAL_COMMUNITY' | 'IONICONS';
 
@@ -27,11 +28,13 @@ interface Props {
   style?: StyleProp<ViewStyle | TextStyle>;
 }
 
-const Icon: React.FC<Props> = ({ type = IONICONS, ...props }) => {
+// eslint-disable-next-line @typescript-eslint/no-shadow
+const Icon: React.FC<Props> = ({ type = IONICONS, color, ...props }) => {
   const FontIcon = getIconFont(type);
+  const { colors } = useTheme();
 
   // eslint-disable-next-line react/jsx-props-no-spreading
-  return <FontIcon {...props} />;
+  return <FontIcon {...props} color={color ?? colors.text} />;
 };
 
 export default Icon;

@@ -4,6 +4,7 @@ import { globalStyles, lightPalette } from 'src/assets/styles';
 import { SMALLER_BODY_SEMI } from 'src/constants';
 import { BodyText } from 'src/components/common';
 import { RowWrapper } from 'src/components/containers';
+import { useTheme } from '@react-navigation/native';
 
 interface Props {
   host: {
@@ -20,99 +21,101 @@ interface Props {
   onPress: () => void;
 }
 
-const MatchCard: FC<Props> = ({ host, guest, status, onPress }) => (
-  <Pressable
-    onPress={onPress}
-    style={({ pressed }) => ({
-      opacity: pressed ? 0.5 : 1,
-    })}
-  >
-    <View style={styles.wrapper}>
-      <RowWrapper style={styles.row}>
-        <RowWrapper style={globalStyles.centered}>
-          <View style={[styles.circle, styles.moveCircle]}>
-            <Image
-              source={{
-                uri: host.logo,
-              }}
-              resizeMode="contain"
-              style={styles.image}
-            />
-          </View>
-          <View style={styles.circle}>
-            <Image
-              source={{
-                uri: guest.logo,
-              }}
-              resizeMode="contain"
-              style={styles.image}
-            />
-          </View>
-        </RowWrapper>
-        <View style={[globalStyles.centered, { flex: 1 }]}>
-          <RowWrapper
-            style={{
-              width: '100%',
-              alignItems: 'flex-start',
-              justifyContent: 'center',
-            }}
-          >
-            <View
-              style={{
-                width: '45%',
-                justifyContent: 'center',
-              }}
-            >
-              <BodyText
-                style={{ textAlign: 'center', alignSelf: 'flex-end' }}
-                type={SMALLER_BODY_SEMI}
-              >
-                {host.name}
-              </BodyText>
+const MatchCard: FC<Props> = ({ host, guest, status, onPress }) => {
+  const { colors } = useTheme();
+  return (
+    <Pressable
+      onPress={onPress}
+      style={({ pressed }) => ({
+        opacity: pressed ? 0.5 : 1,
+      })}
+    >
+      <View style={[styles.wrapper, { backgroundColor: colors.border }]}>
+        <RowWrapper style={styles.row}>
+          <RowWrapper style={globalStyles.centered}>
+            <View style={[styles.circle, styles.moveCircle]}>
+              <Image
+                source={{
+                  uri: host.logo,
+                }}
+                resizeMode="contain"
+                style={styles.image}
+              />
             </View>
-            <BodyText
-              type={SMALLER_BODY_SEMI}
-              style={{ marginHorizontal: 4, textAlign: 'center' }}
-            >
-              -
-            </BodyText>
-            <View
-              style={{
-                width: '45%',
-                justifyContent: 'center',
-              }}
-            >
-              <BodyText
-                style={{ textAlign: 'center', alignSelf: 'flex-start' }}
-                type={SMALLER_BODY_SEMI}
-              >
-                {guest.name}
-              </BodyText>
+            <View style={styles.circle}>
+              <Image
+                source={{
+                  uri: guest.logo,
+                }}
+                resizeMode="contain"
+                style={styles.image}
+              />
             </View>
           </RowWrapper>
-          <BodyText type={SMALLER_BODY_SEMI}>
-            {host.goals} - {guest.goals}
-          </BodyText>
-        </View>
-        <View
-          style={[
-            styles.status,
-            status === 'FT' && styles.ended,
-            status === 'PST' && styles.pst,
-          ]}
-        >
-          <BodyText
-            type={SMALLER_BODY_SEMI}
-            color={status === 'FT' ? lightPalette.white : undefined}
+          <View style={[globalStyles.centered, { flex: 1 }]}>
+            <RowWrapper
+              style={{
+                width: '100%',
+                alignItems: 'flex-start',
+                justifyContent: 'center',
+              }}
+            >
+              <View
+                style={{
+                  width: '45%',
+                  justifyContent: 'center',
+                }}
+              >
+                <BodyText
+                  style={{ textAlign: 'center', alignSelf: 'flex-end' }}
+                  type={SMALLER_BODY_SEMI}
+                >
+                  {host.name}
+                </BodyText>
+              </View>
+              <BodyText
+                type={SMALLER_BODY_SEMI}
+                style={{ marginHorizontal: 4, textAlign: 'center' }}
+              >
+                -
+              </BodyText>
+              <View
+                style={{
+                  width: '45%',
+                  justifyContent: 'center',
+                }}
+              >
+                <BodyText
+                  style={{ textAlign: 'center', alignSelf: 'flex-start' }}
+                  type={SMALLER_BODY_SEMI}
+                >
+                  {guest.name}
+                </BodyText>
+              </View>
+            </RowWrapper>
+            <BodyText type={SMALLER_BODY_SEMI}>
+              {host.goals} - {guest.goals}
+            </BodyText>
+          </View>
+          <View
+            style={[
+              styles.status,
+              status === 'FT' && styles.ended,
+              status === 'PST' && styles.pst,
+            ]}
           >
-            {status}
-          </BodyText>
-        </View>
-      </RowWrapper>
-    </View>
-  </Pressable>
-);
-
+            <BodyText
+              type={SMALLER_BODY_SEMI}
+              color={status === 'FT' ? lightPalette.white : undefined}
+            >
+              {status}
+            </BodyText>
+          </View>
+        </RowWrapper>
+      </View>
+    </Pressable>
+  );
+};
 export default MatchCard;
 
 const styles = StyleSheet.create({
@@ -120,7 +123,6 @@ const styles = StyleSheet.create({
     width: '95%',
     height: 80,
     borderRadius: 16,
-    backgroundColor: lightPalette.white,
     alignSelf: 'center',
     justifyContent: 'space-between',
     marginBottom: 10,

@@ -9,6 +9,7 @@ const lightPalette = {
   active: '#2113E8',
   activeSecondary: '#E2E3E4',
   danger: '#FF0000',
+  dark85: '#262626',
 };
 
 export const tableColors = {

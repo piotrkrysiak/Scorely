@@ -16,6 +16,7 @@ import useBackIcon from 'src/hooks/useBackIcon';
 import { setData } from 'src/helpers/setData';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useTheme } from '@react-navigation/native';
 
 const CreatePost = () => {
   const backIcon = useBackIcon();
@@ -54,6 +55,7 @@ const CreatePost = () => {
     onSubmit,
   });
 
+  const { colors } = useTheme();
   return (
     <Container scroll>
       <HeaderBar title="Post" leftIcon={backIcon} color={lightPalette.dark} />
@@ -75,7 +77,11 @@ const CreatePost = () => {
             errors.description ? lightPalette.danger : lightPalette.dark60
           }
           multiline
-          style={[styles.input, errors.description ? styles.error : null]}
+          style={[
+            styles.input,
+            { backgroundColor: colors.border },
+            errors.description ? styles.error : null,
+          ]}
           onChangeText={handleChange('description')}
           value={values.description}
           placeholder="Type here your post text.."
@@ -109,7 +115,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 14,
     height: 200,
-    backgroundColor: lightPalette.white,
     borderColor: lightPalette.dark60,
     borderRadius: 16,
     fontFamily: 'Poppins-Medium',

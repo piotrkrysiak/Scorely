@@ -38,7 +38,7 @@ export type RootStackParamList = {
   Register: undefined;
   Home: undefined;
   Tables: undefined;
-  Result: undefined;
+  Results: undefined;
   Profile: undefined;
   HomeTab: undefined;
   Auth: undefined;
