@@ -7,7 +7,7 @@ import SectionHeader from 'src/components/home/SectionHeader';
 import useBackIcon from 'src/hooks/useBackIcon';
 import useDebounce from 'src/hooks/useDebounce';
 import { Picker } from '@react-native-picker/picker';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useTheme } from '@react-navigation/native';
 import { FlatList, View } from 'react-native';
 import { HeaderBar, Input, Text } from 'src/components/common';
 import { filter, HomeScreenProp, Route } from 'src/constants';
@@ -25,6 +25,8 @@ const PlayersScreen = () => {
     setModalVisible(prev => !prev);
     setSearchTerm('');
   };
+
+  const { colors } = useTheme();
 
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
   const {
@@ -85,12 +87,29 @@ const PlayersScreen = () => {
       <Modal isModalVisible={isModalVisible} toggleModal={toggleModal}>
         <Picker
           selectedValue={selectedFilter}
+          style={{ color: 'red' }}
           onValueChange={itemValue => setSelectedFilter(itemValue)}
         >
-          <Picker.Item label="Top Scorers" value="topscorers" />
-          <Picker.Item label="Top Assists" value="topassists" />
-          <Picker.Item label="Top Yellow Cards" value="topyellowcards" />
-          <Picker.Item label="Top Red Cards" value="topredcards" />
+          <Picker.Item
+            color={colors.text}
+            label="Top Scorers"
+            value="topscorers"
+          />
+          <Picker.Item
+            color={colors.text}
+            label="Top Assists"
+            value="topassists"
+          />
+          <Picker.Item
+            color={colors.text}
+            label="Top Yellow Cards"
+            value="topyellowcards"
+          />
+          <Picker.Item
+            color={colors.text}
+            label="Top Red Cards"
+            value="topredcards"
+          />
         </Picker>
       </Modal>
       <FlatList

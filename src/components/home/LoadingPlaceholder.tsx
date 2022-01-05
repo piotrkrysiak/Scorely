@@ -1,26 +1,34 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, useColorScheme, View } from 'react-native';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import { globalStyles, lightPalette } from 'src/assets/styles';
 
-const LoadingPlaceholder = () => (
-  <SkeletonPlaceholder
-    highlightColor={lightPalette.extraWhite}
-    backgroundColor={lightPalette.dark30}
-  >
-    <View style={styles.header} />
-    <View style={styles.bannerCard} />
-    <View style={styles.header} />
-    <View style={globalStyles.row}>
-      <View style={styles.matchCard} />
-      <View style={styles.matchCard} />
-    </View>
-    <View style={styles.header} />
-    <View style={styles.playerCard} />
-    <View style={styles.playerCard} />
-    <View style={styles.playerCard} />
-  </SkeletonPlaceholder>
-);
+const LoadingPlaceholder = () => {
+  const scheme = useColorScheme();
+
+  return (
+    <SkeletonPlaceholder
+      highlightColor={
+        scheme === 'dark' ? lightPalette.dark60 : lightPalette.extraWhite
+      }
+      backgroundColor={
+        scheme === 'dark' ? lightPalette.dark85 : lightPalette.dark30
+      }
+    >
+      <View style={styles.header} />
+      <View style={styles.bannerCard} />
+      <View style={styles.header} />
+      <View style={globalStyles.row}>
+        <View style={styles.matchCard} />
+        <View style={styles.matchCard} />
+      </View>
+      <View style={styles.header} />
+      <View style={styles.playerCard} />
+      <View style={styles.playerCard} />
+      <View style={styles.playerCard} />
+    </SkeletonPlaceholder>
+  );
+};
 
 export default LoadingPlaceholder;
 

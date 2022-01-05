@@ -1,3 +1,4 @@
+import { useTheme } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import Modal from 'react-native-modal';
@@ -12,16 +13,22 @@ const CustomModal: React.FC<Props> = ({
   isModalVisible,
   toggleModal,
   children,
-}) => (
-  <Modal
-    isVisible={isModalVisible}
-    style={styles.modal}
-    onBackButtonPress={toggleModal}
-    onBackdropPress={toggleModal}
-  >
-    <View style={styles.box}>{children}</View>
-  </Modal>
-);
+}) => {
+  const { colors } = useTheme();
+
+  return (
+    <Modal
+      isVisible={isModalVisible}
+      style={styles.modal}
+      onBackButtonPress={toggleModal}
+      onBackdropPress={toggleModal}
+    >
+      <View style={[styles.box, { backgroundColor: colors.border }]}>
+        {children}
+      </View>
+    </Modal>
+  );
+};
 
 export default CustomModal;
 
@@ -33,7 +40,6 @@ const styles = StyleSheet.create({
   box: {
     position: 'absolute',
     bottom: 0,
-    backgroundColor: lightPalette.extraWhite,
     height: 150,
     width: '100%',
     borderTopStartRadius: 20,
