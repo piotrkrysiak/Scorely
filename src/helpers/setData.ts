@@ -12,15 +12,12 @@ export const setData = async (post: Post, name: string) => {
   const id = uuid();
   const db = firestore();
   const userId = auth().currentUser?.uid;
+  const displayName = auth().currentUser?.displayName;
 
   if (!userId) {
     return null;
   }
-  const docRef = db
-    .collection('users')
-    .doc(userId)
-    .collection(name)
-    .doc(id.toString());
+  const docRef = db.collection(name).doc(id.toString());
 
   const doc = await docRef.get();
 
@@ -29,6 +26,7 @@ export const setData = async (post: Post, name: string) => {
       title,
       description,
       createdAt,
+      user: displayName,
     });
   }
 };

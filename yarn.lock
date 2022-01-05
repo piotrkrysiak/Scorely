@@ -1415,6 +1415,11 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
+"@skillnation/react-native-firebase-hooks@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@skillnation/react-native-firebase-hooks/-/react-native-firebase-hooks-0.4.0.tgz#eb8a99b568108f295a59f5ef84637010dfe5e9cc"
+  integrity sha512-QPyiuzvpNuJHoHJtAZOVweEAoX5XB9iWlV0ZyN6JyDrlqGrkFUuMq1t9mjJgv5aW1wAc8OvroUi3lQCa0ery+g==
+
 "@testing-library/jest-native@^4.0.2":
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/@testing-library/jest-native/-/jest-native-4.0.4.tgz#25e2046896118f887683202a6e5fd8a4056131cd"
