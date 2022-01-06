@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logOutUser } from 'src/redux/user/userActions';
 import Header from 'src/components/common/AnimatedHeader/Header';
 import useInitialUserCheck from 'src/hooks/useInitialUserCheck';
+import cover from 'src/assets/images/profileCover.jpg';
 
 const ProfileScreen = () => {
   const { navigate } = useNavigation<HomeScreenProp>();
@@ -24,16 +25,12 @@ const ProfileScreen = () => {
 
   useInitialUserCheck();
 
-  // mocked and background just for now
-  const background =
-    'https://www.chelseafcbrasil.com/wp-content/uploads/2018/08/premier-league-trophy.jpg';
-
   return (
     <View style={styles.container}>
       <Header
         name={userName}
         photo={photoURL ?? DEFAULT_AVATAR}
-        background={background}
+        background={cover}
       >
         <Button onPress={handleLogout} title="Logout" />
         <SectionHeader title="Auth" onPress={() => navigate(Route.AUTH)} />

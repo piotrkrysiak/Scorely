@@ -1,6 +1,6 @@
 import { useTheme } from '@react-navigation/native';
 import React, { FC } from 'react';
-import { View } from 'react-native';
+import { ImageURISource, View } from 'react-native';
 import { AppleStyle } from 'react-native-scrollable-navigation-bar';
 import { lightPalette } from 'src/assets/styles';
 import HeaderBackground from './HeaderBackground';
@@ -9,7 +9,7 @@ import NavigationBar from './NavigationBar';
 interface Props {
   name: string;
   photo: string;
-  background: string;
+  background: ImageURISource;
 }
 
 const Header: FC<Props> = ({ children, name, photo, background }) => {

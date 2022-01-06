@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Image, SafeAreaView, StyleSheet } from 'react-native';
+import { Image, ImageURISource, SafeAreaView, StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { globalStyles, lightPalette } from 'src/assets/styles';
 import { RowWrapper } from 'src/components/containers';
@@ -10,7 +10,7 @@ import Text from '../Text';
 interface Props {
   name: string;
   photo: string;
-  background: string;
+  background: ImageURISource;
 }
 
 const HeaderBackground: FC<Props> = ({ name, photo, background }) => (
@@ -26,12 +26,7 @@ const HeaderBackground: FC<Props> = ({ name, photo, background }) => (
         {name}
       </Text>
     </RowWrapper>
-    <Image
-      source={{
-        uri: background,
-      }}
-      style={styles.background}
-    />
+    <Image source={background} style={styles.background} />
     <LinearGradient
       colors={['#6e6e6e13', '#1b181848', lightPalette.dark]}
       style={styles.linearGradient}
