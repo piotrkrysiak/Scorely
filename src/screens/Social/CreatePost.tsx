@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, View, TextInput } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, TextInput, SafeAreaView } from 'react-native';
 import { globalStyles, lightPalette } from 'src/assets/styles';
 import {
   BodyText,
@@ -9,17 +9,20 @@ import {
   Input,
   Text,
 } from 'src/components/common';
-import SvgPost from 'src/components/svg/Post';
 import { HELP } from 'src/constants';
-import Container from 'src/components/containers/Container';
-import useBackIcon from 'src/hooks/useBackIcon';
 import { setData } from 'src/helpers/setData';
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
 import { useTheme } from '@react-navigation/native';
+import { pickImage } from 'src/helpers/imagePicker';
+import * as Yup from 'yup';
+import SvgPost from 'src/components/svg/Post';
+import Container from 'src/components/containers/Container';
+import useBackIcon from 'src/hooks/useBackIcon';
+import AddImage from './AddImage';
 
 const CreatePost = () => {
   const backIcon = useBackIcon();
+  const [image, setImage] = useState('');
 
   const validationSchema = Yup.object().shape({
     title: Yup.string()
@@ -34,6 +37,13 @@ const CreatePost = () => {
     title: string;
     description: string;
   }
+
+  const handleImageChange = async () => {
+    const newRes = await pickImage(false, 800, 450);
+    if (newRes) {
+      setImage(newRes);
+    }
+  };
 
   const onSubmit = () => {
     const post = {
@@ -57,54 +67,64 @@ const CreatePost = () => {
 
   const { colors } = useTheme();
   return (
-    <Container scroll>
-      <HeaderBar title="Post" leftIcon={backIcon} color={lightPalette.dark} />
-      <SvgPost width="100%" height={138} />
-      <View style={[globalStyles.padded, globalStyles.centered]}>
-        <HeadlineText color={lightPalette.primary}>
-          Create your post ✍️
-        </HeadlineText>
-      </View>
-      <View style={{ flex: 1, width: '100%' }}>
-        <Input
-          placeholder="Title"
-          onChangeText={handleChange('title')}
-          value={values.title}
-          error={errors.title}
+    <>
+      <SafeAreaView>
+        <HeaderBar
+          title="Post"
+          leftIcon={backIcon}
+          color={lightPalette.primary}
         />
-        <TextInput
-          placeholderTextColor={
-            errors.description ? lightPalette.danger : lightPalette.dark60
-          }
-          multiline
-          style={[
-            styles.input,
-            { backgroundColor: colors.border },
-            errors.description ? styles.error : null,
-          ]}
-          onChangeText={handleChange('description')}
-          value={values.description}
-          placeholder="Type here your post text.."
+      </SafeAreaView>
+      <Container scroll>
+        <SvgPost width="100%" height={138} />
+        <View style={[globalStyles.padded, globalStyles.centered]}>
+          <HeadlineText color={lightPalette.primary}>
+            Create your post ✍️
+          </HeadlineText>
+        </View>
+        <View style={{ flex: 1, width: '100%' }}>
+          <Input
+            placeholder="Title"
+            onChangeText={handleChange('title')}
+            value={values.title}
+            error={errors.title}
+          />
+          <TextInput
+            placeholderTextColor={
+              errors.description ? lightPalette.danger : lightPalette.dark60
+            }
+            multiline
+            style={[
+              styles.input,
+              { backgroundColor: colors.border },
+              errors.description ? styles.error : null,
+            ]}
+            onChangeText={handleChange('description')}
+            value={values.description}
+            placeholder="Type here your post text.."
+          />
+          {!!errors.description && (
+            <Text
+              fontSize={12}
+              color={lightPalette.danger}
+              style={styles.errorText}
+            >
+              {errors.description}
+            </Text>
+          )}
+          <AddImage image={image} onPress={handleImageChange} />
+        </View>
+        <Button
+          title="Add Post"
+          onPress={handleSubmit}
+          style={{ marginTop: 10 }}
         />
-      </View>
-      {errors.description && (
-        <Text
-          fontSize={12}
-          color={lightPalette.danger}
-          style={styles.errorText}
-        >
-          {errors.description}
-        </Text>
-      )}
-      <Button
-        title="Add Post"
-        onPress={handleSubmit}
-        style={{ marginTop: 10 }}
-      />
-      <BodyText type={HELP} style={{ alignSelf: 'center', marginTop: 10 }}>
-        Adding a post you are accepting the regulation
-      </BodyText>
-    </Container>
+        <BodyText type={HELP} style={{ alignSelf: 'center', marginTop: 10 }}>
+          Adding a post you are accepting the Terms of Service
+        </BodyText>
+        <View style={{ marginBottom: 150 }} />
+      </Container>
+    </>
   );
 };
 
@@ -120,7 +140,8 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Medium',
     fontSize: 16,
     color: lightPalette.dark60,
-    marginHorizontal: 20,
+    width: '91%',
+    alignSelf: 'center',
     marginTop: 30,
   },
   error: {

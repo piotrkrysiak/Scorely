@@ -25,7 +25,7 @@ export const setData = async (post: Post, name: string) => {
     docRef.set({
       title,
       description,
-      createdAt,
+      createdAt: createdAt.toISOString(),
       user: displayName,
     });
   }

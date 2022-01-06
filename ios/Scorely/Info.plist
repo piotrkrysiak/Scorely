@@ -35,6 +35,10 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Scorely app requires your photo gallery access.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Scorely app requires your camera access to take photo.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string/>
 	<key>UILaunchStoryboardName</key>

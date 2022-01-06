@@ -2,7 +2,6 @@ import { useTheme } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import Modal from 'react-native-modal';
-import { lightPalette } from 'src/assets/styles';
 
 interface Props {
   isModalVisible: boolean;
