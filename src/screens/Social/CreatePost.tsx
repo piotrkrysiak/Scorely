@@ -9,20 +9,26 @@ import {
   Input,
   Text,
 } from 'src/components/common';
-import { HELP } from 'src/constants';
+import 'react-native-get-random-values';
+import { HELP, HomeScreenProp, Route } from 'src/constants';
 import { setData } from 'src/helpers/setData';
 import { useFormik } from 'formik';
-import { useTheme } from '@react-navigation/native';
+import { useNavigation, useTheme } from '@react-navigation/native';
 import { pickImage } from 'src/helpers/imagePicker';
 import * as Yup from 'yup';
 import SvgPost from 'src/components/svg/Post';
 import Container from 'src/components/containers/Container';
 import useBackIcon from 'src/hooks/useBackIcon';
+import { putImage } from 'src/helpers/putImage';
+import { v4 as uuid } from 'uuid';
+import { fetchImage } from 'src/helpers/fetchImage';
 import AddImage from './AddImage';
 
 const CreatePost = () => {
   const backIcon = useBackIcon();
   const [image, setImage] = useState('');
+  const { navigate } = useNavigation<HomeScreenProp>();
+  const id = uuid();
 
   const validationSchema = Yup.object().shape({
     title: Yup.string()
@@ -39,19 +45,26 @@ const CreatePost = () => {
   }
 
   const handleImageChange = async () => {
-    const newRes = await pickImage(false, 800, 450);
+    const newRes = await pickImage(false, 800, 800);
     if (newRes) {
       setImage(newRes);
     }
   };
 
-  const onSubmit = () => {
-    const post = {
-      title: values.title,
-      description: values.description,
-      createdAt: new Date(),
-    };
-    setData(post, 'posts');
+  const onSubmit = async () => {
+    await putImage(image, 'posts', id);
+    const url = await fetchImage('posts', id);
+    if (url) {
+      const post = {
+        id,
+        title: values.title,
+        description: values.description,
+        photoURL: url,
+        createdAt: new Date(),
+      };
+      await setData(post, 'posts');
+      navigate(Route.HOME);
+    }
   };
 
   const { handleChange, handleSubmit, values, errors } = useFormik<Post>({

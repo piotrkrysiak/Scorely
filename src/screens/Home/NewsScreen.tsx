@@ -20,7 +20,9 @@ const NewsScreen = () => {
               <NewsBanner
                 title={doc.data().title.toString()}
                 data={doc.data().createdAt.toString()}
-                image={0}
+                image={{
+                  uri: doc.data().photoURL.toString() || '',
+                }}
                 icon={0}
                 onPress={() => {}}
               />

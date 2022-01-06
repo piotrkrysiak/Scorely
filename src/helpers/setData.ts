@@ -8,16 +8,16 @@ import { Post } from 'src/ts/interfaces/post';
 
 // that will be refactored, is it for the testing purposes just for now
 export const setData = async (post: Post, name: string) => {
-  const { title, description, createdAt } = post;
-  const id = uuid();
+  const { title, description, createdAt, photoURL } = post;
   const db = firestore();
   const userId = auth().currentUser?.uid;
+  const id = uuid();
   const displayName = auth().currentUser?.displayName;
 
   if (!userId) {
     return null;
   }
-  const docRef = db.collection(name).doc(id.toString());
+  const docRef = db.collection(name).doc(id);
 
   const doc = await docRef.get();
 
@@ -27,6 +27,7 @@ export const setData = async (post: Post, name: string) => {
       description,
       createdAt: createdAt.toISOString(),
       user: displayName,
+      photoURL,
     });
   }
 };

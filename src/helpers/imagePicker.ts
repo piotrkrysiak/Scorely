@@ -30,7 +30,7 @@ export const pickImage = async (
       return res.path;
     }
   } catch (error) {
-    return null;
+    console.log(error);
   }
   return null;
 };
