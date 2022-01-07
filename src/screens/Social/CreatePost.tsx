@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import * as Yup from 'yup';
 import { StyleSheet, View, TextInput, SafeAreaView } from 'react-native';
 import { globalStyles, lightPalette } from 'src/assets/styles';
 import {
@@ -7,21 +8,21 @@ import {
   HeaderBar,
   HeadlineText,
   Input,
+  Message,
   Text,
 } from 'src/components/common';
 import 'react-native-get-random-values';
 import { HELP, HomeScreenProp, Route } from 'src/constants';
-import { setData } from 'src/helpers/setData';
 import { useFormik } from 'formik';
 import { useNavigation, useTheme } from '@react-navigation/native';
 import { pickImage } from 'src/helpers/imagePicker';
-import * as Yup from 'yup';
+import { v4 as uuid } from 'uuid';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPost } from 'src/redux/posts/PostActions';
+import { postSelector, setErrorNull } from 'src/redux/posts/PostSlice';
 import SvgPost from 'src/components/svg/Post';
 import Container from 'src/components/containers/Container';
 import useBackIcon from 'src/hooks/useBackIcon';
-import { putImage } from 'src/helpers/putImage';
-import { v4 as uuid } from 'uuid';
-import { fetchImage } from 'src/helpers/fetchImage';
 import AddImage from './AddImage';
 
 const CreatePost = () => {
@@ -29,6 +30,7 @@ const CreatePost = () => {
   const [image, setImage] = useState('');
   const { navigate } = useNavigation<HomeScreenProp>();
   const id = uuid();
+  const { loading, error } = useSelector(postSelector);
 
   const validationSchema = Yup.object().shape({
     title: Yup.string()
@@ -51,20 +53,18 @@ const CreatePost = () => {
     }
   };
 
+  const dispatch = useDispatch();
+
   const onSubmit = async () => {
-    await putImage(image, 'posts', id);
-    const url = await fetchImage('posts', id);
-    if (url) {
-      const post = {
-        id,
-        title: values.title,
-        description: values.description,
-        photoURL: url,
-        createdAt: new Date(),
-      };
-      await setData(post, 'posts');
-      navigate(Route.HOME);
-    }
+    const post = {
+      id,
+      title: values.title,
+      description: values.description,
+      photoURL: image,
+      createdAt: new Date(),
+    };
+    await dispatch(setPost(post));
+    navigate(Route.NEWS);
   };
 
   const { handleChange, handleSubmit, values, errors } = useFormik<Post>({
@@ -131,11 +131,19 @@ const CreatePost = () => {
           title="Add Post"
           onPress={handleSubmit}
           style={{ marginTop: 10 }}
+          loading={loading}
         />
         <BodyText type={HELP} style={{ alignSelf: 'center', marginTop: 10 }}>
           Adding a post you are accepting the Terms of Service
         </BodyText>
         <View style={{ marginBottom: 150 }} />
+        {!!error && (
+          <Message
+            message={error}
+            variant="danger"
+            onDismiss={() => dispatch(setErrorNull())}
+          />
+        )}
       </Container>
     </>
   );

@@ -30,7 +30,7 @@ type MatchScreenProps = {
   id: number;
 };
 type PostScreenProps = {
-  id: number;
+  id: number | string;
 };
 
 export type RootStackParamList = {

@@ -17,7 +17,13 @@ export const setData = async (post: Post, name: string) => {
   if (!userId) {
     return null;
   }
+
   const docRef = db.collection(name).doc(id);
+  const docRefUser = db
+    .collection('users')
+    .doc(userId)
+    .collection(name)
+    .doc(id);
 
   const doc = await docRef.get();
 
@@ -27,6 +33,12 @@ export const setData = async (post: Post, name: string) => {
       description,
       createdAt: createdAt.toISOString(),
       user: displayName,
+      photoURL,
+    });
+    docRefUser.set({
+      title,
+      description,
+      createdAt: createdAt.toISOString(),
       photoURL,
     });
   }

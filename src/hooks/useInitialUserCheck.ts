@@ -19,6 +19,7 @@ export default function useInitialUserCheck() {
               email: userFirebase.email,
               userName: userFirebase.displayName,
               photoURL: userFirebase.photoURL,
+              id: userFirebase.uid,
             }),
           );
         }

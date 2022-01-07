@@ -7,30 +7,23 @@ export const pickImage = async (
   height: number = 300,
   isAvatar: boolean = false,
 ) => {
-  try {
-    if (camera) {
-      const res = await ImagePicker.openCamera({
-        useFrontCamera: isAvatar,
-        cropperCircleOverlay: true,
-        multiple: false,
-        width,
-        height,
-        cropping: true,
-      });
-      return res.path;
-    }
-    if (!camera) {
-      const res = await ImagePicker.openPicker({
-        cropperCircleOverlay: isAvatar,
-        multiple: false,
-        width,
-        height,
-        cropping: true,
-      });
-      return res.path;
-    }
-  } catch (error) {
-    console.log(error);
+  if (camera) {
+    const res = await ImagePicker.openCamera({
+      useFrontCamera: isAvatar,
+      cropperCircleOverlay: true,
+      multiple: false,
+      width,
+      height,
+      cropping: true,
+    });
+    return res.path;
   }
-  return null;
+  const res = await ImagePicker.openPicker({
+    cropperCircleOverlay: isAvatar,
+    multiple: false,
+    width,
+    height,
+    cropping: true,
+  });
+  return res.path;
 };
