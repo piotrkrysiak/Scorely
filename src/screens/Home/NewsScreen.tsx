@@ -1,5 +1,4 @@
 import React from 'react';
-import NewsBanner from 'src/components/home/NewsBanner';
 import Container from 'src/components/containers/Container';
 import useBackIcon from 'src/hooks/useBackIcon';
 import firestore from '@react-native-firebase/firestore';
@@ -10,6 +9,8 @@ import { HeaderBar } from 'src/components/common';
 import { useNavigation } from '@react-navigation/native';
 import { HomeScreenProp, Route } from 'src/constants';
 import { errorConverter } from 'src/helpers/errorConverter';
+import News from 'src/components/common/News';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const NewsScreen = () => {
   const [value, loading, error] = useCollection(
@@ -21,6 +22,7 @@ const NewsScreen = () => {
   if (error) {
     return <ErrorContainer error={errorConverter(error)} refresh={goBack} />;
   }
+  const { bottom, top } = useSafeAreaInsets();
 
   const { navigate } = useNavigation<HomeScreenProp>();
   const leftIcon = useBackIcon();
@@ -32,17 +34,15 @@ const NewsScreen = () => {
         {!!value &&
           value.docs.map(doc => (
             <View key={doc.id} style={{ marginBottom: 10 }}>
-              <NewsBanner
+              <News
                 title={doc.data().title.toString()}
                 data={doc.data().createdAt.toString()}
-                image={{
-                  uri: doc.data().photoURL.toString() || '',
-                }}
-                icon={0}
+                image={doc.data().photoURL.toString() || ''}
                 onPress={() => navigate(Route.POST, { id: doc.id })}
               />
             </View>
           ))}
+        <View style={{ marginBottom: bottom + top }} />
       </Container>
     </Container>
   );

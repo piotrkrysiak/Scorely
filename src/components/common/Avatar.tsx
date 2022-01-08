@@ -4,14 +4,15 @@ import { lightPalette } from 'src/assets/styles';
 import { MATERIAL } from 'src/constants';
 import Icon from './Icon';
 
+type size = 'small' | 'medium';
 interface Props {
   source: string;
-  isSmall?: boolean;
+  size?: size;
   editable?: boolean;
   onPress?: () => void;
 }
 
-const Avatar: React.FC<Props> = ({ isSmall, editable, source, onPress }) => (
+const Avatar: React.FC<Props> = ({ size, editable, source, onPress }) => (
   <Pressable
     onPress={onPress}
     style={({ pressed }) =>
@@ -24,7 +25,11 @@ const Avatar: React.FC<Props> = ({ isSmall, editable, source, onPress }) => (
       source={{
         uri: source,
       }}
-      style={[styles.avatar, isSmall && styles.small]}
+      style={[
+        styles.avatar,
+        size === 'medium' && styles.medium,
+        size === 'small' && styles.small,
+      ]}
     />
     {!!editable && (
       <TouchableOpacity onPress={onPress} style={styles.icon}>
@@ -42,10 +47,14 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     resizeMode: 'cover',
   },
-  small: {
+  medium: {
     width: 50,
     height: 50,
     marginRight: 10,
+  },
+  small: {
+    width: 25,
+    height: 25,
   },
   icon: {
     position: 'absolute',

@@ -14,7 +14,7 @@ interface Props {
 const NavigationBar: FC<Props> = ({ name, photo }) => (
   <View style={styles.container}>
     <RowWrapper style={[globalStyles.centered, { marginBottom: 10 }]}>
-      <Avatar source={photo} isSmall />
+      <Avatar source={photo} size="medium" />
       <BodyText type={SMALLER_BODY_SEMI} color={lightPalette.white}>
         {name}
       </BodyText>

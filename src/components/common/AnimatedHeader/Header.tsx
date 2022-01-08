@@ -28,7 +28,9 @@ const Header: FC<Props> = ({ children, name, photo, background }) => {
       navigationBarBorderColor="black"
       style={{ backgroundColor: colors.background }}
     >
-      <View style={{ backgroundColor: 'black', flex: 1 }}>{children}</View>
+      <View style={{ flex: 1, backgroundColor: colors.background }}>
+        {children}
+      </View>
     </AppleStyle>
   );
 };

@@ -12,9 +12,9 @@ import useInitialUserCheck from 'src/hooks/useInitialUserCheck';
 import cover from 'src/assets/images/profileCover.jpg';
 import { useCollection } from '@skillnation/react-native-firebase-hooks/firestore';
 import firestore from '@react-native-firebase/firestore';
-import NewsBanner from 'src/components/home/NewsBanner';
 import ErrorContainer from 'src/components/containers/ErrorContainer';
 import { errorConverter } from 'src/helpers/errorConverter';
+import News from 'src/components/common/News';
 
 const ProfileScreen = () => {
   const {
@@ -46,23 +46,20 @@ const ProfileScreen = () => {
         photo={photoURL ?? DEFAULT_AVATAR}
         background={cover}
       >
-        <Button onPress={handleLogout} title="Logout" />
         <SectionHeader title="Auth" onPress={() => navigate(Route.AUTH)} />
         {!!loading && <ActivityIndicator />}
         {!!value &&
           value.docs.map(doc => (
             <View key={doc.id} style={{ marginBottom: 10 }}>
-              <NewsBanner
+              <News
                 title={doc.data().title.toString()}
                 data={doc.data().createdAt.toString()}
-                image={{
-                  uri: doc.data().photoURL.toString() || '',
-                }}
-                icon={0}
+                image={doc.data().photoURL.toString()}
                 onPress={() => {}}
               />
             </View>
           ))}
+        <Button onPress={handleLogout} title="Logout" />
       </Header>
     </View>
   );

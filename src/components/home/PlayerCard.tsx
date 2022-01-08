@@ -46,7 +46,7 @@ const PlayerCard: FC<Props> = ({
         ]}
       >
         <RowWrapper style={[styles.row, { borderBottomColor: colors.border }]}>
-          <Avatar source={photo} isSmall />
+          <Avatar source={photo} size="medium" />
           <View>
             <BodyText type={SMALLER_BODY_SEMI} color={lightPalette.primary}>
               {name}
