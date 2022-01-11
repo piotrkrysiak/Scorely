@@ -48,7 +48,11 @@ const PlayerCard: FC<Props> = ({
         <RowWrapper style={[styles.row, { borderBottomColor: colors.border }]}>
           <Avatar source={photo} size="medium" />
           <View>
-            <BodyText type={SMALLER_BODY_SEMI} color={lightPalette.primary}>
+            <BodyText
+              type={SMALLER_BODY_SEMI}
+              color={lightPalette.primary}
+              style={{ maxWidth: 170 }}
+            >
               {name}
             </BodyText>
             <BodyText type={HELP} color={lightPalette.secondary}>

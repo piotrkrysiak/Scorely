@@ -82,7 +82,6 @@ export default PlayerHeader;
 const styles = StyleSheet.create({
   wrapper: {
     height: 260,
-    backgroundColor: lightPalette.white,
   },
   image: {
     width: 25,

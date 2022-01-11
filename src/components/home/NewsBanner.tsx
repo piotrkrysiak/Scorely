@@ -42,7 +42,7 @@ const NewsBanner: FC<Props> = ({ title, data, image, icon, onPress }) => (
         </View>
         <View>
           <View style={styles.label}>
-            <Image source={icon} style={styles.icon} />
+            <Image source={icon} style={styles.icon} resizeMode="contain" />
           </View>
           <BodyText type="Help" style={styles.text}>
             {data}

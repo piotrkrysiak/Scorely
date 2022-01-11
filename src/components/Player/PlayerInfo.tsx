@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, useColorScheme } from 'react-native';
 import { lightPalette } from 'src/assets/styles';
 import { HELP, SEMI_BOLD, SMALLER_BODY } from 'src/constants';
 import { BodyText, Text } from '../common';
@@ -14,21 +14,30 @@ interface Props {
   }[];
 }
 
-const PlayerInfo: FC<Props> = ({ title, content }) => (
-  <Wrapper>
-    <Text fontSize={12} fontWeight={SEMI_BOLD} style={styles.margined}>
-      {title}
-    </Text>
-    {content.map(({ id, name, value }) => (
-      <RowWrapper key={id} style={styles.row}>
-        <BodyText type={HELP} color={lightPalette.dark60}>
-          {name}
-        </BodyText>
-        <BodyText type={SMALLER_BODY}>{value}</BodyText>
-      </RowWrapper>
-    ))}
-  </Wrapper>
-);
+const PlayerInfo: FC<Props> = ({ title, content }) => {
+  const scheme = useColorScheme();
+
+  return (
+    <Wrapper>
+      <Text fontSize={12} fontWeight={SEMI_BOLD} style={styles.margined}>
+        {title}
+      </Text>
+      {content.map(({ id, name, value }) => (
+        <RowWrapper key={id} style={styles.row}>
+          <BodyText
+            type={HELP}
+            color={
+              scheme === 'dark' ? lightPalette.dark30 : lightPalette.dark60
+            }
+          >
+            {name}
+          </BodyText>
+          <BodyText type={SMALLER_BODY}>{value}</BodyText>
+        </RowWrapper>
+      ))}
+    </Wrapper>
+  );
+};
 
 export default PlayerInfo;
 

@@ -11,14 +11,12 @@ import MatchCard from 'src/components/home/MatchCard';
 import LoadingPlaceholder from 'src/components/home/LoadingPlaceholder';
 import ErrorContainer from 'src/components/containers/ErrorContainer';
 import useHomeData from 'src/hooks/useHomeData';
+import PLLogo from 'src/assets/images/PLLogo.png';
 
 const HomeScreen = () => {
   const { navigate } = useNavigation<HomeScreenProp>();
 
   // TODO: It's a mock data, need to be replaced with real data from firebase
-  const icon: ImageSourcePropType = {
-    uri: 'https://lh3.googleusercontent.com/proxy/jQZSrZpeo6guHKMY0b5nCtmpf7fQbVrMzgY6_3XmVRFSYEkxSEdTztHcyY_4qzRi2puIcndVQtmHjTfIp1jJJpxLiiyANGfny1d05DgM41Ijmu2LCWow20tdIKNMOAInHtHj1Zv3-c7b7fz4qGPaKrFv',
-  };
   const bannerImage: ImageSourcePropType = {
     uri: 'https://i.postimg.cc/gj8g3LSN/riyad-mahrez-1.png',
   };
@@ -44,7 +42,7 @@ const HomeScreen = () => {
       <NewsBanner
         title="Champions sparkle as Canaries Threshed"
         data="Yesterday, 6:30 PM"
-        icon={icon}
+        icon={PLLogo}
         image={bannerImage}
         onPress={() => navigate(Route.POST, { id: 1 })}
       />
