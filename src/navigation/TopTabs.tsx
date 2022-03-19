@@ -53,15 +53,6 @@ const TopTabs: FC<Props> = ({ id }) => (
     >
       {() => <PlayerStats id={id} />}
     </Tab.Screen>
-
-    <Tab.Screen
-      options={{
-        title: 'Fixture',
-      }}
-      name={Route.PLAYER_FIXTURE}
-    >
-      {() => <PlayerFixture />}
-    </Tab.Screen>
   </Tab.Navigator>
 );
 

@@ -15,7 +15,7 @@ import { Wrapper, RowWrapper } from 'src/components/containers';
 import Container from 'src/components/containers/Container';
 import Icon from 'src/components/common/Icon';
 import { useNavigation } from '@react-navigation/native';
-import { AuthScreenProp, Route } from 'src/constants';
+import { HomeScreenProp, Route } from 'src/constants';
 import { LoginUser } from 'src/ts/interfaces/user';
 import { useDispatch, useSelector } from 'react-redux';
 import { signInWithEmailAndPassword } from 'src/redux/user/userActions';
@@ -25,7 +25,7 @@ import { userSelector, setErrorNull } from 'src/redux/user/userSlice';
 const LoginScreen = () => {
   const [disabled, setDisabled] = useState<boolean>(true);
   const [secureTextEntry, setSecureTextEntry] = useState<boolean>(true);
-  const { navigate } = useNavigation<AuthScreenProp>();
+  const { navigate } = useNavigation<HomeScreenProp>();
 
   const handleSecureTextEntry = () => {
     setSecureTextEntry(prev => !prev);

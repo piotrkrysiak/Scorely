@@ -6,13 +6,10 @@ import {
 } from '@react-navigation/native';
 import { useColorScheme } from 'react-native';
 import HomeNavigator from './navigation/HomeNavigator';
-import useInitialUserCheck from './hooks/useInitialUserCheck';
 import { lightPalette } from './assets/styles';
 
 const App = () => {
   const scheme = useColorScheme();
-
-  useInitialUserCheck();
   const lightTheme = {
     ...DefaultTheme,
     colors: {

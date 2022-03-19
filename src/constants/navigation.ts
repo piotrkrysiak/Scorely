@@ -4,11 +4,11 @@ export enum Route {
   LOGIN = 'Login',
   REGISTER = 'Register',
   HOME = 'Home',
+  HOME_NAVIGATION = 'HomeNavigation',
   TABLES = 'Tables',
   RESULTS = 'Results',
   PROFILE = 'Profile',
   HOME_TAB = 'HomeTab',
-  AUTH = 'Auth',
   PLAYERS = 'Players',
   PLAYER = 'Player',
   MATCH = 'Match',
@@ -41,7 +41,6 @@ export type RootStackParamList = {
   Results: undefined;
   Profile: undefined;
   HomeTab: undefined;
-  Auth: undefined;
   Players: undefined;
   Matches: undefined;
   News: undefined;
@@ -53,12 +52,8 @@ export type RootStackParamList = {
   Match: MatchScreenProps;
   Post: PostScreenProps;
   CreatePost: undefined;
+  HomeNavigation: undefined;
 };
-
-export type AuthScreenProp = StackNavigationProp<
-  RootStackParamList,
-  Route.AUTH
->;
 
 export type HomeScreenProp = StackNavigationProp<
   RootStackParamList,
