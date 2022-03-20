@@ -1,19 +1,9 @@
 import React, { FC } from 'react';
-import {
-  Image,
-  ImageSourcePropType,
-  SafeAreaView,
-  StyleSheet,
-  View,
-} from 'react-native';
-import { globalStyles, lightPalette } from 'src/assets/styles';
-import { HELP, IONICONS, SEMI_BOLD } from 'src/constants';
+import { Image, SafeAreaView, StyleSheet, View } from 'react-native';
+import { lightPalette } from 'src/assets/styles';
 import LinearGradient from 'react-native-linear-gradient';
-import { IconTypes } from 'src/components/common/Icon';
 import useBackIcon from 'src/hooks/useBackIcon';
-import { Text, HeaderBar } from ".";
-import { RowWrapper } from '../containers';
-import BodyText from './BodyText';
+import HeaderBarAnimated from './HeaderBarAnimated';
 
 interface Props {
   photo: string;
@@ -21,12 +11,6 @@ interface Props {
 
 const Header: FC<Props> = ({ photo }) => {
   const backIcon = useBackIcon();
-
-  const rightIcon = {
-    type: IONICONS as IconTypes,
-    name: 'heart-outline',
-    onPressFunction: () => {},
-  };
 
   return (
     <View style={styles.wrapper}>
@@ -42,11 +26,7 @@ const Header: FC<Props> = ({ photo }) => {
         end={{ x: 0, y: 1 }}
       />
       <SafeAreaView>
-        <HeaderBar
-          leftIcon={backIcon}
-          rightIcon={rightIcon}
-          color={lightPalette.white}
-        />
+        <HeaderBarAnimated leftIcon={backIcon} color={lightPalette.white} />
       </SafeAreaView>
     </View>
   );
