@@ -1,6 +1,6 @@
 import { useDocument } from '@skillnation/react-native-firebase-hooks/firestore';
 import React, { FC } from 'react';
-import { Route, SafeAreaView, StyleSheet, View } from 'react-native';
+import { Route, StyleSheet, View } from 'react-native';
 import { BodyText, Text } from 'src/components/common';
 import Header from 'src/components/common/Header';
 import firestore from '@react-native-firebase/firestore';
@@ -13,7 +13,6 @@ interface Props {
 
 const PostScreen: FC<Props> = ({ route }) => {
   const { id } = route.params;
-
   const [value, loading, error] = useDocument(firestore().doc(`posts/${id}`));
 
   if (error) {

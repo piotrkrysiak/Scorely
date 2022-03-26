@@ -2,6 +2,8 @@ import { API_KEY } from '@env';
 import React, { FC } from 'react';
 import { Route, SafeAreaView } from 'react-native';
 import WebView from 'react-native-webview';
+import HeaderBarAnimated from 'src/components/common/HeaderBarAnimated';
+import useBackIcon from 'src/hooks/useBackIcon';
 
 interface Props {
   route: Route;
@@ -9,6 +11,7 @@ interface Props {
 
 const MatchScreen: FC<Props> = ({ route }) => {
   const { id } = route.params;
+  const backIcon = useBackIcon();
 
   const widget = `<div id="wg-api-football-fixture"
       data-host="v3.football.api-sports.io"
@@ -27,6 +30,7 @@ const MatchScreen: FC<Props> = ({ route }) => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
+      <HeaderBarAnimated leftIcon={backIcon} />
       <WebView
         scalesPageToFit
         source={{

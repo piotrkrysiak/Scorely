@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { lightPalette } from 'src/assets/styles';
-import HeadlineText from './HeadlineText';
-import Icon, { IconTypes } from './Icon';
 import LottieView from 'lottie-react-native';
 import likeAnimation from 'src/assets/lotties/44921-like-animation.json';
+import HeadlineText from './HeadlineText';
+import Icon, { IconTypes } from './Icon';
 
 interface Props {
   leftIcon: {
@@ -14,13 +14,19 @@ interface Props {
   };
   title?: string;
   color?: string;
+  liked?: boolean;
+  onPress?: () => void;
 }
 
-const HeaderBarAnimated: React.FC<Props> = ({ leftIcon, title, color }) => {
+const HeaderBarAnimated: React.FC<Props> = ({
+  leftIcon,
+  title,
+  color,
+  liked,
+  onPress,
+}) => {
   const animation = useRef<LottieView>(null);
   const isFirstRun = useRef(true);
-
-  const [liked, setLiked] = useState(false);
 
   useEffect(() => {
     if (isFirstRun.current) {
@@ -41,7 +47,8 @@ const HeaderBarAnimated: React.FC<Props> = ({ leftIcon, title, color }) => {
     <View style={styles.wrapper}>
       <TouchableOpacity
         onPress={leftIcon.onPressFunction}
-        style={styles.zIndex}>
+        style={styles.zIndex}
+      >
         <View style={styles.icon}>
           <Icon
             type={leftIcon.type}
@@ -56,10 +63,7 @@ const HeaderBarAnimated: React.FC<Props> = ({ leftIcon, title, color }) => {
           <HeadlineText>{title}</HeadlineText>
         </View>
       )}
-      <TouchableOpacity
-        onPress={() => {
-          setLiked(true);
-        }}>
+      <TouchableOpacity onPress={onPress}>
         <LottieView
           ref={animation}
           style={styles.heartLottie}
@@ -96,7 +100,9 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   heartLottie: {
-    width: 80,
+    width: 40,
+    transform: [{ scale: 1.5 }],
+    marginRight: 15,
   },
 });
 export default HeaderBarAnimated;
