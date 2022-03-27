@@ -1,6 +1,6 @@
 import { useDocument } from '@skillnation/react-native-firebase-hooks/firestore';
 import React, { FC } from 'react';
-import { Route, StyleSheet, View } from 'react-native';
+import { Route, View } from 'react-native';
 import { BodyText, Text } from 'src/components/common';
 import Header from 'src/components/common/Header';
 import firestore from '@react-native-firebase/firestore';
@@ -47,24 +47,3 @@ const PostScreen: FC<Props> = ({ route }) => {
 };
 
 export default PostScreen;
-
-const styles = StyleSheet.create({
-  wrapper: {
-    height: 260,
-  },
-  image: {
-    width: 25,
-  },
-  linearGradient: {
-    borderRadius: 12,
-    width: '100%',
-    height: '100%',
-    position: 'absolute',
-  },
-  background: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    borderRadius: 12,
-  },
-});
