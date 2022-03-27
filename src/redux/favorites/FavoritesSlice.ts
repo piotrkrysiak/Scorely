@@ -1,6 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Player } from 'src/ts/interfaces';
-import { setFavorite } from './FavoriteActions';
+import { getFavorite, setFavorite } from './FavoriteActions';
 
 interface FavoriteState {
   favorite: Player[];
@@ -30,10 +30,25 @@ const favoriteSlice = createSlice({
       .addCase(setFavorite.rejected, (state, action) => {
         state.error = action.error.message ?? 'error';
         state.loading = false;
+      })
+      .addCase(getFavorite.pending, state => {
+        state.error = '';
+        state.loading = true;
+      })
+      .addCase(
+        getFavorite.fulfilled,
+        (state, action: PayloadAction<Player[]>) => {
+          state.favorite = action.payload;
+          state.loading = false;
+        },
+      )
+      .addCase(getFavorite.rejected, (state, action) => {
+        state.error = action.error.message ?? 'error';
+        state.loading = false;
       });
   },
 });
 
 export default favoriteSlice.reducer;
-export const favoriteSelector = (state: { posts: FavoriteState }) =>
-  state.posts;
+export const favoriteSelector = (state: { favorite: FavoriteState }) =>
+  state.favorite;

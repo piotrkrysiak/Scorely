@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { lightPalette } from 'src/assets/styles';
 import LottieView from 'lottie-react-native';
@@ -14,19 +14,26 @@ interface Props {
   };
   title?: string;
   color?: string;
-  liked?: boolean;
-  onPress?: () => void;
+  onPress: () => void;
+  isFavorite: boolean;
 }
 
 const HeaderBarAnimated: React.FC<Props> = ({
   leftIcon,
   title,
   color,
-  liked,
   onPress,
+  isFavorite,
 }) => {
   const animation = useRef<LottieView>(null);
   const isFirstRun = useRef(true);
+
+  const [liked, setLiked] = useState(isFavorite);
+
+  const handleSetFavorite = () => {
+    setLiked(prev => !prev);
+    onPress();
+  };
 
   useEffect(() => {
     if (isFirstRun.current) {
@@ -63,7 +70,7 @@ const HeaderBarAnimated: React.FC<Props> = ({
           <HeadlineText>{title}</HeadlineText>
         </View>
       )}
-      <TouchableOpacity onPress={onPress}>
+      <TouchableOpacity onPress={handleSetFavorite}>
         <LottieView
           ref={animation}
           style={styles.heartLottie}
@@ -101,7 +108,7 @@ const styles = StyleSheet.create({
   },
   heartLottie: {
     width: 40,
-    transform: [{ scale: 1.5 }],
+    transform: [{ scale: 1.6 }],
     marginRight: 15,
   },
 });

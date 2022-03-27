@@ -16,6 +16,7 @@ interface Props {
   club: string;
   clubLogo: string;
   onPress: () => void;
+  isFavorite: boolean;
 }
 
 const PlayerHeader: FC<Props> = ({
@@ -25,6 +26,7 @@ const PlayerHeader: FC<Props> = ({
   club,
   clubLogo,
   onPress,
+  isFavorite,
 }) => {
   const backIcon = useBackIcon();
 
@@ -42,6 +44,7 @@ const PlayerHeader: FC<Props> = ({
           leftIcon={backIcon}
           color={lightPalette.white}
           onPress={onPress}
+          isFavorite={isFavorite}
         />
         <RowWrapper style={[globalStyles.centered, { height: '65%' }]}>
           <Avatar source={photo} />
