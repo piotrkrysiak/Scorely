@@ -1,28 +1,28 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, FlatList, StyleSheet, View } from 'react-native';
 import { Button } from 'src/components/common';
-import { DEFAULT_AVATAR, HomeScreenProp } from 'src/constants';
-import { userSelector } from 'src/redux/user/userSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  DEFAULT_AVATAR,
+  HomeScreenProp,
+  Route,
+  WINDOW_WIDTH,
+} from 'src/constants';
+import { useDispatch } from 'react-redux';
 import { logOutUser } from 'src/redux/user/userActions';
 import Header from 'src/components/common/AnimatedHeader/Header';
 import cover from 'src/assets/images/profileCover.jpg';
-import { useCollection } from '@skillnation/react-native-firebase-hooks/firestore';
-import firestore from '@react-native-firebase/firestore';
 import ErrorContainer from 'src/components/containers/ErrorContainer';
 import { errorConverter } from 'src/helpers/errorConverter';
 import News from 'src/components/common/News';
 import useOnAuthStateChange from 'src/hooks/useOnAuthStateChanged';
+import SectionHeader from 'src/components/home/SectionHeader';
+import useProfileData from 'src/hooks/useProfileData';
+import PlayerCard from 'src/components/home/PlayerCard';
 
 const ProfileScreen = () => {
-  const {
-    user: { userName, photoURL, id },
-  } = useSelector(userSelector);
-
-  const [value, loading, error] = useCollection(
-    firestore().collection('users').doc(id).collection('posts'),
-  );
+  const { userName, photoURL, postValue, playersValue, loading, error } =
+    useProfileData();
 
   const { goBack } = useNavigation<HomeScreenProp>();
 
@@ -38,6 +38,8 @@ const ProfileScreen = () => {
 
   useOnAuthStateChange();
 
+  const { navigate } = useNavigation<HomeScreenProp>();
+
   return (
     <View style={styles.container}>
       <Header
@@ -45,18 +47,62 @@ const ProfileScreen = () => {
         photo={photoURL ?? DEFAULT_AVATAR}
         background={cover}
       >
-        {!!loading && <ActivityIndicator />}
-        {!!value &&
-          value.docs.map(doc => (
-            <View key={doc.id} style={{ marginBottom: 10 }}>
-              <News
-                title={doc.data().title.toString()}
-                data={doc.data().createdAt.toString()}
-                image={doc.data().photoURL.toString()}
-                onPress={() => {}}
-              />
-            </View>
-          ))}
+        {!!loading && (
+          <View style={{ padding: 40 }}>
+            <ActivityIndicator />
+          </View>
+        )}
+        {!!postValue && (
+          <>
+            <SectionHeader
+              title="Yours posts"
+              onPress={() => navigate(Route.CREATE_POST)}
+            />
+            <FlatList
+              data={postValue.docs}
+              keyExtractor={item => item.id.toString()}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              renderItem={({ item }) => (
+                <View style={{ width: WINDOW_WIDTH - 30 }}>
+                  <News
+                    title={item.data().title.toString()}
+                    data={item.data().createdAt.toString()}
+                    image={item.data().photoURL.toString()}
+                    onPress={() => navigate(Route.POST, { id: item.data().id })}
+                  />
+                </View>
+              )}
+            />
+          </>
+        )}
+        {!!playersValue && (
+          <>
+            <SectionHeader
+              title="Favorite players"
+              onPress={() => navigate(Route.PLAYERS)}
+            />
+            <FlatList
+              data={playersValue.docs}
+              keyExtractor={item => item.id.toString()}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              renderItem={({ item }) => (
+                <PlayerCard
+                  name={item.data().name.toString()}
+                  photo={item.data().photo.toString()}
+                  club={item.data().team.toString()}
+                  matches={item.data().statistics.gamesPlayed.toString()}
+                  goals={item.data().statistics.goals.toString()}
+                  assists={item.data().statistics.assists.toString()}
+                  rating={item.data().statistics.rating.toString()}
+                  onPress={() => navigate(Route.PLAYER, { id: item.data().id })}
+                />
+              )}
+            />
+          </>
+        )}
+        <View style={{ paddingBottom: 40 }} />
         <Button onPress={handleLogout} title="Logout" />
       </Header>
     </View>
