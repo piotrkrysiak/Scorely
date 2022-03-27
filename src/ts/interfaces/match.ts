@@ -12,3 +12,18 @@ interface Team {
   logo: string;
   goals: number | undefined;
 }
+
+export interface MatchCard {
+  id: number;
+  home: {
+    name: string;
+    logo: string;
+    goals: number | undefined;
+  };
+  away: {
+    name: string;
+    logo: string;
+    goals: number | undefined;
+  };
+  status: string;
+}

@@ -17,7 +17,6 @@ const PlayerScreen: FC<Props> = ({ route }) => {
   const { id } = route.params;
   const { data, isLoading } = useGetPlayerQuery(id);
 
-  // const [isFavorite, setIsFavorite] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,9 +24,9 @@ const PlayerScreen: FC<Props> = ({ route }) => {
   }, [dispatch]);
 
   const { favorite } = useSelector(favoriteSelector);
-  const isFavorite = favorite.some(item => item.id === id);
+  const isFavorite = favorite.players.some(item => item.id === id);
 
-  const handleAddPlayer = async () => {
+  const handleAddPlayer = () => {
     if (data) {
       const player: Player = {
         id: data.id,
@@ -37,7 +36,7 @@ const PlayerScreen: FC<Props> = ({ route }) => {
         team: data.team,
         statistics: data.statistics,
       };
-      await dispatch(setFavorite(player));
+      dispatch(setFavorite({ favorite: player, type: 'players' }));
     }
   };
 

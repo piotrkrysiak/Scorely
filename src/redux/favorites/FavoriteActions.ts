@@ -1,14 +1,21 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+// eslint-disable-next-line import/no-cycle
 import { addToFavorites } from 'src/helpers/setFavorites';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
-import { Player } from 'src/ts/interfaces';
+import { MatchCard, Player } from 'src/ts/interfaces';
+import { Post } from 'src/ts/interfaces/post';
+
+export interface FavoriteState {
+  favorite: Player | Post | MatchCard;
+  type: string;
+}
 
 // eslint-disable-next-line import/prefer-default-export
-export const setFavorite = createAsyncThunk<void, any>(
+export const setFavorite = createAsyncThunk<void, FavoriteState>(
   'favorite/setFavorite',
   async favorite => {
-    await addToFavorites(favorite, 'players');
+    await addToFavorites(favorite);
   },
 );
 
@@ -23,13 +30,13 @@ export const getFavorite = createAsyncThunk<Player[], void>(
       .collection('players')
       .get();
 
-    const favorite: Player[] = [];
+    const player: Player[] = [];
 
     (await docRef).forEach(doc => {
       const { id, name, photo, position, team, statistics } = doc.data();
-      favorite.push({ id, name, photo, position, team, statistics });
+      player.push({ id, name, photo, position, team, statistics });
     });
 
-    return favorite;
+    return player;
   },
 );

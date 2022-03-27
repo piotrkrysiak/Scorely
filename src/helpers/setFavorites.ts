@@ -1,13 +1,14 @@
 /* eslint-disable consistent-return */
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
-import { Player } from 'src/ts/interfaces';
+// eslint-disable-next-line import/no-cycle
+import { FavoriteState } from 'src/redux/favorites/FavoriteActions';
 
 // eslint-disable-next-line import/prefer-default-export
-export const addToFavorites = async (player: Player, type: string) => {
-  const { id, name, photo, position, team, statistics } = player;
+export const addToFavorites = async (favorite: FavoriteState) => {
   const db = firestore();
   const userId = auth().currentUser?.uid;
+  const { id } = favorite.favorite;
 
   if (!userId) {
     return null;
@@ -15,7 +16,7 @@ export const addToFavorites = async (player: Player, type: string) => {
   const docRef = db
     .collection('users')
     .doc(userId)
-    .collection(type)
+    .collection(favorite.type)
     .doc(id.toString());
 
   const doc = await docRef.get();
@@ -25,12 +26,7 @@ export const addToFavorites = async (player: Player, type: string) => {
   }
   if (!doc.exists) {
     docRef.set({
-      id,
-      name,
-      photo,
-      position,
-      team,
-      statistics,
+      ...favorite.favorite,
     });
   }
 };

@@ -71,7 +71,7 @@ const ResultsScreen = () => {
           host={home}
           guest={away}
           status={status}
-          onPress={() => navigate(Route.MATCH, { id })}
+          onPress={() => navigate(Route.MATCH, { id, home, away, status })}
         />
       ))}
     </Container>

@@ -28,6 +28,17 @@ type PlayerScreenProps = {
 
 type MatchScreenProps = {
   id: number;
+  home: {
+    name: string;
+    logo: string;
+    goals: number | undefined;
+  };
+  away: {
+    name: string;
+    logo: string;
+    goals: number | undefined;
+  };
+  status: string;
 };
 type PostScreenProps = {
   id: number | string;
