@@ -7,9 +7,11 @@ import HeaderBarAnimated from './HeaderBarAnimated';
 
 interface Props {
   photo: string;
+  isFavorite: boolean;
+  onPress: () => void;
 }
 
-const Header: FC<Props> = ({ photo }) => {
+const Header: FC<Props> = ({ photo, isFavorite, onPress }) => {
   const backIcon = useBackIcon();
 
   return (
@@ -26,7 +28,12 @@ const Header: FC<Props> = ({ photo }) => {
         end={{ x: 0, y: 1 }}
       />
       <SafeAreaView>
-        <HeaderBarAnimated leftIcon={backIcon} color={lightPalette.white} />
+        <HeaderBarAnimated
+          leftIcon={backIcon}
+          color={lightPalette.white}
+          onPress={onPress}
+          isFavorite={isFavorite}
+        />
       </SafeAreaView>
     </View>
   );

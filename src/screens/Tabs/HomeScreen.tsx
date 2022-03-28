@@ -38,62 +38,54 @@ const HomeScreen = () => {
   }
 
   return (
-    <Animated.View entering={FlipInXDown.springify()}>
-      <Container scroll>
-        <SectionHeader title="News" onPress={() => navigate(Route.NEWS)} />
-        <NewsBanner
-          title="Champions sparkle as Canaries Threshed"
-          data="Yesterday, 6:30 PM"
-          icon={PLLogo}
-          image={bannerImage}
-          onPress={() => navigate(Route.POST, { id: 1 })}
-        />
+    <Container scroll>
+      <SectionHeader title="News" onPress={() => navigate(Route.NEWS)} />
+      <NewsBanner
+        title="Champions sparkle as Canaries Threshed"
+        data="Yesterday, 6:30 PM"
+        icon={PLLogo}
+        image={bannerImage}
+        onPress={() => navigate(Route.POST, { id: 1 })}
+      />
 
-        <SectionHeader
-          title="Players"
-          onPress={() => navigate(Route.PLAYERS)}
-        />
-        <FlatList
-          data={players}
-          keyExtractor={item => item.id.toString()}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          renderItem={({
-            item: {
-              id,
-              name,
-              photo,
-              team,
-              statistics: { goals, assists, gamesPlayed, rating },
-            },
-          }) => (
-            <PlayerCard
-              name={name}
-              photo={photo}
-              club={team}
-              matches={gamesPlayed}
-              goals={goals}
-              assists={assists}
-              rating={Number(rating)}
-              onPress={() => navigate(Route.PLAYER, { id })}
-            />
-          )}
-        />
-        <SectionHeader
-          title="Matches"
-          onPress={() => navigate(Route.RESULTS)}
-        />
-        {matches.map(({ id, home, away, status }) => (
-          <MatchCard
-            key={id}
-            host={home}
-            guest={away}
-            status={status}
-            onPress={() => navigate(Route.MATCH, { id, home, away, status })}
+      <SectionHeader title="Players" onPress={() => navigate(Route.PLAYERS)} />
+      <FlatList
+        data={players}
+        keyExtractor={item => item.id.toString()}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        renderItem={({
+          item: {
+            id,
+            name,
+            photo,
+            team,
+            statistics: { goals, assists, gamesPlayed, rating },
+          },
+        }) => (
+          <PlayerCard
+            name={name}
+            photo={photo}
+            club={team}
+            matches={gamesPlayed}
+            goals={goals}
+            assists={assists}
+            rating={Number(rating)}
+            onPress={() => navigate(Route.PLAYER, { id })}
           />
-        ))}
-      </Container>
-    </Animated.View>
+        )}
+      />
+      <SectionHeader title="Matches" onPress={() => navigate(Route.RESULTS)} />
+      {matches.map(({ id, home, away, status }) => (
+        <MatchCard
+          key={id}
+          host={home}
+          guest={away}
+          status={status}
+          onPress={() => navigate(Route.MATCH, { id, home, away, status })}
+        />
+      ))}
+    </Container>
   );
 };
 

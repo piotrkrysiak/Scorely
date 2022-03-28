@@ -37,6 +37,8 @@ export const getFavorite = createAsyncThunk<Player[], void>(
       player.push({ id, name, photo, position, team, statistics });
     });
 
+    // add matches and posts
+
     return player;
   },
 );

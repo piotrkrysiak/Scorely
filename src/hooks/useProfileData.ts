@@ -16,14 +16,25 @@ export default function useProfileData() {
     firestore().collection('users').doc(id).collection('players'),
   );
 
-  const error = postError || playersError;
-  const loading = postLoading || playersLoading;
+  const [matchesValue, matchLoading, matchError] = useCollection(
+    firestore().collection('users').doc(id).collection('matches'),
+  );
+
+  const [favPostValue, favPostLoading, favPostError] = useCollection(
+    firestore().collection('users').doc(id).collection('post_favorite'),
+  );
+
+  const error = postError || playersError || matchError || favPostError;
+  const loading =
+    postLoading || playersLoading || matchLoading || favPostLoading;
 
   return {
     userName,
     photoURL,
     postValue,
     playersValue,
+    matchesValue,
+    favPostValue,
     loading,
     error,
   };

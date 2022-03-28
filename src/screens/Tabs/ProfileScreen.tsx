@@ -19,10 +19,19 @@ import useOnAuthStateChange from 'src/hooks/useOnAuthStateChanged';
 import SectionHeader from 'src/components/home/SectionHeader';
 import useProfileData from 'src/hooks/useProfileData';
 import PlayerCard from 'src/components/home/PlayerCard';
+import MatchCard from 'src/components/home/MatchCard';
 
 const ProfileScreen = () => {
-  const { userName, photoURL, postValue, playersValue, loading, error } =
-    useProfileData();
+  const {
+    userName,
+    photoURL,
+    postValue,
+    playersValue,
+    matchesValue,
+    favPostValue,
+    loading,
+    error,
+  } = useProfileData();
 
   const { goBack } = useNavigation<HomeScreenProp>();
 
@@ -98,6 +107,54 @@ const ProfileScreen = () => {
                   rating={item.data().statistics.rating.toString()}
                   onPress={() => navigate(Route.PLAYER, { id: item.data().id })}
                 />
+              )}
+            />
+          </>
+        )}
+        {!!matchesValue && (
+          <>
+            <SectionHeader
+              title="Followed matches"
+              onPress={() => navigate(Route.PLAYERS)}
+            />
+            <FlatList
+              data={matchesValue.docs}
+              keyExtractor={item => item.id.toString()}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              renderItem={({ item }) => (
+                <View style={{ width: WINDOW_WIDTH - 30 }}>
+                  <MatchCard
+                    status={item.data().status.toString()}
+                    host={item.data().home}
+                    guest={item.data().away}
+                    onPress={() => {}}
+                  />
+                </View>
+              )}
+            />
+          </>
+        )}
+        {!!favPostValue && (
+          <>
+            <SectionHeader
+              title="Favorite posts"
+              onPress={() => navigate(Route.CREATE_POST)}
+            />
+            <FlatList
+              data={favPostValue.docs}
+              keyExtractor={item => item.id.toString()}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              renderItem={({ item }) => (
+                <View style={{ width: WINDOW_WIDTH - 30 }}>
+                  <News
+                    title={item.data().title.toString()}
+                    data={item.data().createdAt.toString()}
+                    image={item.data().photoURL.toString()}
+                    onPress={() => navigate(Route.POST, { id: item.data().id })}
+                  />
+                </View>
               )}
             />
           </>
