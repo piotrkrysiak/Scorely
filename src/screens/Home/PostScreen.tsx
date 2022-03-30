@@ -27,13 +27,7 @@ const PostScreen: FC<Props> = ({ route }) => {
   const { favorite } = useSelector(favoriteSelector);
   const isFavorite = favorite.posts.some(item => item.id === id);
 
-  console.log(isFavorite);
-  console.log(id);
-  console.log(favorite.posts);
-
   const handleAddPost = () => {
-    console.log('handleAddPost');
-
     const post = {
       id,
       title: value?.data()?.title,
@@ -41,7 +35,6 @@ const PostScreen: FC<Props> = ({ route }) => {
       createdAt: value?.data()?.createdAt,
       photoURL: value?.data()?.photoURL,
     };
-    console.log(post);
 
     dispatch(setFavorite({ favorite: post, type: 'post_favorite' }));
   };

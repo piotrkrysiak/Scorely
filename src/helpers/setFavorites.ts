@@ -6,8 +6,6 @@ import { FavoriteState } from 'src/redux/favorites/FavoriteActions';
 
 // eslint-disable-next-line import/prefer-default-export
 export const addToFavorites = async (favorite: FavoriteState) => {
-  console.log('addToFavorites', favorite);
-
   const db = firestore();
   const userId = auth().currentUser?.uid;
   const { id } = favorite.favorite;

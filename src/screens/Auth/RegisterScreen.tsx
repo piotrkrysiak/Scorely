@@ -20,6 +20,7 @@ import { RegisterUser } from 'src/ts/interfaces/user';
 import useOnAuthStateChange from 'src/hooks/useOnAuthStateChanged';
 import useBackIcon from 'src/hooks/useBackIcon';
 import { setErrorNull, userSelector } from 'src/redux/user/userSlice';
+import Animated, { LightSpeedInLeft } from 'react-native-reanimated';
 
 const RegisterScreen = () => {
   const [disabled, setDisabled] = useState(true);
@@ -81,7 +82,7 @@ const RegisterScreen = () => {
 
   return (
     <Container keyboard scroll style={styles.container}>
-      <View>
+      <Animated.View entering={LightSpeedInLeft}>
         <HeaderBar leftIcon={backIcon} />
         <View style={styles.wrapper}>
           <Wrapper>
@@ -134,7 +135,7 @@ const RegisterScreen = () => {
             </Pressable>
           )}
         />
-      </View>
+      </Animated.View>
       <View style={styles.bottom}>
         <Button title="Sign up" onPress={handleSubmit} disabled={disabled} />
       </View>

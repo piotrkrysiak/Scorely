@@ -12,7 +12,6 @@ import LoadingPlaceholder from 'src/components/home/LoadingPlaceholder';
 import ErrorContainer from 'src/components/containers/ErrorContainer';
 import useHomeData from 'src/hooks/useHomeData';
 import PLLogo from 'src/assets/images/PLLogo.png';
-import Animated, { FlipInXDown } from 'react-native-reanimated';
 
 const HomeScreen = () => {
   const { navigate } = useNavigation<HomeScreenProp>();
