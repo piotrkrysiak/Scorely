@@ -1,4 +1,5 @@
 import React from 'react';
+import Animated, { BounceIn, BounceOut } from 'react-native-reanimated';
 import { HeadlineText } from 'src/components/common';
 import { Wrapper } from 'src/components/containers';
 import Container from 'src/components/containers/Container';
@@ -15,22 +16,27 @@ const TablesScreen = () => {
 
   return (
     <Container scroll>
-      <Wrapper>
-        <TableHeader />
-        {table?.map(
-          ({ team: { id, name, logo }, rank, points, goalsDiff, played }) => (
-            <TableRow
-              rank={rank}
-              key={id}
-              name={name}
-              logo={logo}
-              points={points}
-              goalsDiff={goalsDiff}
-              played={played}
-            />
-          ),
-        )}
-      </Wrapper>
+      <Animated.View
+        entering={BounceIn.duration(800).delay(200)}
+        exiting={BounceOut.duration(800)}
+      >
+        <Wrapper>
+          <TableHeader />
+          {table?.map(
+            ({ team: { id, name, logo }, rank, points, goalsDiff, played }) => (
+              <TableRow
+                rank={rank}
+                key={id}
+                name={name}
+                logo={logo}
+                points={points}
+                goalsDiff={goalsDiff}
+                played={played}
+              />
+            ),
+          )}
+        </Wrapper>
+      </Animated.View>
     </Container>
   );
 };

@@ -12,6 +12,14 @@ import LoadingPlaceholder from 'src/components/home/LoadingPlaceholder';
 import ErrorContainer from 'src/components/containers/ErrorContainer';
 import useHomeData from 'src/hooks/useHomeData';
 import PLLogo from 'src/assets/images/PLLogo.png';
+import Animated, {
+  BounceInDown,
+  BounceIn,
+  BounceInUp,
+  BounceOutUp,
+  BounceOut,
+  BounceOutDown,
+} from 'react-native-reanimated';
 
 const HomeScreen = () => {
   const { navigate } = useNavigation<HomeScreenProp>();
@@ -38,52 +46,72 @@ const HomeScreen = () => {
 
   return (
     <Container scroll>
-      <SectionHeader title="News" onPress={() => navigate(Route.NEWS)} />
-      <NewsBanner
-        title="Champions sparkle as Canaries Threshed"
-        data="Yesterday, 6:30 PM"
-        icon={PLLogo}
-        image={bannerImage}
-        onPress={() => navigate(Route.POST, { id: 1 })}
-      />
-
-      <SectionHeader title="Players" onPress={() => navigate(Route.PLAYERS)} />
-      <FlatList
-        data={players}
-        keyExtractor={item => item.id.toString()}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        renderItem={({
-          item: {
-            id,
-            name,
-            photo,
-            team,
-            statistics: { goals, assists, gamesPlayed, rating },
-          },
-        }) => (
-          <PlayerCard
-            name={name}
-            photo={photo}
-            club={team}
-            matches={gamesPlayed}
-            goals={goals}
-            assists={assists}
-            rating={Number(rating)}
-            onPress={() => navigate(Route.PLAYER, { id })}
-          />
-        )}
-      />
-      <SectionHeader title="Matches" onPress={() => navigate(Route.RESULTS)} />
-      {matches.map(({ id, home, away, status }) => (
-        <MatchCard
-          key={id}
-          host={home}
-          guest={away}
-          status={status}
-          onPress={() => navigate(Route.MATCH, { id, home, away, status })}
+      <Animated.View
+        entering={BounceInUp.duration(800).delay(200)}
+        exiting={BounceOutUp.duration(800)}
+      >
+        <SectionHeader title="News" onPress={() => navigate(Route.NEWS)} />
+        <NewsBanner
+          title="Champions sparkle as Canaries Threshed"
+          data="Yesterday, 6:30 PM"
+          icon={PLLogo}
+          image={bannerImage}
+          onPress={() => navigate(Route.POST, { id: 1 })}
         />
-      ))}
+      </Animated.View>
+      <Animated.View
+        entering={BounceIn.duration(800).delay(200)}
+        exiting={BounceOut.duration(800)}
+      >
+        <SectionHeader
+          title="Players"
+          onPress={() => navigate(Route.PLAYERS)}
+        />
+        <FlatList
+          data={players}
+          keyExtractor={item => item.id.toString()}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          renderItem={({
+            item: {
+              id,
+              name,
+              photo,
+              team,
+              statistics: { goals, assists, gamesPlayed, rating },
+            },
+          }) => (
+            <PlayerCard
+              name={name}
+              photo={photo}
+              club={team}
+              matches={gamesPlayed}
+              goals={goals}
+              assists={assists}
+              rating={Number(rating)}
+              onPress={() => navigate(Route.PLAYER, { id })}
+            />
+          )}
+        />
+      </Animated.View>
+      <Animated.View
+        entering={BounceInDown.duration(800).delay(200)}
+        exiting={BounceOutDown.duration(800)}
+      >
+        <SectionHeader
+          title="Matches"
+          onPress={() => navigate(Route.RESULTS)}
+        />
+        {matches.map(({ id, home, away, status }) => (
+          <MatchCard
+            key={id}
+            host={home}
+            guest={away}
+            status={status}
+            onPress={() => navigate(Route.MATCH, { id, home, away, status })}
+          />
+        ))}
+      </Animated.View>
     </Container>
   );
 };

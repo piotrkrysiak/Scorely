@@ -21,7 +21,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signInWithEmailAndPassword } from 'src/redux/user/userActions';
 import useOnAuthStateChange from 'src/hooks/useOnAuthStateChanged';
 import { userSelector, setErrorNull } from 'src/redux/user/userSlice';
-import Animated, { LightSpeedInRight } from 'react-native-reanimated';
+import Animated, {
+  LightSpeedInRight,
+  LightSpeedOutLeft,
+} from 'react-native-reanimated';
 
 const LoginScreen = () => {
   const [disabled, setDisabled] = useState<boolean>(true);
@@ -76,7 +79,10 @@ const LoginScreen = () => {
 
   return (
     <Container keyboard scroll style={styles.container}>
-      <Animated.View entering={LightSpeedInRight}>
+      <Animated.View
+        entering={LightSpeedInRight.duration(800).delay(100)}
+        exiting={LightSpeedOutLeft.duration(800)}
+      >
         <View style={styles.wrapper}>
           <Wrapper>
             <HeadlineText type="H1">Let&apos;s sign you in. 👋</HeadlineText>

@@ -82,7 +82,10 @@ const RegisterScreen = () => {
 
   return (
     <Container keyboard scroll style={styles.container}>
-      <Animated.View entering={LightSpeedInLeft}>
+      <Animated.View
+        entering={LightSpeedInLeft.duration(800).delay(100)}
+        exiting={LightSpeedInLeft.duration(800)}
+      >
         <HeaderBar leftIcon={backIcon} />
         <View style={styles.wrapper}>
           <Wrapper>
