@@ -128,7 +128,14 @@ const ProfileScreen = () => {
                     status={item.data().status.toString()}
                     host={item.data().home}
                     guest={item.data().away}
-                    onPress={() => {}}
+                    onPress={() =>
+                      navigate(Route.MATCH, {
+                        id: parseInt(item.id.toString(), 10),
+                        home: item.data().home,
+                        away: item.data().away,
+                        status: item.data().status,
+                      })
+                    }
                   />
                 </View>
               )}

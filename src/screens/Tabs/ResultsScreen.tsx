@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { ActivityIndicator, StyleSheet } from 'react-native';
+import Animated, { BounceIn, BounceOut } from 'react-native-reanimated';
 import { HeaderBar, HeadlineText } from 'src/components/common';
 import { IconTypes } from 'src/components/common/Icon';
 import Container from 'src/components/containers/Container';
@@ -60,20 +61,25 @@ const ResultsScreen = () => {
   };
   return (
     <Container scroll>
-      <HeaderBar
-        leftIcon={leftIcon}
-        rightIcon={rightIcon}
-        title={`Gameweek ${round}`}
-      />
-      {data?.map(({ id, home, away, status }) => (
-        <MatchCard
-          key={id}
-          host={home}
-          guest={away}
-          status={status}
-          onPress={() => navigate(Route.MATCH, { id, home, away, status })}
+      <Animated.View
+        entering={BounceIn.duration(800).delay(200)}
+        exiting={BounceOut.duration(800)}
+      >
+        <HeaderBar
+          leftIcon={leftIcon}
+          rightIcon={rightIcon}
+          title={`Gameweek ${round}`}
         />
-      ))}
+        {data?.map(({ id, home, away, status }) => (
+          <MatchCard
+            key={id}
+            host={home}
+            guest={away}
+            status={status}
+            onPress={() => navigate(Route.MATCH, { id, home, away, status })}
+          />
+        ))}
+      </Animated.View>
     </Container>
   );
 };

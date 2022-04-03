@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Player } from 'src/ts/interfaces';
 import { Favorite } from 'src/ts/interfaces/favorite';
 import { getFavorite, setFavorite } from './FavoriteActions';
 
@@ -42,8 +41,8 @@ const favoriteSlice = createSlice({
       })
       .addCase(
         getFavorite.fulfilled,
-        (state, action: PayloadAction<Player[]>) => {
-          state.favorite.players = action.payload;
+        (state, action: PayloadAction<Favorite>) => {
+          state.favorite = action.payload;
           state.loading = false;
         },
       )

@@ -5,6 +5,7 @@ import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 import { MatchCard, Player } from 'src/ts/interfaces';
 import { Post } from 'src/ts/interfaces/post';
+import { Favorite } from 'src/ts/interfaces/favorite';
 
 export interface FavoriteState {
   favorite: Player | Post | MatchCard;
@@ -19,7 +20,7 @@ export const setFavorite = createAsyncThunk<void, FavoriteState>(
   },
 );
 
-export const getFavorite = createAsyncThunk<Player[], void>(
+export const getFavorite = createAsyncThunk<Favorite, void>(
   'favorite/getFavorite',
   async () => {
     const userId = auth().currentUser?.uid;
@@ -30,6 +31,18 @@ export const getFavorite = createAsyncThunk<Player[], void>(
       .collection('players')
       .get();
 
+    const docRefMatches = db
+      .collection('users')
+      .doc(userId)
+      .collection('players')
+      .get();
+
+    const docRefPosts = db
+      .collection('users')
+      .doc(userId)
+      .collection('post_favorite')
+      .get();
+
     const player: Player[] = [];
 
     (await docRef).forEach(doc => {
@@ -37,8 +50,25 @@ export const getFavorite = createAsyncThunk<Player[], void>(
       player.push({ id, name, photo, position, team, statistics });
     });
 
-    // add matches and posts
+    const matches: MatchCard[] = [];
 
-    return player;
+    // add matches and posts
+    (await docRefMatches).forEach(doc => {
+      const { id, home, away, status } = doc.data();
+      matches.push({ id, home, away, status });
+    });
+
+    const posts: Post[] = [];
+
+    (await docRefPosts).forEach(doc => {
+      const { id, title, createdAt, photoURL, description } = doc.data();
+      posts.push({ id, title, createdAt, photoURL, description });
+    });
+
+    return {
+      players: player,
+      posts,
+      matches,
+    };
   },
 );
